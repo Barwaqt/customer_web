@@ -1,0 +1,750 @@
+{
+  "quick": [
+    "Deals",
+    "Electronics",
+    "Mobiles",
+    "Laptops & Desktops",
+    "Beauty",
+    "Gift Cards",
+    "Women\u2019s Fashion",
+    "Men\u2019s Fashion",
+    "Home Appliances",
+    "Health & Nutrition",
+    "Wearables",
+    "Backpacks"
+  ],
+  "products": [
+    {
+      "id": "p-0-0",
+      "name": "DJI Osmo Pocket 3 Creator Combo",
+      "price": 249,
+      "old": 306,
+      "image": "/shop/product-0-0.webp",
+      "section": "Extra 15% off up to 100 AED | Code: CAMERAS15",
+      "group": 0,
+      "rating": 4.6
+    },
+    {
+      "id": "p-0-1",
+      "name": "DJI Osmo Mobile Smartphone Stabilizer",
+      "price": 179,
+      "old": 220,
+      "image": "/shop/product-0-1.webp",
+      "section": "Extra 15% off up to 100 AED | Code: CAMERAS15",
+      "group": 0,
+      "rating": 4.5
+    },
+    {
+      "id": "p-0-2",
+      "name": "DJI Mic Wireless Microphone System",
+      "price": 329,
+      "old": 405,
+      "image": "/shop/product-0-2.webp",
+      "section": "Extra 15% off up to 100 AED | Code: CAMERAS15",
+      "group": 0,
+      "rating": 4.8
+    },
+    {
+      "id": "p-0-3",
+      "name": "Canon RF 50mm Camera Lens",
+      "price": 89,
+      "old": 109,
+      "image": "/shop/product-0-3.webp",
+      "section": "Extra 15% off up to 100 AED | Code: CAMERAS15",
+      "group": 0,
+      "rating": 4.4
+    },
+    {
+      "id": "p-0-4",
+      "name": "GoPro HERO Action Camera",
+      "price": 449,
+      "old": 552,
+      "image": "/shop/product-0-4.webp",
+      "section": "Extra 15% off up to 100 AED | Code: CAMERAS15",
+      "group": 0,
+      "rating": 4.7
+    },
+    {
+      "id": "p-0-5",
+      "name": "Sony FE Camera Lens",
+      "price": 159,
+      "old": 196,
+      "image": "/shop/product-0-5.webp",
+      "section": "Extra 15% off up to 100 AED | Code: CAMERAS15",
+      "group": 0,
+      "rating": 4.5
+    },
+    {
+      "id": "p-1-0",
+      "name": "Portable Bluetooth Soundbar",
+      "price": 249,
+      "old": 306,
+      "image": "/shop/product-1-0.webp",
+      "section": "Latest picks in electronics",
+      "group": 1,
+      "rating": 4.6
+    },
+    {
+      "id": "p-1-1",
+      "name": "LEGO Creative Building Set",
+      "price": 179,
+      "old": 220,
+      "image": "/shop/product-1-1.webp",
+      "section": "Latest picks in electronics",
+      "group": 1,
+      "rating": 4.5
+    },
+    {
+      "id": "p-1-2",
+      "name": "Foldable Phone Stand",
+      "price": 329,
+      "old": 405,
+      "image": "/shop/product-1-2.webp",
+      "section": "Latest picks in electronics",
+      "group": 1,
+      "rating": 4.8
+    },
+    {
+      "id": "p-1-3",
+      "name": "Compact Wireless Speaker",
+      "price": 89,
+      "old": 109,
+      "image": "/shop/product-1-3.webp",
+      "section": "Latest picks in electronics",
+      "group": 1,
+      "rating": 4.4
+    },
+    {
+      "id": "p-1-4",
+      "name": "Wooden Dollhouse Play Set",
+      "price": 449,
+      "old": 552,
+      "image": "/shop/product-1-4.webp",
+      "section": "Latest picks in electronics",
+      "group": 1,
+      "rating": 4.7
+    },
+    {
+      "id": "p-1-5",
+      "name": "Wireless Headphones",
+      "price": 159,
+      "old": 196,
+      "image": "/shop/product-1-5.webp",
+      "section": "Latest picks in electronics",
+      "group": 1,
+      "rating": 4.5
+    },
+    {
+      "id": "p-2-0",
+      "name": "Apple iPhone 16 Pro Max 256GB Desert Titanium",
+      "price": 4199,
+      "old": 5165,
+      "image": "/shop/product-2-0.webp",
+      "section": "Extra 200 AED off on mobiles | USE CODE: SALE200",
+      "group": 2,
+      "rating": 4.6
+    },
+    {
+      "id": "p-2-1",
+      "name": "Apple iPhone 17 Pro Max 256GB Silver",
+      "price": 5049,
+      "old": 6210,
+      "image": "/shop/product-2-1.webp",
+      "section": "Extra 200 AED off on mobiles | USE CODE: SALE200",
+      "group": 2,
+      "rating": 4.5
+    },
+    {
+      "id": "p-2-2",
+      "name": "Apple iPhone 17 Pro Max 256GB Cosmic Orange",
+      "price": 5049,
+      "old": 6210,
+      "image": "/shop/product-2-2.webp",
+      "section": "Extra 200 AED off on mobiles | USE CODE: SALE200",
+      "group": 2,
+      "rating": 4.8
+    },
+    {
+      "id": "p-2-3",
+      "name": "Apple iPhone 17 Pro Max 256GB Deep Blue",
+      "price": 4999,
+      "old": 6149,
+      "image": "/shop/product-2-3.webp",
+      "section": "Extra 200 AED off on mobiles | USE CODE: SALE200",
+      "group": 2,
+      "rating": 4.4
+    },
+    {
+      "id": "p-2-4",
+      "name": "Samsung Galaxy S26 Ultra Dual SIM Sky Blue",
+      "price": 5199,
+      "old": 6395,
+      "image": "/shop/product-2-4.webp",
+      "section": "Extra 200 AED off on mobiles | USE CODE: SALE200",
+      "group": 2,
+      "rating": 4.7
+    },
+    {
+      "id": "p-2-5",
+      "name": "Apple iPhone 17 Pro 512GB Silver",
+      "price": 5849,
+      "old": 7194,
+      "image": "/shop/product-2-5.webp",
+      "section": "Extra 200 AED off on mobiles | USE CODE: SALE200",
+      "group": 2,
+      "rating": 4.5
+    },
+    {
+      "id": "p-3-0",
+      "name": "Samsung Crystal UHD 4K Smart TV",
+      "price": 1899,
+      "old": 2336,
+      "image": "/shop/product-3-0.webp",
+      "section": "Top picks in TVs & home entertainment",
+      "group": 3,
+      "rating": 4.6
+    },
+    {
+      "id": "p-3-1",
+      "name": "TCL 55-inch QLED Smart Television",
+      "price": 1499,
+      "old": 1844,
+      "image": "/shop/product-3-1.webp",
+      "section": "Top picks in TVs & home entertainment",
+      "group": 3,
+      "rating": 4.5
+    },
+    {
+      "id": "p-3-2",
+      "name": "Sony Home Theatre Sound System",
+      "price": 699,
+      "old": 860,
+      "image": "/shop/product-3-2.webp",
+      "section": "Top picks in TVs & home entertainment",
+      "group": 3,
+      "rating": 4.8
+    },
+    {
+      "id": "p-3-3",
+      "name": "LG OLED 4K Smart TV",
+      "price": 2299,
+      "old": 2828,
+      "image": "/shop/product-3-3.webp",
+      "section": "Top picks in TVs & home entertainment",
+      "group": 3,
+      "rating": 4.4
+    },
+    {
+      "id": "p-3-4",
+      "name": "Hisense UHD Smart Television",
+      "price": 1199,
+      "old": 1475,
+      "image": "/shop/product-3-4.webp",
+      "section": "Top picks in TVs & home entertainment",
+      "group": 3,
+      "rating": 4.7
+    },
+    {
+      "id": "p-3-5",
+      "name": "Samsung Neo QLED 4K TV",
+      "price": 2999,
+      "old": 3689,
+      "image": "/shop/product-3-5.webp",
+      "section": "Top picks in TVs & home entertainment",
+      "group": 3,
+      "rating": 4.5
+    },
+    {
+      "id": "p-4-0",
+      "name": "Lattafa Eau de Parfum Gift Set",
+      "price": 79,
+      "old": 97,
+      "image": "/shop/product-4-0.webp",
+      "section": "Buy 1 Get 1 free on fragrances | USE CODE: FRAGRANCE",
+      "group": 4,
+      "rating": 4.6
+    },
+    {
+      "id": "p-4-1",
+      "name": "Versace Pour Homme Eau de Toilette",
+      "price": 119,
+      "old": 146,
+      "image": "/shop/product-4-1.webp",
+      "section": "Buy 1 Get 1 free on fragrances | USE CODE: FRAGRANCE",
+      "group": 4,
+      "rating": 4.5
+    },
+    {
+      "id": "p-4-2",
+      "name": "Dior Sauvage Eau de Parfum",
+      "price": 259,
+      "old": 319,
+      "image": "/shop/product-4-2.webp",
+      "section": "Buy 1 Get 1 free on fragrances | USE CODE: FRAGRANCE",
+      "group": 4,
+      "rating": 4.8
+    },
+    {
+      "id": "p-4-3",
+      "name": "Calvin Klein Fragrance Collection",
+      "price": 149,
+      "old": 183,
+      "image": "/shop/product-4-3.webp",
+      "section": "Buy 1 Get 1 free on fragrances | USE CODE: FRAGRANCE",
+      "group": 4,
+      "rating": 4.4
+    },
+    {
+      "id": "p-4-4",
+      "name": "Hugo Boss Bottled Eau de Parfum",
+      "price": 199,
+      "old": 245,
+      "image": "/shop/product-4-4.webp",
+      "section": "Buy 1 Get 1 free on fragrances | USE CODE: FRAGRANCE",
+      "group": 4,
+      "rating": 4.7
+    },
+    {
+      "id": "p-4-5",
+      "name": "Gucci Flora Gorgeous Gardenia",
+      "price": 229,
+      "old": 282,
+      "image": "/shop/product-4-5.webp",
+      "section": "Buy 1 Get 1 free on fragrances | USE CODE: FRAGRANCE",
+      "group": 4,
+      "rating": 4.5
+    },
+    {
+      "id": "p-5-0",
+      "name": "Nespresso Coffee Machine",
+      "price": 249,
+      "old": 306,
+      "image": "/shop/product-5-0.webp",
+      "section": "Top deals in home",
+      "group": 5,
+      "rating": 4.6
+    },
+    {
+      "id": "p-5-1",
+      "name": "Compact Air Purifier",
+      "price": 179,
+      "old": 220,
+      "image": "/shop/product-5-1.webp",
+      "section": "Top deals in home",
+      "group": 5,
+      "rating": 4.5
+    },
+    {
+      "id": "p-5-2",
+      "name": "Freestanding Storage Shelf",
+      "price": 329,
+      "old": 405,
+      "image": "/shop/product-5-2.webp",
+      "section": "Top deals in home",
+      "group": 5,
+      "rating": 4.8
+    },
+    {
+      "id": "p-5-3",
+      "name": "Modern Upholstered Sofa",
+      "price": 89,
+      "old": 109,
+      "image": "/shop/product-5-3.webp",
+      "section": "Top deals in home",
+      "group": 5,
+      "rating": 4.4
+    },
+    {
+      "id": "p-5-4",
+      "name": "Wooden Side Table",
+      "price": 449,
+      "old": 552,
+      "image": "/shop/product-5-4.webp",
+      "section": "Top deals in home",
+      "group": 5,
+      "rating": 4.7
+    },
+    {
+      "id": "p-5-5",
+      "name": "Home Decor Essentials",
+      "price": 159,
+      "old": 196,
+      "image": "/shop/product-5-5.webp",
+      "section": "Top deals in home",
+      "group": 5,
+      "rating": 4.5
+    },
+    {
+      "id": "p-6-0",
+      "name": "Everyday Pantry Value Pack",
+      "price": 39,
+      "old": 48,
+      "image": "/shop/product-6-0.webp",
+      "section": "Top bulk deals in grocery",
+      "group": 6,
+      "rating": 4.6
+    },
+    {
+      "id": "p-6-1",
+      "name": "Tissue Box Family Pack",
+      "price": 29,
+      "old": 36,
+      "image": "/shop/product-6-1.webp",
+      "section": "Top bulk deals in grocery",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "p-6-2",
+      "name": "Tide Laundry Detergent",
+      "price": 65,
+      "old": 80,
+      "image": "/shop/product-6-2.webp",
+      "section": "Top bulk deals in grocery",
+      "group": 6,
+      "rating": 4.8
+    },
+    {
+      "id": "p-6-3",
+      "name": "Bottled Drinking Water Pack",
+      "price": 19,
+      "old": 23,
+      "image": "/shop/product-6-3.webp",
+      "section": "Top bulk deals in grocery",
+      "group": 6,
+      "rating": 4.4
+    },
+    {
+      "id": "p-6-4",
+      "name": "Breakfast Cereal Value Pack",
+      "price": 35,
+      "old": 43,
+      "image": "/shop/product-6-4.webp",
+      "section": "Top bulk deals in grocery",
+      "group": 6,
+      "rating": 4.7
+    },
+    {
+      "id": "p-6-5",
+      "name": "Basmati Rice Family Pack",
+      "price": 59,
+      "old": 73,
+      "image": "/shop/product-6-5.webp",
+      "section": "Top bulk deals in grocery",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "mega-0",
+      "name": "Samsung Galaxy Z Fold 6 12GB RAM 1TB Pink",
+      "price": 4599,
+      "old": 8699,
+      "image": "/shop/mega-0.webp",
+      "section": "Mega Deals",
+      "group": -1,
+      "rating": 4.6
+    },
+    {
+      "id": "mega-1",
+      "name": "Toshonics Shiatsu 4D Foot Massager with Heating",
+      "price": 203,
+      "old": 300,
+      "image": "/shop/mega-1.webp",
+      "section": "Mega Deals",
+      "group": -1,
+      "rating": 4.6
+    },
+    {
+      "id": "mega-2",
+      "name": "ASUS ZenBook 14 Laptop 16GB RAM 512GB",
+      "price": 5299,
+      "old": 8399,
+      "image": "/shop/mega-2.webp",
+      "section": "Mega Deals",
+      "group": -1,
+      "rating": 4.6
+    },
+    {
+      "id": "mega-3",
+      "name": "Pampers Aloe Vera Taped Diapers Size 4, 120 Count",
+      "price": 110,
+      "old": 175,
+      "image": "/shop/mega-3.webp",
+      "section": "Mega Deals",
+      "group": -1,
+      "rating": 4.6
+    },
+    {
+      "id": "nescafe-gold-190g",
+      "name": "Nescafe Gold Instant Coffee 190grams",
+      "price": 59.5,
+      "old": 70,
+      "image": "/product/coffee-front.webp",
+      "section": "Coffee & beverages",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "nescafe-gold-47g",
+      "name": "Nescafe Gold Instant Coffee 47.5grams",
+      "price": 19.5,
+      "old": 25,
+      "image": "/product/coffee-front.webp",
+      "section": "Coffee & beverages",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "klassno-coffee-mix",
+      "name": "Klassno 3 in 1 Instant Coffee Mix",
+      "price": 12.4,
+      "old": 16,
+      "image": "/product/coffee-mix.webp",
+      "section": "Coffee & beverages",
+      "group": 6,
+      "rating": 4.5
+    }
+  ],
+  "categories": [
+    {
+      "title": "Women\u2019s fashion",
+      "labels": [
+        "Tops",
+        "Dresses",
+        "Sportswear",
+        "Pants",
+        "Sandals",
+        "Footwear",
+        "Handbags"
+      ]
+    },
+    {
+      "title": "Men\u2019s fashion",
+      "labels": [
+        "T-Shirts & Polos",
+        "Pants",
+        "Luggage",
+        "Sportswear",
+        "Footwear",
+        "Accessories",
+        "Jackets"
+      ]
+    },
+    {
+      "title": "Beauty",
+      "labels": [
+        "Makeup",
+        "Skincare",
+        "Hairstyling Tools",
+        "Hair Care",
+        "Electrical Beauty Tools",
+        "Men\u2019s Care",
+        "Bath & Body"
+      ]
+    },
+    {
+      "title": "Home & kitchen",
+      "labels": [
+        "Cookware",
+        "Storage & Organisation",
+        "Dinnerware",
+        "Bedding",
+        "Lighting",
+        "Power & Hand Tools",
+        "Furniture"
+      ]
+    },
+    {
+      "title": "Home appliances",
+      "labels": [
+        "Air Conditioners",
+        "Air Purifiers",
+        "Refrigerators",
+        "Vacuum Cleaners",
+        "Coffee Makers",
+        "Washing Machines",
+        "Blenders"
+      ]
+    },
+    {
+      "title": "Electronics",
+      "labels": [
+        "Televisions",
+        "Gaming Consoles",
+        "Cameras",
+        "Tablets",
+        "Gaming Accessories",
+        "Games",
+        "Projectors"
+      ]
+    },
+    {
+      "title": "Mobiles & accessories",
+      "labels": [
+        "Mobiles",
+        "Headphones",
+        "Wearables",
+        "Mobile Accessories",
+        "iPhone 16 Pro",
+        "Power Banks",
+        "Refurbished Mobiles"
+      ]
+    },
+    {
+      "title": "Laptops & accessories",
+      "labels": [
+        "Laptops",
+        "Monitors",
+        "Printers",
+        "MacBooks",
+        "Budget Laptops",
+        "Desktop Computers",
+        "Laptop Accessories"
+      ]
+    },
+    {
+      "title": "Kids\u2019 fashion",
+      "labels": [
+        "T-Shirts & Polos",
+        "Pants",
+        "Clothing Sets",
+        "Dresses",
+        "Sportswear",
+        "Footwear",
+        "Backpacks"
+      ]
+    },
+    {
+      "title": "Health & nutrition",
+      "labels": [
+        "Wellbeing Tech",
+        "Massage & Relaxation",
+        "Family Planning",
+        "Vitamins & Nutrition",
+        "Health Monitors",
+        "Mobility Aids",
+        "Braces & Splints"
+      ]
+    },
+    {
+      "title": "Grocery",
+      "labels": [
+        "Beverages",
+        "Laundry & Household",
+        "Pet Supplies",
+        "Cooking Oils",
+        "Rice, Pasta & Canned Food",
+        "Cleaning Supplies",
+        "Snacks & Chocolates"
+      ]
+    },
+    {
+      "title": "Furniture",
+      "labels": [
+        "Sofas & Chairs",
+        "Sofa Beds",
+        "Bed Frames",
+        "Bean Bags",
+        "Tables & Chairs",
+        "TV & Media Furniture",
+        "Outdoor Furniture"
+      ]
+    },
+    {
+      "title": "Fragrances",
+      "labels": [
+        "Men\u2019s Fragrances",
+        "Women\u2019s Fragrances",
+        "Unisex Fragrances",
+        "Deodorants",
+        "Oud & Bakhoor",
+        "Gift Sets",
+        "Miniatures"
+      ]
+    },
+    {
+      "title": "Baby",
+      "labels": [
+        "Strollers",
+        "Diapers & Wipes",
+        "Feeding Essentials",
+        "Nursery",
+        "Car Seats",
+        "Bathing & Skin Care",
+        "Premium Store"
+      ]
+    },
+    {
+      "title": "Toys",
+      "labels": [
+        "Building Toys",
+        "Learning & Education",
+        "Sports & Outdoor Play",
+        "Arts & Crafts",
+        "Soft Toys",
+        "Role & Pretend Play",
+        "Dolls & Accessories"
+      ]
+    },
+    {
+      "title": "Eyewear",
+      "labels": [
+        "Ray-Ban",
+        "Lacoste",
+        "Carrera",
+        "Guess",
+        "Calvin Klein",
+        "Contact Lenses",
+        "Frames"
+      ]
+    },
+    {
+      "title": "Watches",
+      "labels": [
+        "Casio",
+        "Tommy Hilfiger",
+        "Fossil",
+        "Hugo Boss",
+        "Guess",
+        "Police",
+        "Lacoste"
+      ]
+    },
+    {
+      "title": "Sports & outdoors",
+      "labels": [
+        "Water Sports",
+        "Scooters",
+        "Cycling",
+        "Fitness & Training",
+        "Racket Sports",
+        "Yoga",
+        "Combat Sports"
+      ]
+    },
+    {
+      "title": "Automotive",
+      "labels": [
+        "Exterior Accessories",
+        "Replacement Parts",
+        "Car Care",
+        "Car Electronics",
+        "Tools & Equipment",
+        "Oils & Fluids",
+        "Protective Gear"
+      ]
+    },
+    {
+      "title": "Stationery & office supplies",
+      "labels": [
+        "Calculators",
+        "Writing Supplies",
+        "Notebooks",
+        "Office Accessories",
+        "Presentation Supplies",
+        "Tapes & Adhesives",
+        "Labels & Stickers"
+      ]
+    }
+  ]
+}
