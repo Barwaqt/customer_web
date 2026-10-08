@@ -503,6 +503,1696 @@
       "section": "Coffee & beverages",
       "group": 6,
       "rating": 4.5
+    },
+    {
+      "id": "coffee-0",
+      "name": "MUST Cappuccino Coffee Capsules, 40 Pack",
+      "price": 60,
+      "old": 75.0,
+      "image": "/category/coffee-0.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.0
+    },
+    {
+      "id": "coffee-1",
+      "name": "MUST Latte Macchiato Coffee Capsules, 40 Pack",
+      "price": 60,
+      "old": 75.0,
+      "image": "/category/coffee-1.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.3
+    },
+    {
+      "id": "coffee-2",
+      "name": "MUST Cremoso Coffee Capsules, 40 Pack",
+      "price": 60,
+      "old": 75.0,
+      "image": "/category/coffee-2.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.6
+    },
+    {
+      "id": "coffee-3",
+      "name": "Nescafe Classic Instant Coffee, 190g",
+      "price": 26.3,
+      "old": 32.88,
+      "image": "/category/coffee-3.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.7
+    },
+    {
+      "id": "coffee-5",
+      "name": "Crown Geisha Espresso Coffee Selection",
+      "price": 25,
+      "old": 31.25,
+      "image": "/category/coffee-5.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.0
+    },
+    {
+      "id": "coffee-6",
+      "name": "MUST 100% Creamy Roasted Ground Coffee",
+      "price": 22,
+      "old": 27.5,
+      "image": "/category/coffee-6.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.3
+    },
+    {
+      "id": "coffee-7",
+      "name": "MUST Chocolate Coffee Capsules, 40 Pack",
+      "price": 60,
+      "old": 75.0,
+      "image": "/category/coffee-7.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.6
+    },
+    {
+      "id": "coffee-8",
+      "name": "Al Ameed Medium Turkish Coffee with Cardamom",
+      "price": 27.45,
+      "old": 34.31,
+      "image": "/category/coffee-8.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.7
+    },
+    {
+      "id": "coffee-9",
+      "name": "Starbucks Nespresso Blonde Espresso Roast Capsules",
+      "price": 25,
+      "old": 31.25,
+      "image": "/category/coffee-9.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "coffee-10",
+      "name": "Lavazza Crema e Gusto Ground Coffee, 250g",
+      "price": 33.55,
+      "old": 41.94,
+      "image": "/category/coffee-10.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.0
+    },
+    {
+      "id": "coffee-11",
+      "name": "Mehmet Efendi Turkish Coffee, 250g",
+      "price": 49.95,
+      "old": 62.44,
+      "image": "/category/coffee-11.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.3
+    },
+    {
+      "id": "coffee-12",
+      "name": "Lavazza Qualit\u00e0 Rossa Coffee Beans, 1kg",
+      "price": 55.25,
+      "old": 69.06,
+      "image": "/category/coffee-12.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.6
+    },
+    {
+      "id": "coffee-13",
+      "name": "MUST Supremo Coffee Capsules, 100 Pack",
+      "price": 119.99,
+      "old": 149.99,
+      "image": "/category/coffee-13.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.7
+    },
+    {
+      "id": "coffee-14",
+      "name": "MUST Italia Coffee Capsules, 100 Pack",
+      "price": 119.99,
+      "old": 149.99,
+      "image": "/category/coffee-14.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "coffee-15",
+      "name": "Nescafe Dolce Gusto Americano Coffee Capsules",
+      "price": 26.25,
+      "old": 32.81,
+      "image": "/category/coffee-15.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.0
+    },
+    {
+      "id": "coffee-16",
+      "name": "Mood Espresso Nespresso Compatible Capsules",
+      "price": 53.7,
+      "old": 67.12,
+      "image": "/category/coffee-16.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.3
+    },
+    {
+      "id": "coffee-17",
+      "name": "Lavazza Crema e Aroma Espresso Coffee Beans",
+      "price": 139,
+      "old": 173.75,
+      "image": "/category/coffee-17.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.6
+    },
+    {
+      "id": "coffee-18",
+      "name": "Nestl\u00e9 Coffee Mate Original Creamer, 400g",
+      "price": 27.95,
+      "old": 34.94,
+      "image": "/category/coffee-18.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.7
+    },
+    {
+      "id": "coffee-19",
+      "name": "illy Classico Ground Coffee, 250g",
+      "price": 48.7,
+      "old": 60.88,
+      "image": "/category/coffee-19.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "coffee-20",
+      "name": "Lavazza Super Crema Coffee Beans, 1kg",
+      "price": 149,
+      "old": 186.25,
+      "image": "/category/coffee-20.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.0
+    },
+    {
+      "id": "coffee-21",
+      "name": "Hamwi Turkish Coffee with Cardamom",
+      "price": 117.7,
+      "old": 147.12,
+      "image": "/category/coffee-21.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.3
+    },
+    {
+      "id": "coffee-22",
+      "name": "Crown Geisha Specialty Turkish Coffee",
+      "price": 399.99,
+      "old": 499.99,
+      "image": "/category/coffee-22.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.6
+    },
+    {
+      "id": "coffee-23",
+      "name": "Good Day Cappuccino Instant Coffee Sachets",
+      "price": 30.6,
+      "old": 38.25,
+      "image": "/category/coffee-23.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.7
+    },
+    {
+      "id": "coffee-24",
+      "name": "MUST Cappuccino Capsules Value Pack",
+      "price": 60,
+      "old": 75.0,
+      "image": "/category/coffee-24.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "coffee-25",
+      "name": "Coffee Mate Coffee Creamer, 450g",
+      "price": 45,
+      "old": 56.25,
+      "image": "/category/coffee-25.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.0
+    },
+    {
+      "id": "coffee-26",
+      "name": "Mahmood Cappuccino Coffee with Cocoa",
+      "price": 49,
+      "old": 61.25,
+      "image": "/category/coffee-26.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.3
+    },
+    {
+      "id": "coffee-27",
+      "name": "Starbucks Veranda Blend Coffee Beans",
+      "price": 85,
+      "old": 106.25,
+      "image": "/category/coffee-27.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.6
+    },
+    {
+      "id": "coffee-28",
+      "name": "Nescafe Dolce Gusto Espresso Capsules",
+      "price": 45,
+      "old": 56.25,
+      "image": "/category/coffee-28.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.7
+    },
+    {
+      "id": "coffee-29",
+      "name": "Nescafe Cappuccino Instant Coffee Sachets",
+      "price": 43.3,
+      "old": 54.12,
+      "image": "/category/coffee-29.webp",
+      "section": "Coffee",
+      "group": 6,
+      "rating": 4.5
+    },
+    {
+      "id": "category-0-0",
+      "name": "Tops \u2013 Women\u2019s fashion Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-0-0.webp",
+      "section": "Women\u2019s fashion",
+      "group": 10,
+      "rating": 4.5
+    },
+    {
+      "id": "category-0-1",
+      "name": "Dresses \u2013 Women\u2019s fashion Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-0-1.webp",
+      "section": "Women\u2019s fashion",
+      "group": 10,
+      "rating": 4.4
+    },
+    {
+      "id": "category-0-2",
+      "name": "Sportswear \u2013 Women\u2019s fashion Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-0-2.webp",
+      "section": "Women\u2019s fashion",
+      "group": 10,
+      "rating": 4.7
+    },
+    {
+      "id": "category-0-3",
+      "name": "Pants \u2013 Women\u2019s fashion Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-0-3.webp",
+      "section": "Women\u2019s fashion",
+      "group": 10,
+      "rating": 4.3
+    },
+    {
+      "id": "category-0-4",
+      "name": "Sandals \u2013 Women\u2019s fashion Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-0-4.webp",
+      "section": "Women\u2019s fashion",
+      "group": 10,
+      "rating": 4.6
+    },
+    {
+      "id": "category-0-5",
+      "name": "Footwear \u2013 Women\u2019s fashion Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-0-5.webp",
+      "section": "Women\u2019s fashion",
+      "group": 10,
+      "rating": 4.8
+    },
+    {
+      "id": "category-0-6",
+      "name": "Handbags \u2013 Women\u2019s fashion Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-0-6.webp",
+      "section": "Women\u2019s fashion",
+      "group": 10,
+      "rating": 4.5
+    },
+    {
+      "id": "category-1-0",
+      "name": "T-Shirts & Polos \u2013 Men\u2019s fashion Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-1-0.webp",
+      "section": "Men\u2019s fashion",
+      "group": 11,
+      "rating": 4.5
+    },
+    {
+      "id": "category-1-1",
+      "name": "Pants \u2013 Men\u2019s fashion Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-1-1.webp",
+      "section": "Men\u2019s fashion",
+      "group": 11,
+      "rating": 4.4
+    },
+    {
+      "id": "category-1-2",
+      "name": "Luggage \u2013 Men\u2019s fashion Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-1-2.webp",
+      "section": "Men\u2019s fashion",
+      "group": 11,
+      "rating": 4.7
+    },
+    {
+      "id": "category-1-3",
+      "name": "Sportswear \u2013 Men\u2019s fashion Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-1-3.webp",
+      "section": "Men\u2019s fashion",
+      "group": 11,
+      "rating": 4.3
+    },
+    {
+      "id": "category-1-4",
+      "name": "Footwear \u2013 Men\u2019s fashion Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-1-4.webp",
+      "section": "Men\u2019s fashion",
+      "group": 11,
+      "rating": 4.6
+    },
+    {
+      "id": "category-1-5",
+      "name": "Accessories \u2013 Men\u2019s fashion Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-1-5.webp",
+      "section": "Men\u2019s fashion",
+      "group": 11,
+      "rating": 4.8
+    },
+    {
+      "id": "category-1-6",
+      "name": "Jackets \u2013 Men\u2019s fashion Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-1-6.webp",
+      "section": "Men\u2019s fashion",
+      "group": 11,
+      "rating": 4.5
+    },
+    {
+      "id": "category-2-0",
+      "name": "Makeup \u2013 Beauty Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-2-0.webp",
+      "section": "Beauty",
+      "group": 12,
+      "rating": 4.5
+    },
+    {
+      "id": "category-2-1",
+      "name": "Skincare \u2013 Beauty Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-2-1.webp",
+      "section": "Beauty",
+      "group": 12,
+      "rating": 4.4
+    },
+    {
+      "id": "category-2-2",
+      "name": "Hairstyling Tools \u2013 Beauty Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-2-2.webp",
+      "section": "Beauty",
+      "group": 12,
+      "rating": 4.7
+    },
+    {
+      "id": "category-2-3",
+      "name": "Hair Care \u2013 Beauty Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-2-3.webp",
+      "section": "Beauty",
+      "group": 12,
+      "rating": 4.3
+    },
+    {
+      "id": "category-2-4",
+      "name": "Electrical Beauty Tools \u2013 Beauty Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-2-4.webp",
+      "section": "Beauty",
+      "group": 12,
+      "rating": 4.6
+    },
+    {
+      "id": "category-2-5",
+      "name": "Men\u2019s Care \u2013 Beauty Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-2-5.webp",
+      "section": "Beauty",
+      "group": 12,
+      "rating": 4.8
+    },
+    {
+      "id": "category-2-6",
+      "name": "Bath & Body \u2013 Beauty Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-2-6.webp",
+      "section": "Beauty",
+      "group": 12,
+      "rating": 4.5
+    },
+    {
+      "id": "category-3-0",
+      "name": "Cookware \u2013 Home & kitchen Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-3-0.webp",
+      "section": "Home & kitchen",
+      "group": 13,
+      "rating": 4.5
+    },
+    {
+      "id": "category-3-1",
+      "name": "Storage & Organisation \u2013 Home & kitchen Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-3-1.webp",
+      "section": "Home & kitchen",
+      "group": 13,
+      "rating": 4.4
+    },
+    {
+      "id": "category-3-2",
+      "name": "Dinnerware \u2013 Home & kitchen Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-3-2.webp",
+      "section": "Home & kitchen",
+      "group": 13,
+      "rating": 4.7
+    },
+    {
+      "id": "category-3-3",
+      "name": "Bedding \u2013 Home & kitchen Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-3-3.webp",
+      "section": "Home & kitchen",
+      "group": 13,
+      "rating": 4.3
+    },
+    {
+      "id": "category-3-4",
+      "name": "Lighting \u2013 Home & kitchen Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-3-4.webp",
+      "section": "Home & kitchen",
+      "group": 13,
+      "rating": 4.6
+    },
+    {
+      "id": "category-3-5",
+      "name": "Power & Hand Tools \u2013 Home & kitchen Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-3-5.webp",
+      "section": "Home & kitchen",
+      "group": 13,
+      "rating": 4.8
+    },
+    {
+      "id": "category-3-6",
+      "name": "Furniture \u2013 Home & kitchen Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-3-6.webp",
+      "section": "Home & kitchen",
+      "group": 13,
+      "rating": 4.5
+    },
+    {
+      "id": "category-4-0",
+      "name": "Air Conditioners \u2013 Home appliances Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-4-0.webp",
+      "section": "Home appliances",
+      "group": 14,
+      "rating": 4.5
+    },
+    {
+      "id": "category-4-1",
+      "name": "Air Purifiers \u2013 Home appliances Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-4-1.webp",
+      "section": "Home appliances",
+      "group": 14,
+      "rating": 4.4
+    },
+    {
+      "id": "category-4-2",
+      "name": "Refrigerators \u2013 Home appliances Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-4-2.webp",
+      "section": "Home appliances",
+      "group": 14,
+      "rating": 4.7
+    },
+    {
+      "id": "category-4-3",
+      "name": "Vacuum Cleaners \u2013 Home appliances Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-4-3.webp",
+      "section": "Home appliances",
+      "group": 14,
+      "rating": 4.3
+    },
+    {
+      "id": "category-4-4",
+      "name": "Coffee Makers \u2013 Home appliances Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-4-4.webp",
+      "section": "Home appliances",
+      "group": 14,
+      "rating": 4.6
+    },
+    {
+      "id": "category-4-5",
+      "name": "Washing Machines \u2013 Home appliances Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-4-5.webp",
+      "section": "Home appliances",
+      "group": 14,
+      "rating": 4.8
+    },
+    {
+      "id": "category-4-6",
+      "name": "Blenders \u2013 Home appliances Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-4-6.webp",
+      "section": "Home appliances",
+      "group": 14,
+      "rating": 4.5
+    },
+    {
+      "id": "category-5-0",
+      "name": "Televisions \u2013 Electronics Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-5-0.webp",
+      "section": "Electronics",
+      "group": 15,
+      "rating": 4.5
+    },
+    {
+      "id": "category-5-1",
+      "name": "Gaming Consoles \u2013 Electronics Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-5-1.webp",
+      "section": "Electronics",
+      "group": 15,
+      "rating": 4.4
+    },
+    {
+      "id": "category-5-2",
+      "name": "Cameras \u2013 Electronics Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-5-2.webp",
+      "section": "Electronics",
+      "group": 15,
+      "rating": 4.7
+    },
+    {
+      "id": "category-5-3",
+      "name": "Tablets \u2013 Electronics Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-5-3.webp",
+      "section": "Electronics",
+      "group": 15,
+      "rating": 4.3
+    },
+    {
+      "id": "category-5-4",
+      "name": "Gaming Accessories \u2013 Electronics Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-5-4.webp",
+      "section": "Electronics",
+      "group": 15,
+      "rating": 4.6
+    },
+    {
+      "id": "category-5-5",
+      "name": "Games \u2013 Electronics Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-5-5.webp",
+      "section": "Electronics",
+      "group": 15,
+      "rating": 4.8
+    },
+    {
+      "id": "category-5-6",
+      "name": "Projectors \u2013 Electronics Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-5-6.webp",
+      "section": "Electronics",
+      "group": 15,
+      "rating": 4.5
+    },
+    {
+      "id": "category-6-0",
+      "name": "Mobiles \u2013 Mobiles & accessories Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-6-0.webp",
+      "section": "Mobiles & accessories",
+      "group": 16,
+      "rating": 4.5
+    },
+    {
+      "id": "category-6-1",
+      "name": "Headphones \u2013 Mobiles & accessories Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-6-1.webp",
+      "section": "Mobiles & accessories",
+      "group": 16,
+      "rating": 4.4
+    },
+    {
+      "id": "category-6-2",
+      "name": "Wearables \u2013 Mobiles & accessories Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-6-2.webp",
+      "section": "Mobiles & accessories",
+      "group": 16,
+      "rating": 4.7
+    },
+    {
+      "id": "category-6-3",
+      "name": "Mobile Accessories \u2013 Mobiles & accessories Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-6-3.webp",
+      "section": "Mobiles & accessories",
+      "group": 16,
+      "rating": 4.3
+    },
+    {
+      "id": "category-6-4",
+      "name": "iPhone 16 Pro \u2013 Mobiles & accessories Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-6-4.webp",
+      "section": "Mobiles & accessories",
+      "group": 16,
+      "rating": 4.6
+    },
+    {
+      "id": "category-6-5",
+      "name": "Power Banks \u2013 Mobiles & accessories Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-6-5.webp",
+      "section": "Mobiles & accessories",
+      "group": 16,
+      "rating": 4.8
+    },
+    {
+      "id": "category-6-6",
+      "name": "Refurbished Mobiles \u2013 Mobiles & accessories Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-6-6.webp",
+      "section": "Mobiles & accessories",
+      "group": 16,
+      "rating": 4.5
+    },
+    {
+      "id": "category-7-0",
+      "name": "Laptops \u2013 Laptops & accessories Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-7-0.webp",
+      "section": "Laptops & accessories",
+      "group": 17,
+      "rating": 4.5
+    },
+    {
+      "id": "category-7-1",
+      "name": "Monitors \u2013 Laptops & accessories Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-7-1.webp",
+      "section": "Laptops & accessories",
+      "group": 17,
+      "rating": 4.4
+    },
+    {
+      "id": "category-7-2",
+      "name": "Printers \u2013 Laptops & accessories Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-7-2.webp",
+      "section": "Laptops & accessories",
+      "group": 17,
+      "rating": 4.7
+    },
+    {
+      "id": "category-7-3",
+      "name": "MacBooks \u2013 Laptops & accessories Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-7-3.webp",
+      "section": "Laptops & accessories",
+      "group": 17,
+      "rating": 4.3
+    },
+    {
+      "id": "category-7-4",
+      "name": "Budget Laptops \u2013 Laptops & accessories Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-7-4.webp",
+      "section": "Laptops & accessories",
+      "group": 17,
+      "rating": 4.6
+    },
+    {
+      "id": "category-7-5",
+      "name": "Desktop Computers \u2013 Laptops & accessories Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-7-5.webp",
+      "section": "Laptops & accessories",
+      "group": 17,
+      "rating": 4.8
+    },
+    {
+      "id": "category-7-6",
+      "name": "Laptop Accessories \u2013 Laptops & accessories Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-7-6.webp",
+      "section": "Laptops & accessories",
+      "group": 17,
+      "rating": 4.5
+    },
+    {
+      "id": "category-8-0",
+      "name": "T-Shirts & Polos \u2013 Kids\u2019 fashion Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-8-0.webp",
+      "section": "Kids\u2019 fashion",
+      "group": 18,
+      "rating": 4.5
+    },
+    {
+      "id": "category-8-1",
+      "name": "Pants \u2013 Kids\u2019 fashion Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-8-1.webp",
+      "section": "Kids\u2019 fashion",
+      "group": 18,
+      "rating": 4.4
+    },
+    {
+      "id": "category-8-2",
+      "name": "Clothing Sets \u2013 Kids\u2019 fashion Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-8-2.webp",
+      "section": "Kids\u2019 fashion",
+      "group": 18,
+      "rating": 4.7
+    },
+    {
+      "id": "category-8-3",
+      "name": "Dresses \u2013 Kids\u2019 fashion Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-8-3.webp",
+      "section": "Kids\u2019 fashion",
+      "group": 18,
+      "rating": 4.3
+    },
+    {
+      "id": "category-8-4",
+      "name": "Sportswear \u2013 Kids\u2019 fashion Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-8-4.webp",
+      "section": "Kids\u2019 fashion",
+      "group": 18,
+      "rating": 4.6
+    },
+    {
+      "id": "category-8-5",
+      "name": "Footwear \u2013 Kids\u2019 fashion Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-8-5.webp",
+      "section": "Kids\u2019 fashion",
+      "group": 18,
+      "rating": 4.8
+    },
+    {
+      "id": "category-8-6",
+      "name": "Backpacks \u2013 Kids\u2019 fashion Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-8-6.webp",
+      "section": "Kids\u2019 fashion",
+      "group": 18,
+      "rating": 4.5
+    },
+    {
+      "id": "category-9-0",
+      "name": "Wellbeing Tech \u2013 Health & nutrition Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-9-0.webp",
+      "section": "Health & nutrition",
+      "group": 19,
+      "rating": 4.5
+    },
+    {
+      "id": "category-9-1",
+      "name": "Massage & Relaxation \u2013 Health & nutrition Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-9-1.webp",
+      "section": "Health & nutrition",
+      "group": 19,
+      "rating": 4.4
+    },
+    {
+      "id": "category-9-2",
+      "name": "Family Planning \u2013 Health & nutrition Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-9-2.webp",
+      "section": "Health & nutrition",
+      "group": 19,
+      "rating": 4.7
+    },
+    {
+      "id": "category-9-3",
+      "name": "Vitamins & Nutrition \u2013 Health & nutrition Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-9-3.webp",
+      "section": "Health & nutrition",
+      "group": 19,
+      "rating": 4.3
+    },
+    {
+      "id": "category-9-4",
+      "name": "Health Monitors \u2013 Health & nutrition Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-9-4.webp",
+      "section": "Health & nutrition",
+      "group": 19,
+      "rating": 4.6
+    },
+    {
+      "id": "category-9-5",
+      "name": "Mobility Aids \u2013 Health & nutrition Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-9-5.webp",
+      "section": "Health & nutrition",
+      "group": 19,
+      "rating": 4.8
+    },
+    {
+      "id": "category-9-6",
+      "name": "Braces & Splints \u2013 Health & nutrition Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-9-6.webp",
+      "section": "Health & nutrition",
+      "group": 19,
+      "rating": 4.5
+    },
+    {
+      "id": "category-10-0",
+      "name": "Beverages \u2013 Grocery Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-10-0.webp",
+      "section": "Grocery",
+      "group": 20,
+      "rating": 4.5
+    },
+    {
+      "id": "category-10-1",
+      "name": "Laundry & Household \u2013 Grocery Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-10-1.webp",
+      "section": "Grocery",
+      "group": 20,
+      "rating": 4.4
+    },
+    {
+      "id": "category-10-2",
+      "name": "Pet Supplies \u2013 Grocery Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-10-2.webp",
+      "section": "Grocery",
+      "group": 20,
+      "rating": 4.7
+    },
+    {
+      "id": "category-10-3",
+      "name": "Cooking Oils \u2013 Grocery Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-10-3.webp",
+      "section": "Grocery",
+      "group": 20,
+      "rating": 4.3
+    },
+    {
+      "id": "category-10-4",
+      "name": "Rice, Pasta & Canned Food \u2013 Grocery Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-10-4.webp",
+      "section": "Grocery",
+      "group": 20,
+      "rating": 4.6
+    },
+    {
+      "id": "category-10-5",
+      "name": "Cleaning Supplies \u2013 Grocery Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-10-5.webp",
+      "section": "Grocery",
+      "group": 20,
+      "rating": 4.8
+    },
+    {
+      "id": "category-10-6",
+      "name": "Snacks & Chocolates \u2013 Grocery Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-10-6.webp",
+      "section": "Grocery",
+      "group": 20,
+      "rating": 4.5
+    },
+    {
+      "id": "category-11-0",
+      "name": "Sofas & Chairs \u2013 Furniture Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-11-0.webp",
+      "section": "Furniture",
+      "group": 21,
+      "rating": 4.5
+    },
+    {
+      "id": "category-11-1",
+      "name": "Sofa Beds \u2013 Furniture Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-11-1.webp",
+      "section": "Furniture",
+      "group": 21,
+      "rating": 4.4
+    },
+    {
+      "id": "category-11-2",
+      "name": "Bed Frames \u2013 Furniture Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-11-2.webp",
+      "section": "Furniture",
+      "group": 21,
+      "rating": 4.7
+    },
+    {
+      "id": "category-11-3",
+      "name": "Bean Bags \u2013 Furniture Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-11-3.webp",
+      "section": "Furniture",
+      "group": 21,
+      "rating": 4.3
+    },
+    {
+      "id": "category-11-4",
+      "name": "Tables & Chairs \u2013 Furniture Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-11-4.webp",
+      "section": "Furniture",
+      "group": 21,
+      "rating": 4.6
+    },
+    {
+      "id": "category-11-5",
+      "name": "TV & Media Furniture \u2013 Furniture Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-11-5.webp",
+      "section": "Furniture",
+      "group": 21,
+      "rating": 4.8
+    },
+    {
+      "id": "category-11-6",
+      "name": "Outdoor Furniture \u2013 Furniture Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-11-6.webp",
+      "section": "Furniture",
+      "group": 21,
+      "rating": 4.5
+    },
+    {
+      "id": "category-12-0",
+      "name": "Men\u2019s Fragrances \u2013 Fragrances Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-12-0.webp",
+      "section": "Fragrances",
+      "group": 22,
+      "rating": 4.5
+    },
+    {
+      "id": "category-12-1",
+      "name": "Women\u2019s Fragrances \u2013 Fragrances Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-12-1.webp",
+      "section": "Fragrances",
+      "group": 22,
+      "rating": 4.4
+    },
+    {
+      "id": "category-12-2",
+      "name": "Unisex Fragrances \u2013 Fragrances Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-12-2.webp",
+      "section": "Fragrances",
+      "group": 22,
+      "rating": 4.7
+    },
+    {
+      "id": "category-12-3",
+      "name": "Deodorants \u2013 Fragrances Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-12-3.webp",
+      "section": "Fragrances",
+      "group": 22,
+      "rating": 4.3
+    },
+    {
+      "id": "category-12-4",
+      "name": "Oud & Bakhoor \u2013 Fragrances Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-12-4.webp",
+      "section": "Fragrances",
+      "group": 22,
+      "rating": 4.6
+    },
+    {
+      "id": "category-12-5",
+      "name": "Gift Sets \u2013 Fragrances Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-12-5.webp",
+      "section": "Fragrances",
+      "group": 22,
+      "rating": 4.8
+    },
+    {
+      "id": "category-12-6",
+      "name": "Miniatures \u2013 Fragrances Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-12-6.webp",
+      "section": "Fragrances",
+      "group": 22,
+      "rating": 4.5
+    },
+    {
+      "id": "category-13-0",
+      "name": "Strollers \u2013 Baby Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-13-0.webp",
+      "section": "Baby",
+      "group": 23,
+      "rating": 4.5
+    },
+    {
+      "id": "category-13-1",
+      "name": "Diapers & Wipes \u2013 Baby Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-13-1.webp",
+      "section": "Baby",
+      "group": 23,
+      "rating": 4.4
+    },
+    {
+      "id": "category-13-2",
+      "name": "Feeding Essentials \u2013 Baby Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-13-2.webp",
+      "section": "Baby",
+      "group": 23,
+      "rating": 4.7
+    },
+    {
+      "id": "category-13-3",
+      "name": "Nursery \u2013 Baby Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-13-3.webp",
+      "section": "Baby",
+      "group": 23,
+      "rating": 4.3
+    },
+    {
+      "id": "category-13-4",
+      "name": "Car Seats \u2013 Baby Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-13-4.webp",
+      "section": "Baby",
+      "group": 23,
+      "rating": 4.6
+    },
+    {
+      "id": "category-13-5",
+      "name": "Bathing & Skin Care \u2013 Baby Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-13-5.webp",
+      "section": "Baby",
+      "group": 23,
+      "rating": 4.8
+    },
+    {
+      "id": "category-13-6",
+      "name": "Premium Store \u2013 Baby Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-13-6.webp",
+      "section": "Baby",
+      "group": 23,
+      "rating": 4.5
+    },
+    {
+      "id": "category-14-0",
+      "name": "Building Toys \u2013 Toys Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-14-0.webp",
+      "section": "Toys",
+      "group": 24,
+      "rating": 4.5
+    },
+    {
+      "id": "category-14-1",
+      "name": "Learning & Education \u2013 Toys Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-14-1.webp",
+      "section": "Toys",
+      "group": 24,
+      "rating": 4.4
+    },
+    {
+      "id": "category-14-2",
+      "name": "Sports & Outdoor Play \u2013 Toys Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-14-2.webp",
+      "section": "Toys",
+      "group": 24,
+      "rating": 4.7
+    },
+    {
+      "id": "category-14-3",
+      "name": "Arts & Crafts \u2013 Toys Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-14-3.webp",
+      "section": "Toys",
+      "group": 24,
+      "rating": 4.3
+    },
+    {
+      "id": "category-14-4",
+      "name": "Soft Toys \u2013 Toys Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-14-4.webp",
+      "section": "Toys",
+      "group": 24,
+      "rating": 4.6
+    },
+    {
+      "id": "category-14-5",
+      "name": "Role & Pretend Play \u2013 Toys Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-14-5.webp",
+      "section": "Toys",
+      "group": 24,
+      "rating": 4.8
+    },
+    {
+      "id": "category-14-6",
+      "name": "Dolls & Accessories \u2013 Toys Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-14-6.webp",
+      "section": "Toys",
+      "group": 24,
+      "rating": 4.5
+    },
+    {
+      "id": "category-15-0",
+      "name": "Ray-Ban \u2013 Eyewear Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-15-0.webp",
+      "section": "Eyewear",
+      "group": 25,
+      "rating": 4.5
+    },
+    {
+      "id": "category-15-1",
+      "name": "Lacoste \u2013 Eyewear Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-15-1.webp",
+      "section": "Eyewear",
+      "group": 25,
+      "rating": 4.4
+    },
+    {
+      "id": "category-15-2",
+      "name": "Carrera \u2013 Eyewear Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-15-2.webp",
+      "section": "Eyewear",
+      "group": 25,
+      "rating": 4.7
+    },
+    {
+      "id": "category-15-3",
+      "name": "Guess \u2013 Eyewear Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-15-3.webp",
+      "section": "Eyewear",
+      "group": 25,
+      "rating": 4.3
+    },
+    {
+      "id": "category-15-4",
+      "name": "Calvin Klein \u2013 Eyewear Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-15-4.webp",
+      "section": "Eyewear",
+      "group": 25,
+      "rating": 4.6
+    },
+    {
+      "id": "category-15-5",
+      "name": "Contact Lenses \u2013 Eyewear Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-15-5.webp",
+      "section": "Eyewear",
+      "group": 25,
+      "rating": 4.8
+    },
+    {
+      "id": "category-15-6",
+      "name": "Frames \u2013 Eyewear Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-15-6.webp",
+      "section": "Eyewear",
+      "group": 25,
+      "rating": 4.5
+    },
+    {
+      "id": "category-16-0",
+      "name": "Casio \u2013 Watches Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-16-0.webp",
+      "section": "Watches",
+      "group": 26,
+      "rating": 4.5
+    },
+    {
+      "id": "category-16-1",
+      "name": "Tommy Hilfiger \u2013 Watches Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-16-1.webp",
+      "section": "Watches",
+      "group": 26,
+      "rating": 4.4
+    },
+    {
+      "id": "category-16-2",
+      "name": "Fossil \u2013 Watches Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-16-2.webp",
+      "section": "Watches",
+      "group": 26,
+      "rating": 4.7
+    },
+    {
+      "id": "category-16-3",
+      "name": "Hugo Boss \u2013 Watches Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-16-3.webp",
+      "section": "Watches",
+      "group": 26,
+      "rating": 4.3
+    },
+    {
+      "id": "category-16-4",
+      "name": "Guess \u2013 Watches Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-16-4.webp",
+      "section": "Watches",
+      "group": 26,
+      "rating": 4.6
+    },
+    {
+      "id": "category-16-5",
+      "name": "Police \u2013 Watches Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-16-5.webp",
+      "section": "Watches",
+      "group": 26,
+      "rating": 4.8
+    },
+    {
+      "id": "category-16-6",
+      "name": "Lacoste \u2013 Watches Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-16-6.webp",
+      "section": "Watches",
+      "group": 26,
+      "rating": 4.5
+    },
+    {
+      "id": "category-17-0",
+      "name": "Water Sports \u2013 Sports & outdoors Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-17-0.webp",
+      "section": "Sports & outdoors",
+      "group": 27,
+      "rating": 4.5
+    },
+    {
+      "id": "category-17-1",
+      "name": "Scooters \u2013 Sports & outdoors Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-17-1.webp",
+      "section": "Sports & outdoors",
+      "group": 27,
+      "rating": 4.4
+    },
+    {
+      "id": "category-17-2",
+      "name": "Cycling \u2013 Sports & outdoors Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-17-2.webp",
+      "section": "Sports & outdoors",
+      "group": 27,
+      "rating": 4.7
+    },
+    {
+      "id": "category-17-3",
+      "name": "Fitness & Training \u2013 Sports & outdoors Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-17-3.webp",
+      "section": "Sports & outdoors",
+      "group": 27,
+      "rating": 4.3
+    },
+    {
+      "id": "category-17-4",
+      "name": "Racket Sports \u2013 Sports & outdoors Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-17-4.webp",
+      "section": "Sports & outdoors",
+      "group": 27,
+      "rating": 4.6
+    },
+    {
+      "id": "category-17-5",
+      "name": "Yoga \u2013 Sports & outdoors Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-17-5.webp",
+      "section": "Sports & outdoors",
+      "group": 27,
+      "rating": 4.8
+    },
+    {
+      "id": "category-17-6",
+      "name": "Combat Sports \u2013 Sports & outdoors Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-17-6.webp",
+      "section": "Sports & outdoors",
+      "group": 27,
+      "rating": 4.5
+    },
+    {
+      "id": "category-18-0",
+      "name": "Exterior Accessories \u2013 Automotive Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-18-0.webp",
+      "section": "Automotive",
+      "group": 28,
+      "rating": 4.5
+    },
+    {
+      "id": "category-18-1",
+      "name": "Replacement Parts \u2013 Automotive Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-18-1.webp",
+      "section": "Automotive",
+      "group": 28,
+      "rating": 4.4
+    },
+    {
+      "id": "category-18-2",
+      "name": "Car Care \u2013 Automotive Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-18-2.webp",
+      "section": "Automotive",
+      "group": 28,
+      "rating": 4.7
+    },
+    {
+      "id": "category-18-3",
+      "name": "Car Electronics \u2013 Automotive Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-18-3.webp",
+      "section": "Automotive",
+      "group": 28,
+      "rating": 4.3
+    },
+    {
+      "id": "category-18-4",
+      "name": "Tools & Equipment \u2013 Automotive Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-18-4.webp",
+      "section": "Automotive",
+      "group": 28,
+      "rating": 4.6
+    },
+    {
+      "id": "category-18-5",
+      "name": "Oils & Fluids \u2013 Automotive Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-18-5.webp",
+      "section": "Automotive",
+      "group": 28,
+      "rating": 4.8
+    },
+    {
+      "id": "category-18-6",
+      "name": "Protective Gear \u2013 Automotive Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-18-6.webp",
+      "section": "Automotive",
+      "group": 28,
+      "rating": 4.5
+    },
+    {
+      "id": "category-19-0",
+      "name": "Calculators \u2013 Stationery & office supplies Collection",
+      "price": 49,
+      "old": 69,
+      "image": "/shop/category-19-0.webp",
+      "section": "Stationery & office supplies",
+      "group": 29,
+      "rating": 4.5
+    },
+    {
+      "id": "category-19-1",
+      "name": "Writing Supplies \u2013 Stationery & office supplies Collection",
+      "price": 79,
+      "old": 99,
+      "image": "/shop/category-19-1.webp",
+      "section": "Stationery & office supplies",
+      "group": 29,
+      "rating": 4.4
+    },
+    {
+      "id": "category-19-2",
+      "name": "Notebooks \u2013 Stationery & office supplies Collection",
+      "price": 129,
+      "old": 159,
+      "image": "/shop/category-19-2.webp",
+      "section": "Stationery & office supplies",
+      "group": 29,
+      "rating": 4.7
+    },
+    {
+      "id": "category-19-3",
+      "name": "Office Accessories \u2013 Stationery & office supplies Collection",
+      "price": 99,
+      "old": 129,
+      "image": "/shop/category-19-3.webp",
+      "section": "Stationery & office supplies",
+      "group": 29,
+      "rating": 4.3
+    },
+    {
+      "id": "category-19-4",
+      "name": "Presentation Supplies \u2013 Stationery & office supplies Collection",
+      "price": 59,
+      "old": 79,
+      "image": "/shop/category-19-4.webp",
+      "section": "Stationery & office supplies",
+      "group": 29,
+      "rating": 4.6
+    },
+    {
+      "id": "category-19-5",
+      "name": "Tapes & Adhesives \u2013 Stationery & office supplies Collection",
+      "price": 149,
+      "old": 189,
+      "image": "/shop/category-19-5.webp",
+      "section": "Stationery & office supplies",
+      "group": 29,
+      "rating": 4.8
+    },
+    {
+      "id": "category-19-6",
+      "name": "Labels & Stickers \u2013 Stationery & office supplies Collection",
+      "price": 89,
+      "old": 119,
+      "image": "/shop/category-19-6.webp",
+      "section": "Stationery & office supplies",
+      "group": 29,
+      "rating": 4.5
     }
   ],
   "categories": [

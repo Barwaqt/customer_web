@@ -1,0 +1,2295 @@
+[
+  {
+    "slug": "womens-fashion-tops",
+    "title": "Tops",
+    "productIds": [
+      "category-0-0"
+    ],
+    "parent": "womens-fashion",
+    "image": "/shop/category-0-0.webp"
+  },
+  {
+    "slug": "womens-fashion-dresses",
+    "title": "Dresses",
+    "productIds": [
+      "category-0-1"
+    ],
+    "parent": "womens-fashion",
+    "image": "/shop/category-0-1.webp"
+  },
+  {
+    "slug": "womens-fashion-sportswear",
+    "title": "Sportswear",
+    "productIds": [
+      "category-0-2"
+    ],
+    "parent": "womens-fashion",
+    "image": "/shop/category-0-2.webp"
+  },
+  {
+    "slug": "womens-fashion-pants",
+    "title": "Pants",
+    "productIds": [
+      "category-0-3"
+    ],
+    "parent": "womens-fashion",
+    "image": "/shop/category-0-3.webp"
+  },
+  {
+    "slug": "womens-fashion-sandals",
+    "title": "Sandals",
+    "productIds": [
+      "category-0-4"
+    ],
+    "parent": "womens-fashion",
+    "image": "/shop/category-0-4.webp"
+  },
+  {
+    "slug": "womens-fashion-footwear",
+    "title": "Footwear",
+    "productIds": [
+      "category-0-5"
+    ],
+    "parent": "womens-fashion",
+    "image": "/shop/category-0-5.webp"
+  },
+  {
+    "slug": "womens-fashion-handbags",
+    "title": "Handbags",
+    "productIds": [
+      "category-0-6"
+    ],
+    "parent": "womens-fashion",
+    "image": "/shop/category-0-6.webp"
+  },
+  {
+    "slug": "womens-fashion",
+    "title": "Women\u2019s fashion",
+    "productIds": [
+      "category-0-0",
+      "category-0-1",
+      "category-0-2",
+      "category-0-3",
+      "category-0-4",
+      "category-0-5",
+      "category-0-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-0-0.webp"
+  },
+  {
+    "slug": "mens-fashion-t-shirts-and-polos",
+    "title": "T-Shirts & Polos",
+    "productIds": [
+      "category-1-0"
+    ],
+    "parent": "mens-fashion",
+    "image": "/shop/category-1-0.webp"
+  },
+  {
+    "slug": "mens-fashion-pants",
+    "title": "Pants",
+    "productIds": [
+      "category-1-1"
+    ],
+    "parent": "mens-fashion",
+    "image": "/shop/category-1-1.webp"
+  },
+  {
+    "slug": "mens-fashion-luggage",
+    "title": "Luggage",
+    "productIds": [
+      "category-1-2"
+    ],
+    "parent": "mens-fashion",
+    "image": "/shop/category-1-2.webp"
+  },
+  {
+    "slug": "mens-fashion-sportswear",
+    "title": "Sportswear",
+    "productIds": [
+      "category-1-3"
+    ],
+    "parent": "mens-fashion",
+    "image": "/shop/category-1-3.webp"
+  },
+  {
+    "slug": "mens-fashion-footwear",
+    "title": "Footwear",
+    "productIds": [
+      "category-1-4"
+    ],
+    "parent": "mens-fashion",
+    "image": "/shop/category-1-4.webp"
+  },
+  {
+    "slug": "mens-fashion-accessories",
+    "title": "Accessories",
+    "productIds": [
+      "category-1-5"
+    ],
+    "parent": "mens-fashion",
+    "image": "/shop/category-1-5.webp"
+  },
+  {
+    "slug": "mens-fashion-jackets",
+    "title": "Jackets",
+    "productIds": [
+      "category-1-6"
+    ],
+    "parent": "mens-fashion",
+    "image": "/shop/category-1-6.webp"
+  },
+  {
+    "slug": "mens-fashion",
+    "title": "Men\u2019s fashion",
+    "productIds": [
+      "category-1-0",
+      "category-1-1",
+      "category-1-2",
+      "category-1-3",
+      "category-1-4",
+      "category-1-5",
+      "category-1-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-1-0.webp"
+  },
+  {
+    "slug": "beauty-makeup",
+    "title": "Makeup",
+    "productIds": [
+      "category-2-0"
+    ],
+    "parent": "beauty",
+    "image": "/shop/category-2-0.webp"
+  },
+  {
+    "slug": "beauty-skincare",
+    "title": "Skincare",
+    "productIds": [
+      "category-2-1"
+    ],
+    "parent": "beauty",
+    "image": "/shop/category-2-1.webp"
+  },
+  {
+    "slug": "beauty-hairstyling-tools",
+    "title": "Hairstyling Tools",
+    "productIds": [
+      "category-2-2"
+    ],
+    "parent": "beauty",
+    "image": "/shop/category-2-2.webp"
+  },
+  {
+    "slug": "beauty-hair-care",
+    "title": "Hair Care",
+    "productIds": [
+      "category-2-3"
+    ],
+    "parent": "beauty",
+    "image": "/shop/category-2-3.webp"
+  },
+  {
+    "slug": "beauty-electrical-beauty-tools",
+    "title": "Electrical Beauty Tools",
+    "productIds": [
+      "category-2-4"
+    ],
+    "parent": "beauty",
+    "image": "/shop/category-2-4.webp"
+  },
+  {
+    "slug": "beauty-mens-care",
+    "title": "Men\u2019s Care",
+    "productIds": [
+      "category-2-5"
+    ],
+    "parent": "beauty",
+    "image": "/shop/category-2-5.webp"
+  },
+  {
+    "slug": "beauty-bath-and-body",
+    "title": "Bath & Body",
+    "productIds": [
+      "category-2-6"
+    ],
+    "parent": "beauty",
+    "image": "/shop/category-2-6.webp"
+  },
+  {
+    "slug": "beauty",
+    "title": "Beauty",
+    "productIds": [
+      "category-2-0",
+      "category-2-1",
+      "category-2-2",
+      "category-2-3",
+      "category-2-4",
+      "category-2-5",
+      "category-2-6",
+      "p-4-0",
+      "p-4-1",
+      "p-4-2",
+      "p-4-3",
+      "p-4-4",
+      "p-4-5"
+    ],
+    "parent": "",
+    "image": "/shop/category-2-0.webp"
+  },
+  {
+    "slug": "home-and-kitchen-cookware",
+    "title": "Cookware",
+    "productIds": [
+      "category-3-0"
+    ],
+    "parent": "home-and-kitchen",
+    "image": "/shop/category-3-0.webp"
+  },
+  {
+    "slug": "home-and-kitchen-storage-and-organisation",
+    "title": "Storage & Organisation",
+    "productIds": [
+      "category-3-1"
+    ],
+    "parent": "home-and-kitchen",
+    "image": "/shop/category-3-1.webp"
+  },
+  {
+    "slug": "home-and-kitchen-dinnerware",
+    "title": "Dinnerware",
+    "productIds": [
+      "category-3-2"
+    ],
+    "parent": "home-and-kitchen",
+    "image": "/shop/category-3-2.webp"
+  },
+  {
+    "slug": "home-and-kitchen-bedding",
+    "title": "Bedding",
+    "productIds": [
+      "category-3-3"
+    ],
+    "parent": "home-and-kitchen",
+    "image": "/shop/category-3-3.webp"
+  },
+  {
+    "slug": "home-and-kitchen-lighting",
+    "title": "Lighting",
+    "productIds": [
+      "category-3-4"
+    ],
+    "parent": "home-and-kitchen",
+    "image": "/shop/category-3-4.webp"
+  },
+  {
+    "slug": "home-and-kitchen-power-and-hand-tools",
+    "title": "Power & Hand Tools",
+    "productIds": [
+      "category-3-5"
+    ],
+    "parent": "home-and-kitchen",
+    "image": "/shop/category-3-5.webp"
+  },
+  {
+    "slug": "home-and-kitchen-furniture",
+    "title": "Furniture",
+    "productIds": [
+      "category-3-6"
+    ],
+    "parent": "home-and-kitchen",
+    "image": "/shop/category-3-6.webp"
+  },
+  {
+    "slug": "home-and-kitchen",
+    "title": "Home & kitchen",
+    "productIds": [
+      "category-3-0",
+      "category-3-1",
+      "category-3-2",
+      "category-3-3",
+      "category-3-4",
+      "category-3-5",
+      "category-3-6",
+      "p-5-0",
+      "p-5-1",
+      "p-5-2",
+      "p-5-3",
+      "p-5-4",
+      "p-5-5"
+    ],
+    "parent": "",
+    "image": "/shop/category-3-0.webp"
+  },
+  {
+    "slug": "home-appliances-air-conditioners",
+    "title": "Air Conditioners",
+    "productIds": [
+      "category-4-0"
+    ],
+    "parent": "home-appliances",
+    "image": "/shop/category-4-0.webp"
+  },
+  {
+    "slug": "home-appliances-air-purifiers",
+    "title": "Air Purifiers",
+    "productIds": [
+      "category-4-1"
+    ],
+    "parent": "home-appliances",
+    "image": "/shop/category-4-1.webp"
+  },
+  {
+    "slug": "home-appliances-refrigerators",
+    "title": "Refrigerators",
+    "productIds": [
+      "category-4-2"
+    ],
+    "parent": "home-appliances",
+    "image": "/shop/category-4-2.webp"
+  },
+  {
+    "slug": "home-appliances-vacuum-cleaners",
+    "title": "Vacuum Cleaners",
+    "productIds": [
+      "category-4-3"
+    ],
+    "parent": "home-appliances",
+    "image": "/shop/category-4-3.webp"
+  },
+  {
+    "slug": "home-appliances-coffee-makers",
+    "title": "Coffee Makers",
+    "productIds": [
+      "category-4-4"
+    ],
+    "parent": "home-appliances",
+    "image": "/shop/category-4-4.webp"
+  },
+  {
+    "slug": "home-appliances-washing-machines",
+    "title": "Washing Machines",
+    "productIds": [
+      "category-4-5"
+    ],
+    "parent": "home-appliances",
+    "image": "/shop/category-4-5.webp"
+  },
+  {
+    "slug": "home-appliances-blenders",
+    "title": "Blenders",
+    "productIds": [
+      "category-4-6"
+    ],
+    "parent": "home-appliances",
+    "image": "/shop/category-4-6.webp"
+  },
+  {
+    "slug": "home-appliances",
+    "title": "Home appliances",
+    "productIds": [
+      "category-4-0",
+      "category-4-1",
+      "category-4-2",
+      "category-4-3",
+      "category-4-4",
+      "category-4-5",
+      "category-4-6",
+      "p-5-0",
+      "p-5-1",
+      "p-5-2",
+      "p-5-3",
+      "p-5-4",
+      "p-5-5"
+    ],
+    "parent": "",
+    "image": "/shop/category-4-0.webp"
+  },
+  {
+    "slug": "electronics-televisions",
+    "title": "Televisions",
+    "productIds": [
+      "category-5-0"
+    ],
+    "parent": "electronics",
+    "image": "/shop/category-5-0.webp"
+  },
+  {
+    "slug": "electronics-gaming-consoles",
+    "title": "Gaming Consoles",
+    "productIds": [
+      "category-5-1"
+    ],
+    "parent": "electronics",
+    "image": "/shop/category-5-1.webp"
+  },
+  {
+    "slug": "electronics-cameras",
+    "title": "Cameras",
+    "productIds": [
+      "category-5-2"
+    ],
+    "parent": "electronics",
+    "image": "/shop/category-5-2.webp"
+  },
+  {
+    "slug": "electronics-tablets",
+    "title": "Tablets",
+    "productIds": [
+      "category-5-3"
+    ],
+    "parent": "electronics",
+    "image": "/shop/category-5-3.webp"
+  },
+  {
+    "slug": "electronics-gaming-accessories",
+    "title": "Gaming Accessories",
+    "productIds": [
+      "category-5-4"
+    ],
+    "parent": "electronics",
+    "image": "/shop/category-5-4.webp"
+  },
+  {
+    "slug": "electronics-games",
+    "title": "Games",
+    "productIds": [
+      "category-5-5"
+    ],
+    "parent": "electronics",
+    "image": "/shop/category-5-5.webp"
+  },
+  {
+    "slug": "electronics-projectors",
+    "title": "Projectors",
+    "productIds": [
+      "category-5-6"
+    ],
+    "parent": "electronics",
+    "image": "/shop/category-5-6.webp"
+  },
+  {
+    "slug": "electronics",
+    "title": "Electronics",
+    "productIds": [
+      "category-5-0",
+      "category-5-1",
+      "category-5-2",
+      "category-5-3",
+      "category-5-4",
+      "category-5-5",
+      "category-5-6",
+      "p-0-0",
+      "p-0-1",
+      "p-0-2",
+      "p-0-3",
+      "p-0-4",
+      "p-0-5",
+      "p-1-0",
+      "p-1-1",
+      "p-1-2",
+      "p-1-3",
+      "p-1-4",
+      "p-1-5",
+      "p-2-0",
+      "p-2-1",
+      "p-2-2",
+      "p-2-3",
+      "p-2-4",
+      "p-2-5",
+      "p-3-0",
+      "p-3-1",
+      "p-3-2",
+      "p-3-3",
+      "p-3-4",
+      "p-3-5"
+    ],
+    "parent": "",
+    "image": "/shop/category-5-0.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories-mobiles",
+    "title": "Mobiles",
+    "productIds": [
+      "category-6-0"
+    ],
+    "parent": "mobiles-and-accessories",
+    "image": "/shop/category-6-0.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories-headphones",
+    "title": "Headphones",
+    "productIds": [
+      "category-6-1"
+    ],
+    "parent": "mobiles-and-accessories",
+    "image": "/shop/category-6-1.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories-wearables",
+    "title": "Wearables",
+    "productIds": [
+      "category-6-2"
+    ],
+    "parent": "mobiles-and-accessories",
+    "image": "/shop/category-6-2.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories-mobile-accessories",
+    "title": "Mobile Accessories",
+    "productIds": [
+      "category-6-3"
+    ],
+    "parent": "mobiles-and-accessories",
+    "image": "/shop/category-6-3.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories-iphone-16-pro",
+    "title": "iPhone 16 Pro",
+    "productIds": [
+      "category-6-4"
+    ],
+    "parent": "mobiles-and-accessories",
+    "image": "/shop/category-6-4.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories-power-banks",
+    "title": "Power Banks",
+    "productIds": [
+      "category-6-5"
+    ],
+    "parent": "mobiles-and-accessories",
+    "image": "/shop/category-6-5.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories-refurbished-mobiles",
+    "title": "Refurbished Mobiles",
+    "productIds": [
+      "category-6-6"
+    ],
+    "parent": "mobiles-and-accessories",
+    "image": "/shop/category-6-6.webp"
+  },
+  {
+    "slug": "mobiles-and-accessories",
+    "title": "Mobiles & accessories",
+    "productIds": [
+      "category-6-0",
+      "category-6-1",
+      "category-6-2",
+      "category-6-3",
+      "category-6-4",
+      "category-6-5",
+      "category-6-6",
+      "p-2-0",
+      "p-2-1",
+      "p-2-2",
+      "p-2-3",
+      "p-2-4",
+      "p-2-5"
+    ],
+    "parent": "",
+    "image": "/shop/category-6-0.webp"
+  },
+  {
+    "slug": "laptops-and-accessories-laptops",
+    "title": "Laptops",
+    "productIds": [
+      "category-7-0"
+    ],
+    "parent": "laptops-and-accessories",
+    "image": "/shop/category-7-0.webp"
+  },
+  {
+    "slug": "laptops-and-accessories-monitors",
+    "title": "Monitors",
+    "productIds": [
+      "category-7-1"
+    ],
+    "parent": "laptops-and-accessories",
+    "image": "/shop/category-7-1.webp"
+  },
+  {
+    "slug": "laptops-and-accessories-printers",
+    "title": "Printers",
+    "productIds": [
+      "category-7-2"
+    ],
+    "parent": "laptops-and-accessories",
+    "image": "/shop/category-7-2.webp"
+  },
+  {
+    "slug": "laptops-and-accessories-macbooks",
+    "title": "MacBooks",
+    "productIds": [
+      "category-7-3"
+    ],
+    "parent": "laptops-and-accessories",
+    "image": "/shop/category-7-3.webp"
+  },
+  {
+    "slug": "laptops-and-accessories-budget-laptops",
+    "title": "Budget Laptops",
+    "productIds": [
+      "category-7-4"
+    ],
+    "parent": "laptops-and-accessories",
+    "image": "/shop/category-7-4.webp"
+  },
+  {
+    "slug": "laptops-and-accessories-desktop-computers",
+    "title": "Desktop Computers",
+    "productIds": [
+      "category-7-5"
+    ],
+    "parent": "laptops-and-accessories",
+    "image": "/shop/category-7-5.webp"
+  },
+  {
+    "slug": "laptops-and-accessories-laptop-accessories",
+    "title": "Laptop Accessories",
+    "productIds": [
+      "category-7-6"
+    ],
+    "parent": "laptops-and-accessories",
+    "image": "/shop/category-7-6.webp"
+  },
+  {
+    "slug": "laptops-and-accessories",
+    "title": "Laptops & accessories",
+    "productIds": [
+      "category-7-0",
+      "category-7-1",
+      "category-7-2",
+      "category-7-3",
+      "category-7-4",
+      "category-7-5",
+      "category-7-6",
+      "p-1-0",
+      "p-1-1",
+      "p-1-2",
+      "p-1-3",
+      "p-1-4",
+      "p-1-5"
+    ],
+    "parent": "",
+    "image": "/shop/category-7-0.webp"
+  },
+  {
+    "slug": "kids-fashion-t-shirts-and-polos",
+    "title": "T-Shirts & Polos",
+    "productIds": [
+      "category-8-0"
+    ],
+    "parent": "kids-fashion",
+    "image": "/shop/category-8-0.webp"
+  },
+  {
+    "slug": "kids-fashion-pants",
+    "title": "Pants",
+    "productIds": [
+      "category-8-1"
+    ],
+    "parent": "kids-fashion",
+    "image": "/shop/category-8-1.webp"
+  },
+  {
+    "slug": "kids-fashion-clothing-sets",
+    "title": "Clothing Sets",
+    "productIds": [
+      "category-8-2"
+    ],
+    "parent": "kids-fashion",
+    "image": "/shop/category-8-2.webp"
+  },
+  {
+    "slug": "kids-fashion-dresses",
+    "title": "Dresses",
+    "productIds": [
+      "category-8-3"
+    ],
+    "parent": "kids-fashion",
+    "image": "/shop/category-8-3.webp"
+  },
+  {
+    "slug": "kids-fashion-sportswear",
+    "title": "Sportswear",
+    "productIds": [
+      "category-8-4"
+    ],
+    "parent": "kids-fashion",
+    "image": "/shop/category-8-4.webp"
+  },
+  {
+    "slug": "kids-fashion-footwear",
+    "title": "Footwear",
+    "productIds": [
+      "category-8-5"
+    ],
+    "parent": "kids-fashion",
+    "image": "/shop/category-8-5.webp"
+  },
+  {
+    "slug": "kids-fashion-backpacks",
+    "title": "Backpacks",
+    "productIds": [
+      "category-8-6"
+    ],
+    "parent": "kids-fashion",
+    "image": "/shop/category-8-6.webp"
+  },
+  {
+    "slug": "kids-fashion",
+    "title": "Kids\u2019 fashion",
+    "productIds": [
+      "category-8-0",
+      "category-8-1",
+      "category-8-2",
+      "category-8-3",
+      "category-8-4",
+      "category-8-5",
+      "category-8-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-8-0.webp"
+  },
+  {
+    "slug": "health-and-nutrition-wellbeing-tech",
+    "title": "Wellbeing Tech",
+    "productIds": [
+      "category-9-0"
+    ],
+    "parent": "health-and-nutrition",
+    "image": "/shop/category-9-0.webp"
+  },
+  {
+    "slug": "health-and-nutrition-massage-and-relaxation",
+    "title": "Massage & Relaxation",
+    "productIds": [
+      "category-9-1"
+    ],
+    "parent": "health-and-nutrition",
+    "image": "/shop/category-9-1.webp"
+  },
+  {
+    "slug": "health-and-nutrition-family-planning",
+    "title": "Family Planning",
+    "productIds": [
+      "category-9-2"
+    ],
+    "parent": "health-and-nutrition",
+    "image": "/shop/category-9-2.webp"
+  },
+  {
+    "slug": "health-and-nutrition-vitamins-and-nutrition",
+    "title": "Vitamins & Nutrition",
+    "productIds": [
+      "category-9-3"
+    ],
+    "parent": "health-and-nutrition",
+    "image": "/shop/category-9-3.webp"
+  },
+  {
+    "slug": "health-and-nutrition-health-monitors",
+    "title": "Health Monitors",
+    "productIds": [
+      "category-9-4"
+    ],
+    "parent": "health-and-nutrition",
+    "image": "/shop/category-9-4.webp"
+  },
+  {
+    "slug": "health-and-nutrition-mobility-aids",
+    "title": "Mobility Aids",
+    "productIds": [
+      "category-9-5"
+    ],
+    "parent": "health-and-nutrition",
+    "image": "/shop/category-9-5.webp"
+  },
+  {
+    "slug": "health-and-nutrition-braces-and-splints",
+    "title": "Braces & Splints",
+    "productIds": [
+      "category-9-6"
+    ],
+    "parent": "health-and-nutrition",
+    "image": "/shop/category-9-6.webp"
+  },
+  {
+    "slug": "health-and-nutrition",
+    "title": "Health & nutrition",
+    "productIds": [
+      "category-9-0",
+      "category-9-1",
+      "category-9-2",
+      "category-9-3",
+      "category-9-4",
+      "category-9-5",
+      "category-9-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-9-0.webp"
+  },
+  {
+    "slug": "grocery-beverages",
+    "title": "Beverages",
+    "productIds": [
+      "coffee-0",
+      "coffee-1",
+      "coffee-2",
+      "coffee-3",
+      "nescafe-gold-190g",
+      "coffee-5",
+      "coffee-6",
+      "coffee-7",
+      "coffee-8",
+      "coffee-9",
+      "coffee-10",
+      "coffee-11",
+      "coffee-12",
+      "coffee-13",
+      "coffee-14",
+      "coffee-15",
+      "coffee-16",
+      "coffee-17",
+      "coffee-18",
+      "coffee-19",
+      "coffee-20",
+      "coffee-21",
+      "coffee-22",
+      "coffee-23",
+      "coffee-24",
+      "coffee-25",
+      "coffee-26",
+      "coffee-27",
+      "coffee-28",
+      "coffee-29",
+      "nescafe-gold-47g",
+      "klassno-coffee-mix"
+    ],
+    "parent": "grocery",
+    "image": "/shop/category-10-0.webp"
+  },
+  {
+    "slug": "grocery-laundry-and-household",
+    "title": "Laundry & Household",
+    "productIds": [
+      "category-10-1"
+    ],
+    "parent": "grocery",
+    "image": "/shop/category-10-1.webp"
+  },
+  {
+    "slug": "grocery-pet-supplies",
+    "title": "Pet Supplies",
+    "productIds": [
+      "category-10-2"
+    ],
+    "parent": "grocery",
+    "image": "/shop/category-10-2.webp"
+  },
+  {
+    "slug": "grocery-cooking-oils",
+    "title": "Cooking Oils",
+    "productIds": [
+      "category-10-3"
+    ],
+    "parent": "grocery",
+    "image": "/shop/category-10-3.webp"
+  },
+  {
+    "slug": "grocery-rice-pasta-and-canned-food",
+    "title": "Rice, Pasta & Canned Food",
+    "productIds": [
+      "category-10-4"
+    ],
+    "parent": "grocery",
+    "image": "/shop/category-10-4.webp"
+  },
+  {
+    "slug": "grocery-cleaning-supplies",
+    "title": "Cleaning Supplies",
+    "productIds": [
+      "category-10-5"
+    ],
+    "parent": "grocery",
+    "image": "/shop/category-10-5.webp"
+  },
+  {
+    "slug": "grocery-snacks-and-chocolates",
+    "title": "Snacks & Chocolates",
+    "productIds": [
+      "category-10-6"
+    ],
+    "parent": "grocery",
+    "image": "/shop/category-10-6.webp"
+  },
+  {
+    "slug": "grocery",
+    "title": "Grocery",
+    "productIds": [
+      "category-10-0",
+      "category-10-1",
+      "category-10-2",
+      "category-10-3",
+      "category-10-4",
+      "category-10-5",
+      "category-10-6",
+      "p-6-0",
+      "p-6-1",
+      "p-6-2",
+      "p-6-3",
+      "p-6-4",
+      "p-6-5",
+      "nescafe-gold-190g",
+      "nescafe-gold-47g",
+      "klassno-coffee-mix",
+      "coffee-0",
+      "coffee-1",
+      "coffee-2",
+      "coffee-3",
+      "coffee-5",
+      "coffee-6",
+      "coffee-7",
+      "coffee-8",
+      "coffee-9",
+      "coffee-10",
+      "coffee-11",
+      "coffee-12",
+      "coffee-13",
+      "coffee-14",
+      "coffee-15",
+      "coffee-16",
+      "coffee-17",
+      "coffee-18",
+      "coffee-19",
+      "coffee-20",
+      "coffee-21",
+      "coffee-22",
+      "coffee-23",
+      "coffee-24",
+      "coffee-25",
+      "coffee-26",
+      "coffee-27",
+      "coffee-28",
+      "coffee-29"
+    ],
+    "parent": "",
+    "image": "/shop/category-10-0.webp"
+  },
+  {
+    "slug": "furniture-sofas-and-chairs",
+    "title": "Sofas & Chairs",
+    "productIds": [
+      "category-11-0"
+    ],
+    "parent": "furniture",
+    "image": "/shop/category-11-0.webp"
+  },
+  {
+    "slug": "furniture-sofa-beds",
+    "title": "Sofa Beds",
+    "productIds": [
+      "category-11-1"
+    ],
+    "parent": "furniture",
+    "image": "/shop/category-11-1.webp"
+  },
+  {
+    "slug": "furniture-bed-frames",
+    "title": "Bed Frames",
+    "productIds": [
+      "category-11-2"
+    ],
+    "parent": "furniture",
+    "image": "/shop/category-11-2.webp"
+  },
+  {
+    "slug": "furniture-bean-bags",
+    "title": "Bean Bags",
+    "productIds": [
+      "category-11-3"
+    ],
+    "parent": "furniture",
+    "image": "/shop/category-11-3.webp"
+  },
+  {
+    "slug": "furniture-tables-and-chairs",
+    "title": "Tables & Chairs",
+    "productIds": [
+      "category-11-4"
+    ],
+    "parent": "furniture",
+    "image": "/shop/category-11-4.webp"
+  },
+  {
+    "slug": "furniture-tv-and-media-furniture",
+    "title": "TV & Media Furniture",
+    "productIds": [
+      "category-11-5"
+    ],
+    "parent": "furniture",
+    "image": "/shop/category-11-5.webp"
+  },
+  {
+    "slug": "furniture-outdoor-furniture",
+    "title": "Outdoor Furniture",
+    "productIds": [
+      "category-11-6"
+    ],
+    "parent": "furniture",
+    "image": "/shop/category-11-6.webp"
+  },
+  {
+    "slug": "furniture",
+    "title": "Furniture",
+    "productIds": [
+      "category-11-0",
+      "category-11-1",
+      "category-11-2",
+      "category-11-3",
+      "category-11-4",
+      "category-11-5",
+      "category-11-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-11-0.webp"
+  },
+  {
+    "slug": "fragrances-mens-fragrances",
+    "title": "Men\u2019s Fragrances",
+    "productIds": [
+      "category-12-0"
+    ],
+    "parent": "fragrances",
+    "image": "/shop/category-12-0.webp"
+  },
+  {
+    "slug": "fragrances-womens-fragrances",
+    "title": "Women\u2019s Fragrances",
+    "productIds": [
+      "category-12-1"
+    ],
+    "parent": "fragrances",
+    "image": "/shop/category-12-1.webp"
+  },
+  {
+    "slug": "fragrances-unisex-fragrances",
+    "title": "Unisex Fragrances",
+    "productIds": [
+      "category-12-2"
+    ],
+    "parent": "fragrances",
+    "image": "/shop/category-12-2.webp"
+  },
+  {
+    "slug": "fragrances-deodorants",
+    "title": "Deodorants",
+    "productIds": [
+      "category-12-3"
+    ],
+    "parent": "fragrances",
+    "image": "/shop/category-12-3.webp"
+  },
+  {
+    "slug": "fragrances-oud-and-bakhoor",
+    "title": "Oud & Bakhoor",
+    "productIds": [
+      "category-12-4"
+    ],
+    "parent": "fragrances",
+    "image": "/shop/category-12-4.webp"
+  },
+  {
+    "slug": "fragrances-gift-sets",
+    "title": "Gift Sets",
+    "productIds": [
+      "category-12-5"
+    ],
+    "parent": "fragrances",
+    "image": "/shop/category-12-5.webp"
+  },
+  {
+    "slug": "fragrances-miniatures",
+    "title": "Miniatures",
+    "productIds": [
+      "category-12-6"
+    ],
+    "parent": "fragrances",
+    "image": "/shop/category-12-6.webp"
+  },
+  {
+    "slug": "fragrances",
+    "title": "Fragrances",
+    "productIds": [
+      "category-12-0",
+      "category-12-1",
+      "category-12-2",
+      "category-12-3",
+      "category-12-4",
+      "category-12-5",
+      "category-12-6",
+      "p-4-0",
+      "p-4-1",
+      "p-4-2",
+      "p-4-3",
+      "p-4-4",
+      "p-4-5"
+    ],
+    "parent": "",
+    "image": "/shop/category-12-0.webp"
+  },
+  {
+    "slug": "baby-strollers",
+    "title": "Strollers",
+    "productIds": [
+      "category-13-0"
+    ],
+    "parent": "baby",
+    "image": "/shop/category-13-0.webp"
+  },
+  {
+    "slug": "baby-diapers-and-wipes",
+    "title": "Diapers & Wipes",
+    "productIds": [
+      "category-13-1"
+    ],
+    "parent": "baby",
+    "image": "/shop/category-13-1.webp"
+  },
+  {
+    "slug": "baby-feeding-essentials",
+    "title": "Feeding Essentials",
+    "productIds": [
+      "category-13-2"
+    ],
+    "parent": "baby",
+    "image": "/shop/category-13-2.webp"
+  },
+  {
+    "slug": "baby-nursery",
+    "title": "Nursery",
+    "productIds": [
+      "category-13-3"
+    ],
+    "parent": "baby",
+    "image": "/shop/category-13-3.webp"
+  },
+  {
+    "slug": "baby-car-seats",
+    "title": "Car Seats",
+    "productIds": [
+      "category-13-4"
+    ],
+    "parent": "baby",
+    "image": "/shop/category-13-4.webp"
+  },
+  {
+    "slug": "baby-bathing-and-skin-care",
+    "title": "Bathing & Skin Care",
+    "productIds": [
+      "category-13-5"
+    ],
+    "parent": "baby",
+    "image": "/shop/category-13-5.webp"
+  },
+  {
+    "slug": "baby-premium-store",
+    "title": "Premium Store",
+    "productIds": [
+      "category-13-6"
+    ],
+    "parent": "baby",
+    "image": "/shop/category-13-6.webp"
+  },
+  {
+    "slug": "baby",
+    "title": "Baby",
+    "productIds": [
+      "category-13-0",
+      "category-13-1",
+      "category-13-2",
+      "category-13-3",
+      "category-13-4",
+      "category-13-5",
+      "category-13-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-13-0.webp"
+  },
+  {
+    "slug": "toys-building-toys",
+    "title": "Building Toys",
+    "productIds": [
+      "category-14-0"
+    ],
+    "parent": "toys",
+    "image": "/shop/category-14-0.webp"
+  },
+  {
+    "slug": "toys-learning-and-education",
+    "title": "Learning & Education",
+    "productIds": [
+      "category-14-1"
+    ],
+    "parent": "toys",
+    "image": "/shop/category-14-1.webp"
+  },
+  {
+    "slug": "toys-sports-and-outdoor-play",
+    "title": "Sports & Outdoor Play",
+    "productIds": [
+      "category-14-2"
+    ],
+    "parent": "toys",
+    "image": "/shop/category-14-2.webp"
+  },
+  {
+    "slug": "toys-arts-and-crafts",
+    "title": "Arts & Crafts",
+    "productIds": [
+      "category-14-3"
+    ],
+    "parent": "toys",
+    "image": "/shop/category-14-3.webp"
+  },
+  {
+    "slug": "toys-soft-toys",
+    "title": "Soft Toys",
+    "productIds": [
+      "category-14-4"
+    ],
+    "parent": "toys",
+    "image": "/shop/category-14-4.webp"
+  },
+  {
+    "slug": "toys-role-and-pretend-play",
+    "title": "Role & Pretend Play",
+    "productIds": [
+      "category-14-5"
+    ],
+    "parent": "toys",
+    "image": "/shop/category-14-5.webp"
+  },
+  {
+    "slug": "toys-dolls-and-accessories",
+    "title": "Dolls & Accessories",
+    "productIds": [
+      "category-14-6"
+    ],
+    "parent": "toys",
+    "image": "/shop/category-14-6.webp"
+  },
+  {
+    "slug": "toys",
+    "title": "Toys",
+    "productIds": [
+      "category-14-0",
+      "category-14-1",
+      "category-14-2",
+      "category-14-3",
+      "category-14-4",
+      "category-14-5",
+      "category-14-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-14-0.webp"
+  },
+  {
+    "slug": "eyewear-ray-ban",
+    "title": "Ray-Ban",
+    "productIds": [
+      "category-15-0"
+    ],
+    "parent": "eyewear",
+    "image": "/shop/category-15-0.webp"
+  },
+  {
+    "slug": "eyewear-lacoste",
+    "title": "Lacoste",
+    "productIds": [
+      "category-15-1"
+    ],
+    "parent": "eyewear",
+    "image": "/shop/category-15-1.webp"
+  },
+  {
+    "slug": "eyewear-carrera",
+    "title": "Carrera",
+    "productIds": [
+      "category-15-2"
+    ],
+    "parent": "eyewear",
+    "image": "/shop/category-15-2.webp"
+  },
+  {
+    "slug": "eyewear-guess",
+    "title": "Guess",
+    "productIds": [
+      "category-15-3"
+    ],
+    "parent": "eyewear",
+    "image": "/shop/category-15-3.webp"
+  },
+  {
+    "slug": "eyewear-calvin-klein",
+    "title": "Calvin Klein",
+    "productIds": [
+      "category-15-4"
+    ],
+    "parent": "eyewear",
+    "image": "/shop/category-15-4.webp"
+  },
+  {
+    "slug": "eyewear-contact-lenses",
+    "title": "Contact Lenses",
+    "productIds": [
+      "category-15-5"
+    ],
+    "parent": "eyewear",
+    "image": "/shop/category-15-5.webp"
+  },
+  {
+    "slug": "eyewear-frames",
+    "title": "Frames",
+    "productIds": [
+      "category-15-6"
+    ],
+    "parent": "eyewear",
+    "image": "/shop/category-15-6.webp"
+  },
+  {
+    "slug": "eyewear",
+    "title": "Eyewear",
+    "productIds": [
+      "category-15-0",
+      "category-15-1",
+      "category-15-2",
+      "category-15-3",
+      "category-15-4",
+      "category-15-5",
+      "category-15-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-15-0.webp"
+  },
+  {
+    "slug": "watches-casio",
+    "title": "Casio",
+    "productIds": [
+      "category-16-0"
+    ],
+    "parent": "watches",
+    "image": "/shop/category-16-0.webp"
+  },
+  {
+    "slug": "watches-tommy-hilfiger",
+    "title": "Tommy Hilfiger",
+    "productIds": [
+      "category-16-1"
+    ],
+    "parent": "watches",
+    "image": "/shop/category-16-1.webp"
+  },
+  {
+    "slug": "watches-fossil",
+    "title": "Fossil",
+    "productIds": [
+      "category-16-2"
+    ],
+    "parent": "watches",
+    "image": "/shop/category-16-2.webp"
+  },
+  {
+    "slug": "watches-hugo-boss",
+    "title": "Hugo Boss",
+    "productIds": [
+      "category-16-3"
+    ],
+    "parent": "watches",
+    "image": "/shop/category-16-3.webp"
+  },
+  {
+    "slug": "watches-guess",
+    "title": "Guess",
+    "productIds": [
+      "category-16-4"
+    ],
+    "parent": "watches",
+    "image": "/shop/category-16-4.webp"
+  },
+  {
+    "slug": "watches-police",
+    "title": "Police",
+    "productIds": [
+      "category-16-5"
+    ],
+    "parent": "watches",
+    "image": "/shop/category-16-5.webp"
+  },
+  {
+    "slug": "watches-lacoste",
+    "title": "Lacoste",
+    "productIds": [
+      "category-16-6"
+    ],
+    "parent": "watches",
+    "image": "/shop/category-16-6.webp"
+  },
+  {
+    "slug": "watches",
+    "title": "Watches",
+    "productIds": [
+      "category-16-0",
+      "category-16-1",
+      "category-16-2",
+      "category-16-3",
+      "category-16-4",
+      "category-16-5",
+      "category-16-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-16-0.webp"
+  },
+  {
+    "slug": "sports-and-outdoors-water-sports",
+    "title": "Water Sports",
+    "productIds": [
+      "category-17-0"
+    ],
+    "parent": "sports-and-outdoors",
+    "image": "/shop/category-17-0.webp"
+  },
+  {
+    "slug": "sports-and-outdoors-scooters",
+    "title": "Scooters",
+    "productIds": [
+      "category-17-1"
+    ],
+    "parent": "sports-and-outdoors",
+    "image": "/shop/category-17-1.webp"
+  },
+  {
+    "slug": "sports-and-outdoors-cycling",
+    "title": "Cycling",
+    "productIds": [
+      "category-17-2"
+    ],
+    "parent": "sports-and-outdoors",
+    "image": "/shop/category-17-2.webp"
+  },
+  {
+    "slug": "sports-and-outdoors-fitness-and-training",
+    "title": "Fitness & Training",
+    "productIds": [
+      "category-17-3"
+    ],
+    "parent": "sports-and-outdoors",
+    "image": "/shop/category-17-3.webp"
+  },
+  {
+    "slug": "sports-and-outdoors-racket-sports",
+    "title": "Racket Sports",
+    "productIds": [
+      "category-17-4"
+    ],
+    "parent": "sports-and-outdoors",
+    "image": "/shop/category-17-4.webp"
+  },
+  {
+    "slug": "sports-and-outdoors-yoga",
+    "title": "Yoga",
+    "productIds": [
+      "category-17-5"
+    ],
+    "parent": "sports-and-outdoors",
+    "image": "/shop/category-17-5.webp"
+  },
+  {
+    "slug": "sports-and-outdoors-combat-sports",
+    "title": "Combat Sports",
+    "productIds": [
+      "category-17-6"
+    ],
+    "parent": "sports-and-outdoors",
+    "image": "/shop/category-17-6.webp"
+  },
+  {
+    "slug": "sports-and-outdoors",
+    "title": "Sports & outdoors",
+    "productIds": [
+      "category-17-0",
+      "category-17-1",
+      "category-17-2",
+      "category-17-3",
+      "category-17-4",
+      "category-17-5",
+      "category-17-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-17-0.webp"
+  },
+  {
+    "slug": "automotive-exterior-accessories",
+    "title": "Exterior Accessories",
+    "productIds": [
+      "category-18-0"
+    ],
+    "parent": "automotive",
+    "image": "/shop/category-18-0.webp"
+  },
+  {
+    "slug": "automotive-replacement-parts",
+    "title": "Replacement Parts",
+    "productIds": [
+      "category-18-1"
+    ],
+    "parent": "automotive",
+    "image": "/shop/category-18-1.webp"
+  },
+  {
+    "slug": "automotive-car-care",
+    "title": "Car Care",
+    "productIds": [
+      "category-18-2"
+    ],
+    "parent": "automotive",
+    "image": "/shop/category-18-2.webp"
+  },
+  {
+    "slug": "automotive-car-electronics",
+    "title": "Car Electronics",
+    "productIds": [
+      "category-18-3"
+    ],
+    "parent": "automotive",
+    "image": "/shop/category-18-3.webp"
+  },
+  {
+    "slug": "automotive-tools-and-equipment",
+    "title": "Tools & Equipment",
+    "productIds": [
+      "category-18-4"
+    ],
+    "parent": "automotive",
+    "image": "/shop/category-18-4.webp"
+  },
+  {
+    "slug": "automotive-oils-and-fluids",
+    "title": "Oils & Fluids",
+    "productIds": [
+      "category-18-5"
+    ],
+    "parent": "automotive",
+    "image": "/shop/category-18-5.webp"
+  },
+  {
+    "slug": "automotive-protective-gear",
+    "title": "Protective Gear",
+    "productIds": [
+      "category-18-6"
+    ],
+    "parent": "automotive",
+    "image": "/shop/category-18-6.webp"
+  },
+  {
+    "slug": "automotive",
+    "title": "Automotive",
+    "productIds": [
+      "category-18-0",
+      "category-18-1",
+      "category-18-2",
+      "category-18-3",
+      "category-18-4",
+      "category-18-5",
+      "category-18-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-18-0.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies-calculators",
+    "title": "Calculators",
+    "productIds": [
+      "category-19-0"
+    ],
+    "parent": "stationery-and-office-supplies",
+    "image": "/shop/category-19-0.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies-writing-supplies",
+    "title": "Writing Supplies",
+    "productIds": [
+      "category-19-1"
+    ],
+    "parent": "stationery-and-office-supplies",
+    "image": "/shop/category-19-1.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies-notebooks",
+    "title": "Notebooks",
+    "productIds": [
+      "category-19-2"
+    ],
+    "parent": "stationery-and-office-supplies",
+    "image": "/shop/category-19-2.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies-office-accessories",
+    "title": "Office Accessories",
+    "productIds": [
+      "category-19-3"
+    ],
+    "parent": "stationery-and-office-supplies",
+    "image": "/shop/category-19-3.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies-presentation-supplies",
+    "title": "Presentation Supplies",
+    "productIds": [
+      "category-19-4"
+    ],
+    "parent": "stationery-and-office-supplies",
+    "image": "/shop/category-19-4.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies-tapes-and-adhesives",
+    "title": "Tapes & Adhesives",
+    "productIds": [
+      "category-19-5"
+    ],
+    "parent": "stationery-and-office-supplies",
+    "image": "/shop/category-19-5.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies-labels-and-stickers",
+    "title": "Labels & Stickers",
+    "productIds": [
+      "category-19-6"
+    ],
+    "parent": "stationery-and-office-supplies",
+    "image": "/shop/category-19-6.webp"
+  },
+  {
+    "slug": "stationery-and-office-supplies",
+    "title": "Stationery & office supplies",
+    "productIds": [
+      "category-19-0",
+      "category-19-1",
+      "category-19-2",
+      "category-19-3",
+      "category-19-4",
+      "category-19-5",
+      "category-19-6"
+    ],
+    "parent": "",
+    "image": "/shop/category-19-0.webp"
+  },
+  {
+    "slug": "grocery-coffee",
+    "title": "Coffee",
+    "productIds": [
+      "coffee-0",
+      "coffee-1",
+      "coffee-2",
+      "coffee-3",
+      "nescafe-gold-190g",
+      "coffee-5",
+      "coffee-6",
+      "coffee-7",
+      "coffee-8",
+      "coffee-9",
+      "coffee-10",
+      "coffee-11",
+      "coffee-12",
+      "coffee-13",
+      "coffee-14",
+      "coffee-15",
+      "coffee-16",
+      "coffee-17",
+      "coffee-18",
+      "coffee-19",
+      "coffee-20",
+      "coffee-21",
+      "coffee-22",
+      "coffee-23",
+      "coffee-24",
+      "coffee-25",
+      "coffee-26",
+      "coffee-27",
+      "coffee-28",
+      "coffee-29",
+      "nescafe-gold-47g",
+      "klassno-coffee-mix"
+    ],
+    "parent": "grocery",
+    "image": "/product/coffee-front.webp"
+  },
+  {
+    "slug": "mobiles",
+    "title": "Mobiles",
+    "productIds": [
+      "p-2-0",
+      "p-2-1",
+      "p-2-2",
+      "p-2-3",
+      "p-2-4",
+      "p-2-5",
+      "mega-0"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "laptops-and-desktops",
+    "title": "Laptops & Desktops",
+    "productIds": [
+      "p-1-0",
+      "p-1-1",
+      "p-1-2",
+      "p-1-3",
+      "p-1-4",
+      "p-1-5",
+      "mega-2"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "cameras",
+    "title": "Cameras",
+    "productIds": [
+      "p-0-0",
+      "p-0-1",
+      "p-0-2",
+      "p-0-3",
+      "p-0-4",
+      "p-0-5"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "beauty-and-fragrance",
+    "title": "Beauty & Fragrance",
+    "productIds": [
+      "p-4-0",
+      "p-4-1",
+      "p-4-2",
+      "p-4-3",
+      "p-4-4",
+      "p-4-5",
+      "category-2-0",
+      "category-2-1",
+      "category-2-2",
+      "category-2-3",
+      "category-2-4",
+      "category-2-5",
+      "category-2-6",
+      "category-12-0",
+      "category-12-1",
+      "category-12-2",
+      "category-12-3",
+      "category-12-4",
+      "category-12-5",
+      "category-12-6"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "mom-and-baby",
+    "title": "Mom & Baby",
+    "productIds": [
+      "category-13-0",
+      "category-13-1",
+      "category-13-2",
+      "category-13-3",
+      "category-13-4",
+      "category-13-5",
+      "category-13-6"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "wearables",
+    "title": "Wearables",
+    "productIds": [
+      "category-6-2"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "backpacks",
+    "title": "Backpacks",
+    "productIds": [
+      "category-8-6"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "gift-cards",
+    "title": "Gift Cards",
+    "productIds": [],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "deals",
+    "title": "Deals",
+    "productIds": [
+      "p-0-0",
+      "p-0-1",
+      "p-0-2",
+      "p-0-3",
+      "p-0-4",
+      "p-0-5",
+      "p-1-0",
+      "p-1-1",
+      "p-1-2",
+      "p-1-3",
+      "p-1-4",
+      "p-1-5",
+      "p-2-0",
+      "p-2-1",
+      "p-2-2",
+      "p-2-3",
+      "p-2-4",
+      "p-2-5",
+      "p-3-0",
+      "p-3-1",
+      "p-3-2",
+      "p-3-3",
+      "p-3-4",
+      "p-3-5",
+      "p-4-0",
+      "p-4-1",
+      "p-4-2",
+      "p-4-3",
+      "p-4-4",
+      "p-4-5",
+      "p-5-0",
+      "p-5-1",
+      "p-5-2",
+      "p-5-3",
+      "p-5-4",
+      "p-5-5",
+      "p-6-0",
+      "p-6-1",
+      "p-6-2",
+      "p-6-3",
+      "p-6-4",
+      "p-6-5",
+      "mega-0",
+      "mega-1",
+      "mega-2",
+      "mega-3",
+      "nescafe-gold-190g",
+      "nescafe-gold-47g",
+      "klassno-coffee-mix",
+      "coffee-0",
+      "coffee-1",
+      "coffee-2",
+      "coffee-3",
+      "coffee-5",
+      "coffee-6",
+      "coffee-7",
+      "coffee-8",
+      "coffee-9",
+      "coffee-10",
+      "coffee-11",
+      "coffee-12",
+      "coffee-13",
+      "coffee-14",
+      "coffee-15",
+      "coffee-16",
+      "coffee-17",
+      "coffee-18",
+      "coffee-19",
+      "coffee-20",
+      "coffee-21",
+      "coffee-22",
+      "coffee-23",
+      "coffee-24",
+      "coffee-25",
+      "coffee-26",
+      "coffee-27",
+      "coffee-28",
+      "coffee-29",
+      "category-0-0",
+      "category-0-1",
+      "category-0-2",
+      "category-0-3",
+      "category-0-4",
+      "category-0-5",
+      "category-0-6",
+      "category-1-0",
+      "category-1-1",
+      "category-1-2",
+      "category-1-3",
+      "category-1-4",
+      "category-1-5",
+      "category-1-6",
+      "category-2-0",
+      "category-2-1",
+      "category-2-2",
+      "category-2-3",
+      "category-2-4",
+      "category-2-5",
+      "category-2-6",
+      "category-3-0",
+      "category-3-1",
+      "category-3-2",
+      "category-3-3",
+      "category-3-4",
+      "category-3-5",
+      "category-3-6",
+      "category-4-0",
+      "category-4-1",
+      "category-4-2",
+      "category-4-3",
+      "category-4-4",
+      "category-4-5",
+      "category-4-6",
+      "category-5-0",
+      "category-5-1",
+      "category-5-2",
+      "category-5-3",
+      "category-5-4",
+      "category-5-5",
+      "category-5-6",
+      "category-6-0",
+      "category-6-1",
+      "category-6-2",
+      "category-6-3",
+      "category-6-4",
+      "category-6-5",
+      "category-6-6",
+      "category-7-0",
+      "category-7-1",
+      "category-7-2",
+      "category-7-3",
+      "category-7-4",
+      "category-7-5",
+      "category-7-6",
+      "category-8-0",
+      "category-8-1",
+      "category-8-2",
+      "category-8-3",
+      "category-8-4",
+      "category-8-5",
+      "category-8-6",
+      "category-9-0",
+      "category-9-1",
+      "category-9-2",
+      "category-9-3",
+      "category-9-4",
+      "category-9-5",
+      "category-9-6",
+      "category-10-0",
+      "category-10-1",
+      "category-10-2",
+      "category-10-3",
+      "category-10-4",
+      "category-10-5",
+      "category-10-6",
+      "category-11-0",
+      "category-11-1",
+      "category-11-2",
+      "category-11-3",
+      "category-11-4",
+      "category-11-5",
+      "category-11-6",
+      "category-12-0",
+      "category-12-1",
+      "category-12-2",
+      "category-12-3",
+      "category-12-4",
+      "category-12-5",
+      "category-12-6",
+      "category-13-0",
+      "category-13-1",
+      "category-13-2",
+      "category-13-3",
+      "category-13-4",
+      "category-13-5",
+      "category-13-6",
+      "category-14-0",
+      "category-14-1",
+      "category-14-2",
+      "category-14-3",
+      "category-14-4",
+      "category-14-5",
+      "category-14-6",
+      "category-15-0",
+      "category-15-1",
+      "category-15-2",
+      "category-15-3",
+      "category-15-4",
+      "category-15-5",
+      "category-15-6",
+      "category-16-0",
+      "category-16-1",
+      "category-16-2",
+      "category-16-3",
+      "category-16-4",
+      "category-16-5",
+      "category-16-6",
+      "category-17-0",
+      "category-17-1",
+      "category-17-2",
+      "category-17-3",
+      "category-17-4",
+      "category-17-5",
+      "category-17-6",
+      "category-18-0",
+      "category-18-1",
+      "category-18-2",
+      "category-18-3",
+      "category-18-4",
+      "category-18-5",
+      "category-18-6",
+      "category-19-0",
+      "category-19-1",
+      "category-19-2",
+      "category-19-3",
+      "category-19-4",
+      "category-19-5",
+      "category-19-6"
+    ],
+    "parent": "",
+    "image": ""
+  },
+  {
+    "slug": "all-products",
+    "title": "All products",
+    "productIds": [
+      "p-0-0",
+      "p-0-1",
+      "p-0-2",
+      "p-0-3",
+      "p-0-4",
+      "p-0-5",
+      "p-1-0",
+      "p-1-1",
+      "p-1-2",
+      "p-1-3",
+      "p-1-4",
+      "p-1-5",
+      "p-2-0",
+      "p-2-1",
+      "p-2-2",
+      "p-2-3",
+      "p-2-4",
+      "p-2-5",
+      "p-3-0",
+      "p-3-1",
+      "p-3-2",
+      "p-3-3",
+      "p-3-4",
+      "p-3-5",
+      "p-4-0",
+      "p-4-1",
+      "p-4-2",
+      "p-4-3",
+      "p-4-4",
+      "p-4-5",
+      "p-5-0",
+      "p-5-1",
+      "p-5-2",
+      "p-5-3",
+      "p-5-4",
+      "p-5-5",
+      "p-6-0",
+      "p-6-1",
+      "p-6-2",
+      "p-6-3",
+      "p-6-4",
+      "p-6-5",
+      "mega-0",
+      "mega-1",
+      "mega-2",
+      "mega-3",
+      "nescafe-gold-190g",
+      "nescafe-gold-47g",
+      "klassno-coffee-mix",
+      "coffee-0",
+      "coffee-1",
+      "coffee-2",
+      "coffee-3",
+      "coffee-5",
+      "coffee-6",
+      "coffee-7",
+      "coffee-8",
+      "coffee-9",
+      "coffee-10",
+      "coffee-11",
+      "coffee-12",
+      "coffee-13",
+      "coffee-14",
+      "coffee-15",
+      "coffee-16",
+      "coffee-17",
+      "coffee-18",
+      "coffee-19",
+      "coffee-20",
+      "coffee-21",
+      "coffee-22",
+      "coffee-23",
+      "coffee-24",
+      "coffee-25",
+      "coffee-26",
+      "coffee-27",
+      "coffee-28",
+      "coffee-29",
+      "category-0-0",
+      "category-0-1",
+      "category-0-2",
+      "category-0-3",
+      "category-0-4",
+      "category-0-5",
+      "category-0-6",
+      "category-1-0",
+      "category-1-1",
+      "category-1-2",
+      "category-1-3",
+      "category-1-4",
+      "category-1-5",
+      "category-1-6",
+      "category-2-0",
+      "category-2-1",
+      "category-2-2",
+      "category-2-3",
+      "category-2-4",
+      "category-2-5",
+      "category-2-6",
+      "category-3-0",
+      "category-3-1",
+      "category-3-2",
+      "category-3-3",
+      "category-3-4",
+      "category-3-5",
+      "category-3-6",
+      "category-4-0",
+      "category-4-1",
+      "category-4-2",
+      "category-4-3",
+      "category-4-4",
+      "category-4-5",
+      "category-4-6",
+      "category-5-0",
+      "category-5-1",
+      "category-5-2",
+      "category-5-3",
+      "category-5-4",
+      "category-5-5",
+      "category-5-6",
+      "category-6-0",
+      "category-6-1",
+      "category-6-2",
+      "category-6-3",
+      "category-6-4",
+      "category-6-5",
+      "category-6-6",
+      "category-7-0",
+      "category-7-1",
+      "category-7-2",
+      "category-7-3",
+      "category-7-4",
+      "category-7-5",
+      "category-7-6",
+      "category-8-0",
+      "category-8-1",
+      "category-8-2",
+      "category-8-3",
+      "category-8-4",
+      "category-8-5",
+      "category-8-6",
+      "category-9-0",
+      "category-9-1",
+      "category-9-2",
+      "category-9-3",
+      "category-9-4",
+      "category-9-5",
+      "category-9-6",
+      "category-10-0",
+      "category-10-1",
+      "category-10-2",
+      "category-10-3",
+      "category-10-4",
+      "category-10-5",
+      "category-10-6",
+      "category-11-0",
+      "category-11-1",
+      "category-11-2",
+      "category-11-3",
+      "category-11-4",
+      "category-11-5",
+      "category-11-6",
+      "category-12-0",
+      "category-12-1",
+      "category-12-2",
+      "category-12-3",
+      "category-12-4",
+      "category-12-5",
+      "category-12-6",
+      "category-13-0",
+      "category-13-1",
+      "category-13-2",
+      "category-13-3",
+      "category-13-4",
+      "category-13-5",
+      "category-13-6",
+      "category-14-0",
+      "category-14-1",
+      "category-14-2",
+      "category-14-3",
+      "category-14-4",
+      "category-14-5",
+      "category-14-6",
+      "category-15-0",
+      "category-15-1",
+      "category-15-2",
+      "category-15-3",
+      "category-15-4",
+      "category-15-5",
+      "category-15-6",
+      "category-16-0",
+      "category-16-1",
+      "category-16-2",
+      "category-16-3",
+      "category-16-4",
+      "category-16-5",
+      "category-16-6",
+      "category-17-0",
+      "category-17-1",
+      "category-17-2",
+      "category-17-3",
+      "category-17-4",
+      "category-17-5",
+      "category-17-6",
+      "category-18-0",
+      "category-18-1",
+      "category-18-2",
+      "category-18-3",
+      "category-18-4",
+      "category-18-5",
+      "category-18-6",
+      "category-19-0",
+      "category-19-1",
+      "category-19-2",
+      "category-19-3",
+      "category-19-4",
+      "category-19-5",
+      "category-19-6"
+    ],
+    "parent": "",
+    "image": ""
+  }
+]

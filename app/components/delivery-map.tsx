@@ -29,6 +29,6 @@ export default function DeliveryMap({ point, onChange }: { point: Point; onChang
   }).catch(()=>setFailed(true));
   return ()=>{cancelled=true;observer?.disconnect();map.current?.remove();map.current=null;marker.current=null;};
  },[]);
- useEffect(()=>{initial.current=point;if(map.current){map.current.setView([point],map.current.getZoom());marker.current?.setLatLng([point]);}},[point]);
+ useEffect(()=>{initial.current=point;if(map.current){map.current.setView([point.lat,point.lng],map.current.getZoom());marker.current?.setLatLng([point.lat,point.lng]);}},[point]);
  return <div className={s.mapWrap}><div ref={host} className={s.map} aria-label="Delivery location map"/>{failed&&<p className={s.mapWarning}>Map tiles could not load. You can still enter your address manually below.</p>}</div>;
 }
