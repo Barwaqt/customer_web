@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "noon | Shop electronics, fashion, beauty & more",
+  title: "Barwaqt | Shop electronics, fashion, beauty & more",
   description: "Explore everyday essentials, the latest electronics, fashion, beauty, and great deals, all in one place.",
 };
 
