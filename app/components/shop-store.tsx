@@ -1,0 +1,16 @@
+'use client';
+import {createContext,useContext,useEffect,useCallback,useRef,useState} from 'react';
+import {api,type Product} from './commerce-client';
+import {useAccount} from './auth-provider';
+type Cart=Record<string,number>;type Update<T>=T|((v:T)=>T);
+type Row={productId:string;quantity:number;product:Product};
+const Context=createContext({cart:{} as Cart,saved:[] as string[],rows:[] as Row[],wishlist:[] as Product[],busy:false,error:'',setCart:async(...args:[Update<Cart>])=>{void args;},setSaved:async(...args:[Update<string[]>])=>{void args;},reload:async()=>{}});
+export function ShopProvider({children}:{children:React.ReactNode}){const account=useAccount();return <ShopSession key={account.identity||'guest'}>{children}</ShopSession>;}
+function ShopSession({children}:{children?:React.ReactNode}){
+ const account=useAccount();const [rows,setRows]=useState<Row[]>([]);const [wishlist,setWishlist]=useState<Product[]>([]);const [busy,setBusy]=useState(false);const [error,setError]=useState('');const queue=useRef(Promise.resolve());const alive=useRef(true);
+ const reload=useCallback(async()=>{if(!account.signedIn)return;const [cart,saved]=await Promise.all([api<Row[]>('/customer/cart'),api<{product:Product}[]>('/customer/wishlist')]);if(!alive.current)return;setRows(cart);setWishlist(saved.map(r=>r.product));},[account.signedIn]);
+ useEffect(()=>{alive.current=true;if(account.signedIn)void reload().catch(e=>{if(alive.current)setError(e.message);});return()=>{alive.current=false;};},[account.signedIn,reload]);
+ function change(kind:'cart'|'saved',value:Update<Cart>|Update<string[]>){if(!account.signedIn){account.open();const missing=Promise.reject(new Error("Please sign in"));void missing.catch(()=>{});return missing;}setBusy(true);setError('');const pending=queue.current.then(async()=>{if(!alive.current)throw new Error('Account changed. Retry.');if(kind==='cart'){const current=await api<Row[]>('/customer/cart');const prev=Object.fromEntries(current.map(r=>[r.productId,r.quantity]));const next=typeof value==='function'?(value as (v:Cart)=>Cart)(prev):value as Cart;for(const id of new Set([...Object.keys(prev),...Object.keys(next)])){const q=next[id]||0;if(q!==(prev[id]||0))await api('/customer/cart/'+id,'PUT',{quantity:Math.max(0,Math.min(99,q))});}}else{const current=await api<{productId:string}[]>('/customer/wishlist');const prev=current.map(r=>r.productId);const next=typeof value==='function'?(value as (v:string[])=>string[])(prev):value as string[];for(const id of new Set([...prev,...next]))if(prev.includes(id)!==next.includes(id))await api('/customer/wishlist/'+id,next.includes(id)?'PUT':'DELETE');}await reload();});queue.current=pending.catch(e=>{setError(e.message);}).finally(()=>setBusy(false));return pending;}
+ return <Context.Provider value={{cart:Object.fromEntries(rows.map(r=>[r.productId,r.quantity])),saved:wishlist.map(p=>p.id),rows,wishlist,busy,error,setCart:v=>change('cart',v),setSaved:v=>change('saved',v),reload}}>{children}{error&&<div role="alert" style={{position:"fixed",bottom:20,left:20,zIndex:1000,background:"#fff",padding:16,border:"1px solid #ddd",borderRadius:8}}>{error}<button onClick={()=>setError("")}>×</button></div>}</Context.Provider>;
+}
+export const useShop=()=>useContext(Context);

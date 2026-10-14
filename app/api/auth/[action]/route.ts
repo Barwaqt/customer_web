@@ -6,7 +6,7 @@ const prefix=`barwaqt_${portal}`;
 const options={httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax' as const,path:'/'};
 async function proxy(request:NextRequest,context:{params:Promise<{action:string}>}) {
  const {action}=await context.params;
- const allowed=request.method==='GET'?['me','providers']:['login','register','refresh','logout','forgot-password','reset-password','challenge','social','link-provider','profile'];
+ const allowed=request.method==='GET'?['me','providers']:['login','register','refresh','logout','forgot-password','reset-password','challenge','social','link-provider','profile','change-password'];
  if(!allowed.includes(action)||(portal==='vendor'&&action==='register'))return NextResponse.json({error:{message:'Route not found'}},{status:404});
  if(request.method!=='GET'&&request.headers.get('origin')!==new URL(request.url).origin)return NextResponse.json({error:{message:'Invalid request origin'}},{status:403});
  const store=await cookies();
@@ -15,7 +15,7 @@ async function proxy(request:NextRequest,context:{params:Promise<{action:string}
  try {
  let access=store.get(`${prefix}_access`)?.value;
  const send=(path:string,method:string,body?:unknown,token?:string)=>fetch(`${api}${path}`,{method,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{})},...(body?{body:JSON.stringify(body)}:{}),cache:'no-store',signal:AbortSignal.timeout(20000)});
- const protectedAction=['me','logout','link-provider','profile'].includes(action);
+ const protectedAction=['me','logout','link-provider','profile','change-password'].includes(action);
  async function refresh(){const value=store.get(`${prefix}_refresh`)?.value;if(!value)return false;const r=await send('/auth/refresh','POST',{refreshToken:value});if(!r.ok){clear();return false;}const j=await r.json();save(j.data);access=j.data.accessToken;return true;}
  if(protectedAction&&!access)await refresh();
  let body:Record<string,unknown>|undefined;
@@ -27,7 +27,8 @@ async function proxy(request:NextRequest,context:{params:Promise<{action:string}
  let response=await send(path,method,body,protectedAction?access:undefined);
  if(protectedAction&&response.status===401&&await refresh())response=await send(path,method,body,access);
  if(action==='logout'){clear();return NextResponse.json({data:{message:'Signed out'}});}
- const json=response.status===204?{data:{}}:await response.json();
+ const responseText=response.status===204?'':await response.text();
+ let json;try{json=responseText?JSON.parse(responseText):{data:{}};}catch{json={error:{message:response.status===429?'Too many authentication requests. Please wait and try again.':'Authentication service returned an unexpected response.'}};}
  if(response.ok&&['login','register','social'].includes(action)){
   const user=json.data.user;
   if(user.role!==(portal==='vendor'?'VENDOR':'CUSTOMER')){await send('/auth/logout','POST',{},json.data.accessToken);return NextResponse.json({error:{message:portal==='vendor'?'Use an administrator-registered vendor account.':'Use a customer account on this storefront.'}},{status:403});}

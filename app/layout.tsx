@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
+import {ShopProvider} from "./components/shop-store";
+import {CatalogProvider} from "./components/catalog-context";
 import AuthProvider from "./components/auth-provider";
 
 const geistSans = Geist({
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body><AuthProvider>{children}</AuthProvider></body>
+      <body><AuthProvider><ShopProvider><CatalogProvider>{children}</CatalogProvider></ShopProvider></AuthProvider></body>
     </html>
   );
 }

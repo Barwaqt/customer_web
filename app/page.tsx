@@ -4,15 +4,15 @@ import Image from "next/image";
 import { HomeSections, HomeFooter } from "./components/home-sections";
 import Link from "next/link";
 import CategoryNavigation from "./components/category-navigation";
-import { BrandLogo, BrandAnnouncement } from "./components/brand";
+import { BrandLogo } from "./components/brand";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { useShop } from "./components/shop-store";
-import data from "./shop-data.json";
+import {useCatalog,type CatalogProduct} from "./components/catalog-context";
 import { AuthButton } from "./components/auth-provider";
 import s from "./page.module.css";
 
-type Product = (typeof data.products)[number];
+type Product = CatalogProduct;
 const money = (n: number) => n.toLocaleString("en-AE");
 function Art({ src, alt, className, eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
   return <Image src={src} alt={alt} width={600} height={400} className={className} loading={eager ? "eager" : "lazy"} unoptimized />;
@@ -28,6 +28,7 @@ export default function Home() {
   return <Storefront key={query} initialQuery={query}/>;
 }
 function Storefront({ initialQuery }: { initialQuery: string }) {
+ const data=useCatalog();
   const [input, setInput] = useState(initialQuery);
   const [query, setQuery] = useState(initialQuery);
   const { cart, setCart, saved, setSaved } = useShop();
@@ -42,27 +43,27 @@ function Storefront({ initialQuery }: { initialQuery: string }) {
  }, []);
   const count = Object.values(cart).reduce((a, b) => a + b, 0);
   const total = data.products.reduce((a, p) => a + p.price * (cart[p.id] || 0), 0);
-  function add(p: Product) { setCart(c => ({ ...c, [p.id]: (c[p.id] || 0) + 1 })); setNotice(`${p.name} added to cart`); }
+  async function add(p: Product) { try{await setCart(c => ({ ...c, [p.id]: (c[p.id] || 0) + 1 })); setNotice(`${p.name} added to cart`);}catch(e){setNotice((e as Error).message);} }
   function openPanel(p: typeof panel) { setPanel(p); dialog.current?.showModal(); }
   function toggleSave(p: Product) { setSaved(c => c.includes(p.id) ? c.filter(id => id !== p.id) : [...c, p.id]); }
   function search(value: string) { setQuery(value.trim()); setInput(value); requestAnimationFrame(() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })); }
   function card(p: Product) {
     return <article className={s.product} key={p.id}>
-      <div className={s.productArt}><span className={s.best}>{Math.round((1-p.price/p.old)*100)}% OFF</span><button className={`${s.save} ${saved.includes(p.id) ? s.saved : ""}`} aria-label={`${saved.includes(p.id) ? "Remove" : "Save"} ${p.name}`} aria-pressed={saved.includes(p.id)} onClick={() => toggleSave(p)}><Icon name="heart"/></button><button className={s.imageButton} onClick={() => router.push(`/product/${p.id}`)} aria-label={`View ${p.name}`}><Art src={p.image} alt={p.name}/></button></div>
-      <div className={s.productBody}><button className={s.productName} onClick={() => router.push(`/product/${p.id}`)}>{p.name}</button><p className={s.rating}>★ <b>{p.rating}</b></p><p className={s.price}><small>AED</small> {money(p.price)} <del>{money(p.old)}</del> <span>{Math.round((1-p.price/p.old)*100)}%</span></p><button className={s.cartCta} onClick={()=>add(p)} aria-label={`Add ${p.name} to cart`}>ϟ Add to cart</button></div>
+      <div className={s.productArt}>{p.old>p.price&&<span className={s.best}>{Math.round((1-p.price/p.old)*100)}% OFF</span>}<button className={`${s.save} ${saved.includes(p.id) ? s.saved : ""}`} aria-label={`${saved.includes(p.id) ? "Remove" : "Save"} ${p.name}`} aria-pressed={saved.includes(p.id)} onClick={() => toggleSave(p)}><Icon name="heart"/></button><button className={s.imageButton} onClick={() => router.push(`/product/${p.id}`)} aria-label={`View ${p.name}`}><Art src={p.image} alt={p.name}/></button></div>
+      <div className={s.productBody}><button className={s.productName} onClick={() => router.push(`/product/${p.id}`)}>{p.name}</button><p className={s.rating}>★ <b>{p.rating}</b></p><p className={s.price}><small>PKR</small> {money(p.price)} {p.old>p.price&&<><del>{money(p.old)}</del> <span>{Math.round((1-p.price/p.old)*100)}%</span></>}</p><button className={s.cartCta} disabled={p.stock<1||(cart[p.id]||0)>=Math.min(99,p.stock)} onClick={()=>add(p)} aria-label={`Add ${p.name} to cart`}>ϟ Add to cart</button></div>
     </article>;
   }
   const matching = data.products.filter(p => `${p.name} ${p.section}`.toLowerCase().includes(query.toLowerCase()));
   return <>
     <a className={s.skip} href="#main">Skip to content</a>
-    <BrandAnnouncement/><header className={s.header}><Link className={s.logo} href="/" aria-label="Barwaqt home"><BrandLogo/></Link><div className={s.location}><Icon name="pin"/><span><small>Deliver to</small><b>Dubai, UAE</b></span></div><form className={s.search} onSubmit={e => { e.preventDefault(); search(input); }}><button aria-label="Search"><Icon name="search"/></button><input type="search" aria-label="Search products" placeholder="What are you looking for?" value={input} onChange={e => setInput(e.target.value)}/></form><AuthButton/><Link className={s.headerAction} href="/wishlist"><Icon name="heart"/><span>Wishlist</span>{saved.length > 0 && <b>{saved.length}</b>}</Link><button className={s.headerAction} onClick={() => openPanel("cart")}><Icon name="cart"/><span>Cart</span>{count > 0 && <b>{count}</b>}</button></header>
+    <header className={s.header}><Link className={s.logo} href="/" aria-label="Barwaqt home"><BrandLogo/></Link><div className={s.location}><Icon name="pin"/><span><small>Deliver to</small><b>Pakistan</b></span></div><form className={s.search} onSubmit={e => { e.preventDefault(); search(input); }}><button aria-label="Search"><Icon name="search"/></button><input type="search" aria-label="Search products" placeholder="What are you looking for?" value={input} onChange={e => setInput(e.target.value)}/></form><AuthButton/><Link className={s.headerAction} href="/wishlist"><Icon name="heart"/><span>Wishlist</span>{saved.length > 0 && <b>{saved.length}</b>}</Link><button className={s.headerAction} onClick={() => openPanel("cart")}><Icon name="cart"/><span>Cart</span>{count > 0 && <b>{count}</b>}</button></header>
     <CategoryNavigation/>
     <main id="main" className={s.main}>
-{query?<section className={s.section} id="products"><div className={s.sectionHeading}><h1>Results for “{query}” <small>({matching.length})</small></h1><button onClick={()=>{setQuery("");setInput("");}}>CLEAR SEARCH</button></div>{matching.length?<div className={s.results}>{matching.map(card)}</div>:<div className={s.empty}><h2>No products found</h2><p>Try another product or category.</p></div>}</section>:<HomeSections card={card}/>}
+{query?<section className={s.section} id="products"><div className={s.sectionHeading}><h1>Results for “{query}” <small>({matching.length})</small></h1><button onClick={()=>{setQuery("");setInput("");}}>CLEAR SEARCH</button></div>{matching.length?<div className={s.results}>{matching.map(card)}</div>:<div className={s.empty}><h2>No products found</h2><p>Try another product or category.</p></div>}</section>:<>{data.loading&&<p role="status">Loading products…</p>}{data.error&&<p role="alert">{data.error}<button onClick={data.reload}>Retry</button></p>}<HomeSections card={card}/></>}
     </main><HomeFooter/>
     <div className={s.notice} role="status">{notice && <><span>{notice}</span><button onClick={() => setNotice("")} aria-label="Dismiss notification">×</button></>}</div>
     <dialog ref={dialog} className={s.dialog} onClick={e => { if (e.target === e.currentTarget) dialog.current?.close(); }}><div className={s.dialogHeading}><h2>{panel === "cart" ? `Your cart (${count})` : panel === "wishlist" ? "Your wishlist" : "Product details"}</h2><button onClick={() => dialog.current?.close()} aria-label="Close dialog">×</button></div>
-      {<>{data.products.filter(p => panel === "cart" ? cart[p.id] > 0 : saved.includes(p.id)).map(p => <div className={s.cartItem} key={p.id}><Art src={p.image} alt={p.name}/><div><h3>{p.name}</h3><b>AED {money(p.price)}</b>{panel === "cart" ? <div className={s.quantity}><button aria-label={`Decrease quantity of ${p.name}`} onClick={() => setCart(c => ({ ...c, [p.id]: Math.max(0, c[p.id] - 1) }))}>−</button><span>{cart[p.id]}</span><button aria-label={`Increase quantity of ${p.name}`} onClick={() => add(p)}>+</button></div> : <div className={s.quantity}><button onClick={() => add(p)}>Add to cart</button><button onClick={() => toggleSave(p)}>Remove</button></div>}</div></div>)}{(panel === "cart" ? count === 0 : saved.length === 0) && <div className={s.empty}><Icon name={panel === "cart" ? "cart" : "heart"}/><h3>{panel === "cart" ? "Your cart is empty" : "Save something you love"}</h3><p>{panel === "cart" ? "Explore the deals and add your favourites." : "Tap the heart on any product to save it here."}</p></div>}{panel === "cart" && count > 0 && <div className={s.total}><b>Subtotal</b><strong>AED {money(total)}</strong><Link href="/checkout" onNavigate={() => dialog.current?.close()} className={s.primary}>VIEW CART &amp; CHECKOUT</Link></div>}</>}
+      {<>{data.products.filter(p => panel === "cart" ? cart[p.id] > 0 : saved.includes(p.id)).map(p => <div className={s.cartItem} key={p.id}><Art src={p.image} alt={p.name}/><div><h3>{p.name}</h3><b>PKR {money(p.price)}</b>{panel === "cart" ? <div className={s.quantity}><button aria-label={`Decrease quantity of ${p.name}`} onClick={() => setCart(c => ({ ...c, [p.id]: Math.max(0, c[p.id] - 1) }))}>−</button><span>{cart[p.id]}</span><button aria-label={`Increase quantity of ${p.name}`} onClick={() => add(p)}>+</button></div> : <div className={s.quantity}><button onClick={() => add(p)}>Add to cart</button><button onClick={() => toggleSave(p)}>Remove</button></div>}</div></div>)}{(panel === "cart" ? count === 0 : saved.length === 0) && <div className={s.empty}><Icon name={panel === "cart" ? "cart" : "heart"}/><h3>{panel === "cart" ? "Your cart is empty" : "Save something you love"}</h3><p>{panel === "cart" ? "Explore the deals and add your favourites." : "Tap the heart on any product to save it here."}</p></div>}{panel === "cart" && count > 0 && <div className={s.total}><b>Subtotal</b><strong>PKR {money(total)}</strong><Link href="/checkout" onNavigate={() => dialog.current?.close()} className={s.primary}>VIEW CART &amp; CHECKOUT</Link></div>}</>}
     </dialog>
   </>;
 }

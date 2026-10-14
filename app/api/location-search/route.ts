@@ -11,8 +11,8 @@ export async function GET(request: Request) {
  lastRequest = Date.now();
  try {
   const url = new URL("https://nominatim.openstreetmap.org/search");
-  url.search = new URLSearchParams({ q, format: "jsonv2", countrycodes: "ae", addressdetails: "1", limit: "5" }).toString();
-  const response = await fetch(url, { headers: { "User-Agent": "Barwaqt-Storefront-Demo/1.0", "Accept-Language": "en" }, signal: AbortSignal.timeout(8000) });
+  url.search = new URLSearchParams({ q, format: "jsonv2", countrycodes: "pk", addressdetails: "1", limit: "5" }).toString();
+  const response = await fetch(url, { headers: { "User-Agent": "Barwaqt-Storefront/1.0", "Accept-Language": "en" }, signal: AbortSignal.timeout(8000) });
   if (!response.ok) throw new Error("Location provider unavailable");
   const raw = await response.json() as { lat: string; lon: string; display_name: string; name?: string; address?: { city?: string; town?: string; state?: string } }[];
   const results = raw.map(place => ({ lat: Number(place.lat), lng: Number(place.lon), name: place.name || place.display_name.split(",")[0], label: place.display_name, city: place.address?.city || place.address?.town || place.address?.state || "" })).filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lng));

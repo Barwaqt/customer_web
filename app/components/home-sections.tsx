@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import data from "../shop-data.json";
+import {useCatalog,type CatalogProduct} from "./catalog-context";
 import { categoryHref } from "../categories";
 import { BrandLogo } from "./brand";
 import s from "./home-sections.module.css";
-type Product=typeof data.products[number];
+type Product=CatalogProduct;
 const departments=[['Grocery','♧'],['Electronics','▣'],['Mobiles','▯'],['Women’s fashion','♙'],['Home & kitchen','⌂'],['Beauty','✿'],['Health & nutrition','♡'],['Baby','♧'],['Sports & outdoors','⚑'],['Automotive','▱'],['Toys','✦'],['Watches','◷']];
 const rows:[string,string,string,number][]=[['Best Sellers','Discover favourites across our collections','Electronics',1],['Top Deals in Home & Living','Upgrade your everyday with thoughtful essentials','Home & kitchen',13],['Beauty & Fragrances','Everyday beauty, exceptional finds','Beauty',12],['Grocery Deals & Daily Staples','Stock up on everyday favourites','Grocery',6],['More Grocery Favourites','A little inspiration for your everyday basket','Grocery',20],['Fashion for Men','Explore the latest styles, shoes and accessories','Men’s fashion',11],['Fashion for Women','Discover everyday looks and special favourites','Women’s fashion',10],['Kids & Baby Essentials','Little essentials for your growing family','Baby',23],['Sports & Outdoors','Get moving with everyday fitness essentials','Sports & outdoors',27],['Automotive & Hardware Tools','Care for your vehicle, home and next project','Automotive',28]];
 function Art({src,alt,eager=false}:{src:string;alt:string;eager?:boolean}){return <Image src={src} alt={alt} width={800} height={500} loading={eager?"eager":"lazy"} unoptimized/>;}
 export function HomeSections({card}:{card:(p:Product)=>ReactNode}){
+ const data=useCatalog();
  const pick=(group:number)=>data.products.filter(p=>p.group===group).slice(0,6);
  return <div className={s.home}><section className={s.hero}><div className={s.heroMain}><Art src="/shop/hero.webp" alt="Featured GoPro collection" eager/><div className={s.heroCopy}><span>FRESH FINDS · EVERY DAY</span><h1>Your Favourite Finds,<br/><em>Right on Time.</em></h1><p>Discover electronics, fashion and everyday essentials, all in one place.</p><Link href={categoryHref('Deals')}>Shop favourites →</Link><div className={s.dots}><b/><i/><i/><i/></div></div></div><div className={s.tech}><span>FEATURED TECH</span><h2>Latest Electronics & Gadgets</h2><p>Explore your next everyday upgrade.</p><Link href={categoryHref('Electronics')}>Shop now ›</Link><Art src="/shop/reason-2.webp" alt="Explore the latest electronics" eager/></div></section>
  <section className={s.section}><header><h2>Explore Top Categories</h2><Link href={categoryHref('All products')}>View all →</Link></header><div className={s.categories}>{departments.map(([name,icon],i)=><Link key={name} href={categoryHref(name)}><span style={{background:['#fff2e8','#edf9ec','#eef3ff','#fff0f6'][i%4],color:['#d57c20','#098a42','#4f68d9','#b84482'][i%4]}}>{icon}</span>{name}</Link>)}</div></section>
