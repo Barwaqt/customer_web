@@ -15,6 +15,6 @@ export type Product={id:string;name:string;slug:string;description:string;priceM
 export type Address={id:string;kind:string;firstName:string;lastName:string;phone:string;city:string;zone:string;street:string;building:string;apartment:string;directions:string};
 export type Item={productId:string;name:string;quantity:number;unitPriceMinor:number;image?:string};
 export type VendorOrder={id:string;status:string;vendorId:string;totalMinor:number;items:Item[];createdAt:string;events:{status:string;createdAt:string;note?:string}[];order?:{address:Address};latitude?:number;longitude?:number};
-export type Order={id:string;totalMinor:number;createdAt:string;vendorOrders:VendorOrder[]};
+export type Order={payment?:import("./central-payment").PlatformPayment|null;paymentMethod:string;deliveryWindow?:{startsAt:string;endsAt:string}|null;id:string;totalMinor:number;createdAt:string;vendorOrders:VendorOrder[]};
 export type Notice={id:string;title:string;body:string;readAt:string|null};
 export const money=(v:number)=>new Intl.NumberFormat('en-PK',{style:'currency',currency:'PKR'}).format(v/100);

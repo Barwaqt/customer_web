@@ -2,3 +2,15 @@
 
 :root{--background:#fff;--foreground:#031016;--brand-accent:#93de1e;--brand-dark:#021016}::selection{background:#d3f5a1}
 .live-page{max-width:1250px;margin:24px auto;padding:0 20px;min-height:60vh}.live-panel,.live-card{background:#fff;border:1px solid #e7ebe8;border-radius:12px;padding:22px;margin-bottom:18px}.live-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}.live-columns{display:grid;grid-template-columns:2fr 1fr;gap:24px}.live-actions,.live-filters{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:16px 0}.live-panel input:not([type=checkbox]),.live-panel select,.live-panel textarea,.live-filters input,.live-filters select{padding:10px;border:1px solid #d8dfda;border-radius:6px;max-width:100%;margin:5px}.live-panel button,.live-card button{background:#b4ef42;color:#11241a;border:0;border-radius:6px;padding:10px 16px;cursor:pointer}.live-panel button:disabled,.live-card button:disabled{opacity:.5;cursor:not-allowed}.live-panel label{display:block;margin:8px 0}.live-card h3{font-size:16px}.live-card p{color:#66736c}.live-panel [role=alert]{color:#aa2020}.live-panel textarea{display:block;width:100%;min-height:90px}.live-panel table{width:100%;text-align:left}.live-panel td,.live-panel th{padding:12px;border-bottom:1px solid #eee}@media(max-width:700px){.live-columns{grid-template-columns:1fr}.live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.live-card{padding:12px}.live-filters>*{max-width:100%}}
+
+/* Branded loading indicator */
+.brand-loader{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 24px;min-height:40vh;text-align:center}
+.brand-loader.compact{min-height:0;padding:16px;flex-direction:row;gap:12px;justify-content:flex-start;text-align:left}
+.brand-loader-ring{position:relative;display:grid;place-items:center;width:74px;height:74px;flex:0 0 auto}
+.brand-loader.compact .brand-loader-ring{width:34px;height:34px}
+.brand-loader-ring::before{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid rgba(22,115,60,.15);border-top-color:var(--brand-accent,#16733c);animation:brand-loader-spin .8s linear infinite}
+.brand-loader-ring img{width:40px;height:auto}
+.brand-loader.compact .brand-loader-ring img{width:18px}
+.brand-loader-label{font-size:12px;letter-spacing:.02em;color:#66736c}
+@keyframes brand-loader-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.brand-loader-ring::before{animation-duration:2.4s}}

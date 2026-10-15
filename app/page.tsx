@@ -9,6 +9,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { useShop } from "./components/shop-store";
 import {useCatalog,type CatalogProduct} from "./components/catalog-context";
+import { BrandLoader } from "./components/brand-loader";
 import { AuthButton } from "./components/auth-provider";
 import s from "./page.module.css";
 
@@ -59,7 +60,7 @@ function Storefront({ initialQuery }: { initialQuery: string }) {
     <header className={s.header}><Link className={s.logo} href="/" aria-label="Barwaqt home"><BrandLogo/></Link><div className={s.location}><Icon name="pin"/><span><small>Deliver to</small><b>Pakistan</b></span></div><form className={s.search} onSubmit={e => { e.preventDefault(); search(input); }}><button aria-label="Search"><Icon name="search"/></button><input type="search" aria-label="Search products" placeholder="What are you looking for?" value={input} onChange={e => setInput(e.target.value)}/></form><AuthButton/><Link className={s.headerAction} href="/wishlist"><Icon name="heart"/><span>Wishlist</span>{saved.length > 0 && <b>{saved.length}</b>}</Link><button className={s.headerAction} onClick={() => openPanel("cart")}><Icon name="cart"/><span>Cart</span>{count > 0 && <b>{count}</b>}</button></header>
     <CategoryNavigation/>
     <main id="main" className={s.main}>
-{query?<section className={s.section} id="products"><div className={s.sectionHeading}><h1>Results for “{query}” <small>({matching.length})</small></h1><button onClick={()=>{setQuery("");setInput("");}}>CLEAR SEARCH</button></div>{matching.length?<div className={s.results}>{matching.map(card)}</div>:<div className={s.empty}><h2>No products found</h2><p>Try another product or category.</p></div>}</section>:<>{data.loading&&<p role="status">Loading products…</p>}{data.error&&<p role="alert">{data.error}<button onClick={data.reload}>Retry</button></p>}<HomeSections card={card}/></>}
+{query?<section className={s.section} id="products"><div className={s.sectionHeading}><h1>Results for “{query}” <small>({matching.length})</small></h1><button onClick={()=>{setQuery("");setInput("");}}>CLEAR SEARCH</button></div>{matching.length?<div className={s.results}>{matching.map(card)}</div>:<div className={s.empty}><h2>No products found</h2><p>Try another product or category.</p></div>}</section>:<>{data.loading&&<BrandLoader label="Loading products…"/>}{data.error&&<p role="alert">{data.error}<button onClick={data.reload}>Retry</button></p>}<HomeSections card={card}/></>}
     </main><HomeFooter/>
     <div className={s.notice} role="status">{notice && <><span>{notice}</span><button onClick={() => setNotice("")} aria-label="Dismiss notification">×</button></>}</div>
     <dialog ref={dialog} className={s.dialog} onClick={e => { if (e.target === e.currentTarget) dialog.current?.close(); }}><div className={s.dialogHeading}><h2>{panel === "cart" ? `Your cart (${count})` : panel === "wishlist" ? "Your wishlist" : "Product details"}</h2><button onClick={() => dialog.current?.close()} aria-label="Close dialog">×</button></div>
