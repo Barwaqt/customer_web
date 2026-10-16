@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import {ShopProvider} from "./components/shop-store";
 import {CatalogProvider} from "./components/catalog-context";
+import {HomepageProvider} from "./components/homepage-content";
 import AuthProvider from "./components/auth-provider";
 
 const geistSans = Geist({
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body><AuthProvider><ShopProvider><CatalogProvider>{children}</CatalogProvider></ShopProvider></AuthProvider></body>
+      <body><AuthProvider><ShopProvider><CatalogProvider><HomepageProvider>{children}</HomepageProvider></CatalogProvider></ShopProvider></AuthProvider></body>
     </html>
   );
 }
