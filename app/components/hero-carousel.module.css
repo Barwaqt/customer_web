@@ -1,0 +1,17 @@
+.carousel{position:relative;min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden;border-radius:17px;background:#141d23;color:white}
+.side{background:#021016}
+.track{display:flex;flex:1;min-height:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;min-width:0;box-sizing:border-box;scroll-snap-align:start;scroll-snap-stop:always;border-radius:0!important}
+.slide:after{pointer-events:none}
+.sideCopy>span{font-size:11px;letter-spacing:1.5px;color:#93de1e;font-weight:700}
+.controls{position:absolute;z-index:2;inset:auto 12px 8px;display:flex;justify-content:center;pointer-events:none}
+.controls button{display:grid;place-items:center;height:32px;padding:0;border:0;border-radius:6px;background:transparent;cursor:pointer;pointer-events:auto;flex-shrink:0}
+.controls button:hover{background:#ffffff20}
+.controls button:focus-visible,.track:focus-visible{outline:2px solid #93de1e;outline-offset:-2px}
+.dots{display:flex;flex-wrap:wrap;justify-content:center;gap:0}
+.dots button{min-width:22px;width:22px}
+.dots span{width:7px;height:7px;border-radius:8px;background:#ffffffb3;box-shadow:0 1px 4px #0008}
+.dots button[aria-pressed=true] span{width:18px;background:#93de1e}
+@media(min-width:601px){.carousel{height:100%}.slide{overflow-y:auto}.side .slide img{height:140px}}
+@media(max-width:600px){.track{flex:auto}.slide{min-height:390px}.side .slide{min-height:260px}.controls{padding-inline:6px;gap:4px}}
