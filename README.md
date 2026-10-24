@@ -34,3 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## CI/CD
+
+Pushes to `main` run checks and automatically deploy the customer website to `/var/www/barwaqt.com` through SSH and PM2. See [deployment setup](DEPLOYMENT.md) for GitHub secrets, PM2 settings, and Ubuntu prerequisites.
