@@ -44,3 +44,7 @@ Restrict production deployment branches to main. Required environment reviewers 
 Push these files to main and check **Actions → Web CI and deployment**. Both test and deploy must pass. The pipeline installs dependencies and builds before copying files, restarts the selected PM2 process, checks the local website, then checks `https://barwaqt.com/`. It records the successful local deployment commit in `/var/www/barwaqt.com/.deployed-revision`. Git metadata on the VPS is not updated.
 
 This is an in-place deployment with brief restart downtime and no automatic rollback. No destination files are deleted, so old assets, removed source files and obsolete dependencies can remain; review cleanup separately. Existing files with matching source paths are updated. The default uploads directory and env files are protected; keep custom runtime data outside source paths. On failure inspect the Actions job and `pm2 logs PROCESS_NAME --lines 80 --nostream`. Revert the faulty commit on main and push to deploy a corrected revision. The backend and database are not modified by this workflow.
+
+## Public request origin
+
+Production requests are checked against `https://barwaqt.com` for CSRF protection, independently of the internal Nginx URL. For another deployment hostname, set `APP_ORIGIN` to its exact public origin in the frontend production environment file and rebuild/restart. For example, a customer staging deployment uses `APP_ORIGIN=https://stagging.barwaqt.com`. Missing and foreign Origin headers on mutations remain rejected.
