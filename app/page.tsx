@@ -52,7 +52,7 @@ function Storefront({ initialQuery }: { initialQuery: string }) {
   async function add(p: Product) { try{await setCart(c => ({ ...c, [p.id]: (c[p.id] || 0) + 1 })); setNotice(`${p.name} added to cart`);}catch(e){setNotice((e as Error).message);} }
   function openPanel(p: typeof panel) { setPanel(p); dialog.current?.showModal(); }
   function toggleSave(p: Product) { setSaved(c => c.includes(p.id) ? c.filter(id => id !== p.id) : [...c, p.id]); }
-  function search(value: string) { setQuery(value.trim()); setInput(value); requestAnimationFrame(() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })); }
+  function search(value: string) { const term=value.trim();if(term.length>=2&&term.length<=100)void fetch('/api/commerce/catalog/searches',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({term})}).catch(()=>{}); setQuery(value.trim()); setInput(value); requestAnimationFrame(() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })); }
   function card(p: Product) {
     return <article className={s.product} key={p.id}>
       <div className={s.productArt}>{p.old>p.price&&<span className={s.best}>{Math.round((1-p.price/p.old)*100)}% OFF</span>}<button className={`${s.save} ${saved.includes(p.id) ? s.saved : ""}`} aria-label={`${saved.includes(p.id) ? "Remove" : "Save"} ${p.name}`} aria-pressed={saved.includes(p.id)} onClick={() => toggleSave(p)}><Icon name="heart"/></button><button className={s.imageButton} onClick={() => router.push(`/product/${p.id}`)} aria-label={`View ${p.name}`}><Art src={p.image} alt={p.name}/></button></div>

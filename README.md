@@ -38,3 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## CI/CD
 
 Pushes to `main` run checks and automatically deploy the customer website to `/var/www/barwaqt.com` through SSH and PM2. See [deployment setup](DEPLOYMENT.md) for GitHub secrets, PM2 settings, and Ubuntu prerequisites.
+
+## Session and support updates
+
+Customer session restoration waits before showing account-dependent screens and coordinates refresh-token rotation across auth and commerce routes. Product search submissions feed aggregate popular searches; admin homepage settings control pinned terms and tag count.

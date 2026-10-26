@@ -10,6 +10,7 @@ function harness(data){
  const exports={};
  const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
  vm.runInNewContext(code,{exports,process:{env:{}},URL,AbortSignal,require(name){
+  if(name==='../../../lib/session-refresh')return {refreshSession:async()=>null};
   if(name==='next/server')return {NextResponse:{json:(body,options)=>({body,...options})}};
   if(name==='next/headers')return {cookies:async()=>({get:()=>undefined,set:(...args)=>cookies.push(args),delete:()=>{}})};
   throw Error(name);
