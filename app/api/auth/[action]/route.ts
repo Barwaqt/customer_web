@@ -43,10 +43,10 @@ async function proxy(request:NextRequest,context:{params:Promise<{action:string}
  if(action==='logout'){clear();return NextResponse.json({data:{message:'Signed out'}});}
  const responseText=response.status===204?'':await response.text();
  let json;try{json=responseText?JSON.parse(responseText):{data:{}};}catch{json={error:{message:response.status===429?'Too many authentication requests. Please wait and try again.':'Authentication service returned an unexpected response.'}};}
- if(response.ok&&['login','social'].includes(action)){
+ if(response.ok&&['login','social','verify-email'].includes(action)){
   const user=json.data.user;
   if(user.role!==(portal==='vendor'?'VENDOR':'CUSTOMER')){await send('/auth/logout','POST',{},json.data.accessToken);return NextResponse.json({error:{message:portal==='vendor'?'Use an administrator-registered vendor account.':'Use a customer account on this storefront.'}},{status:403});}
-  save(json.data);return NextResponse.json({data:{user}},{status:response.status});
+  save(json.data);return NextResponse.json({data:{user,...(action==='verify-email'?{message:json.data.message,email:json.data.email}:{})}},{status:response.status});
  }
  if(protectedAction&&response.status===401)clear();
  return NextResponse.json(json,{status:response.status,headers:{'Cache-Control':'no-store'}});

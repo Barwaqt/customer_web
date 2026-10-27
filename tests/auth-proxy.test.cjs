@@ -17,13 +17,21 @@ function harness(data){
  },fetch:async(url,options)=>{calls.push({url,...options});return {ok:true,status:200,text:async()=>JSON.stringify({data})};}});
  return {calls,cookies,post:(action,body)=>exports.POST({method:'POST',url:'http://localhost:3000/api/auth/'+action,headers:new Headers({origin:'http://localhost:3000'}),json:async()=>body},{params:Promise.resolve({action})})};
 }
-for(const [action,body] of [['verify-email',{code:'482913'}],['resend-verification',{email:'customer@example.test'}]]){
+for(const [action,body] of [['resend-verification',{email:'customer@example.test'}]]){
  test(action+' forwards to the backend',async()=>{
   const h=harness({message:'Success'});const result=await h.post(action,body);
   assert.equal(result.status,200);assert.equal(h.calls[0].url,'http://localhost:4000/api/v1/auth/'+action);
   assert.deepEqual(JSON.parse(h.calls[0].body),body);assert.equal(h.cookies.length,0);
  });
 }
+test('verify-email forwards the code and signs the customer in',async()=>{
+ const data={message:'Email verified. You are signed in.',email:'customer@example.test',accessToken:'access',refreshToken:'refresh',expiresIn:900,user:{id:'customer-1',email:'customer@example.test',role:'CUSTOMER'}};
+ const h=harness(data);const result=await h.post('verify-email',{code:'482913'});
+ assert.equal(result.status,200);assert.equal(h.calls[0].url,'http://localhost:4000/api/v1/auth/verify-email');
+ assert.deepEqual(JSON.parse(h.calls[0].body),{code:'482913'});
+ assert.deepEqual(h.cookies.map(c=>c[0]),['barwaqt_customer_access','barwaqt_customer_refresh']);
+ assert.equal(result.body.data.user.email,'customer@example.test');assert.equal(result.body.data.message,data.message);
+});
 test('signup preserves verification response without creating login cookies',async()=>{
  const data={message:'Check your email',email:'customer@example.test',verificationSent:true};
  const h=harness(data);const result=await h.post('register',{email:data.email});

@@ -48,7 +48,8 @@ export default function VerifyEmail(){
   {verified?<>
    <span style={chip}>Email verified</span>
    <h1 style={{fontSize:24,margin:'14px 0 10px'}}>Your email is verified</h1>
-   <p style={copy}>{message} {verified} can now sign in and shop on Barwaqt.</p>
+   <p style={copy}>{message}</p>
+   <p style={copy}>You are signed in as <b>{verified}</b> on this device.</p>
    <Link href="/" style={primary}>START SHOPPING</Link>
   </>:<>
    <span style={chip}>Signup verification</span>
