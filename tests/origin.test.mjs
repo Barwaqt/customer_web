@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import ts from 'typescript';
 const canonical = "https://barwaqt.com";
 for (const kind of ['auth', 'commerce']) {
-  async function invoke(origin, env = { NODE_ENV: 'production' }, url = 'http://127.0.0.1:3000/api/test') {
+  async function invoke(origin, env = { NODE_ENV: 'production' }, url = 'http://127.0.0.1:3000/api/test', host = '') {
     const path = kind === 'auth' ? '../app/api/auth/[action]/route.ts' : '../app/api/commerce/[...path]/route.ts';
     const code = ts.transpileModule(readFileSync(new URL(path, import.meta.url), 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
     const exports = {};
@@ -17,13 +17,17 @@ for (const kind of ['auth', 'commerce']) {
         throw Error(name);
       }, fetch() { throw Error('Unexpected upstream request'); }
     });
-    return exports.POST({ method: 'POST', url, json: async () => ({}), headers: new Headers({ ...(origin ? { origin } : {}), 'x-forwarded-host': 'evil.example', 'x-forwarded-proto': 'https' }) }, { params: Promise.resolve(kind === 'auth' ? { action: 'refresh' } : { path: ['orders'] }) });
+    return exports.POST({ method: 'POST', url, json: async () => ({}), headers: new Headers({ ...(origin ? { origin } : {}), ...(host ? { host } : {}), 'x-forwarded-host': 'evil.example', 'x-forwarded-proto': 'https' }) }, { params: Promise.resolve(kind === 'auth' ? { action: 'refresh' } : { path: ['orders'] }) });
   }
   test(`${kind}: public HTTPS origin passes through internal HTTP proxy URL`, async () => {
     assert.equal((await invoke(canonical)).status, 401);
   });
   test(`${kind}: foreign and absent origins remain blocked despite forwarded headers`, async () => {
     for (const origin of ['https://evil.example', undefined, 'null', canonical + '.evil.example']) assert.equal((await invoke(origin)).status, 403);
+  });
+  test(`${kind}: the deployment's forwarded public host needs no APP_ORIGIN`, async () => {
+    assert.equal((await invoke('https://stagging.barwaqt.com', { NODE_ENV: 'production' }, 'http://127.0.0.1:3000/api/test', 'stagging.barwaqt.com')).status, 401);
+    assert.equal((await invoke('https://evil.example', { NODE_ENV: 'production' }, 'http://127.0.0.1:3000/api/test', 'stagging.barwaqt.com')).status, 403);
   });
   test(`${kind}: explicit staging origin replaces production origin`, async () => {
     const env = { NODE_ENV: 'production', APP_ORIGIN: 'https://stagging.barwaqt.com' };

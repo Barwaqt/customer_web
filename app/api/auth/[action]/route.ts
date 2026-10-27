@@ -5,11 +5,24 @@ const api=(process.env.API_URL||'http://localhost:4000/api/v1').replace(/\/$/,''
 const portal:string='customer';
 const prefix=`barwaqt_${portal}`;
 const options={httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax' as const,path:'/'};
+// Nginx forwards the public Host and X-Forwarded-Proto, so the origin this
+// deployment is actually served from is accepted even though the upstream
+// request targets 127.0.0.1. A foreign Origin still cannot match.
+function sameOrigin(request:NextRequest){
+ const header=request.headers.get('origin');
+ if(!header||header==='null')return false;
+ let given:string;try{given=new URL(header).origin;}catch{return false;}
+ const url=new URL(request.url);
+ const host=request.headers.get('host')||url.host;
+ const proto=(request.headers.get('x-forwarded-proto')||url.protocol.replace(':','')).split(',')[0].trim();
+ const configured=process.env.APP_ORIGIN||(process.env.NODE_ENV==='production'?'https://barwaqt.com':url.origin);
+ return [configured,`${proto}://${host}`].some(value=>{try{return new URL(value).origin===given;}catch{return false;}});
+}
 async function proxy(request:NextRequest,context:{params:Promise<{action:string}>}) {
  const {action}=await context.params;
  const allowed=request.method==='GET'?['me','providers']:['login','register','refresh','logout','forgot-password','reset-password','verify-email','resend-verification','challenge','social','link-provider','profile','change-password'];
  if(!allowed.includes(action)||(portal==='vendor'&&action==='register'))return NextResponse.json({error:{message:'Route not found'}},{status:404});
- if(request.method!=='GET'&&request.headers.get('origin')!==new URL(process.env.APP_ORIGIN || (process.env.NODE_ENV === "production" ? "https://barwaqt.com" : request.url)).origin)return NextResponse.json({error:{message:'Invalid request origin'}},{status:403});
+ if(request.method!=='GET'&&!sameOrigin(request))return NextResponse.json({error:{message:'Invalid request origin'}},{status:403});
  const store=await cookies();
  const clear=()=>{store.delete(`${prefix}_access`);store.delete(`${prefix}_refresh`);};
  const save=(data:{accessToken:string;refreshToken:string;expiresIn:number})=>{store.set(`${prefix}_access`,data.accessToken,{...options,maxAge:data.expiresIn});store.set(`${prefix}_refresh`,data.refreshToken,{...options,maxAge:30*86400});};

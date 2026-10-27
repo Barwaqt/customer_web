@@ -48,4 +48,4 @@ This is an in-place deployment with brief restart downtime and no automatic roll
 
 ## Public request origin
 
-Production requests are checked against `https://barwaqt.com` for CSRF protection, independently of the internal Nginx URL. For another deployment hostname, set `APP_ORIGIN` to its exact public origin in the frontend production environment file and rebuild/restart. For example, a customer staging deployment uses `APP_ORIGIN=https://stagging.barwaqt.com`. Missing and foreign Origin headers on mutations remain rejected.
+Mutations are checked against the public origin for CSRF protection, independently of the internal Nginx URL. The origin is accepted when it matches `https://barwaqt.com`, `APP_ORIGIN` if that is set, or the `Host` and `X-Forwarded-Proto` that Nginx forwards, so `https://stagging.barwaqt.com` works without extra configuration. Set `APP_ORIGIN` to the exact public origin (and rebuild/restart) only when a proxy rewrites `Host`, for example `APP_ORIGIN=https://stagging.barwaqt.com`. Missing, `null` and foreign Origin headers on mutations remain rejected.
