@@ -23,8 +23,12 @@ if [[ "$name" = curl && "$*" = *api/deployment* ]]; then printf '%s' "$TEST_SERV
   const result=spawnSync('bash',['-s','--',archive,'barwaqt-customer','3000',revision],{input:script,encoding:'utf8',env:{...process.env,PATH:bin+':'+process.env.PATH,TEST_LOG:log,TEST_SERVED:stale?'old':revision}});
   const calls=readFileSync(log,'utf8').split('\n');
   assert.ok(calls.indexOf('npm run build')>=0);
-  const restart=calls.indexOf('pm2 startOrRestart ecosystem.config.cjs --only barwaqt-customer --update-env');
-  assert.ok(restart>calls.indexOf('npm run build'));
+  // PM2 restart actions keep the script/cwd of an existing process, so the release
+  // must be started from the ecosystem file after removing the old definition.
+  const remove=calls.indexOf('pm2 delete barwaqt-customer');
+  const restart=calls.indexOf('pm2 start ecosystem.config.cjs --only barwaqt-customer --update-env');
+  assert.ok(remove>calls.indexOf('npm run build'));
+  assert.ok(restart>remove);
   assert.ok(calls.some(c=>c.startsWith('rsync -ac --delete --exclude=static/')));
   assert.equal(result.status,stale?1:0,result.stderr);
   assert.equal(calls.includes('pm2 save'),!stale);

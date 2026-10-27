@@ -66,7 +66,13 @@ rsync -ac --delete --exclude='static/' "$stage/.next/" "$app_dir/.next/"
 rsync -ac "$stage/.next/static/" "$app_dir/.next/static/"
 cd "$app_dir"
 export PM2_APP_NAME="$app_name" WEB_PORT="$port"
-pm2 startOrRestart ecosystem.config.cjs --only "$app_name" --update-env
+# PM2's restart actions keep the script and cwd recorded on an existing process and
+# only refresh its environment, so a process that was created by hand (or by an
+# older setup) would keep launching stale code while the release just built sat
+# unused, leaving nothing listening on the port. Recreate the process from
+# ecosystem.config.cjs so the deployed revision is what runs.
+pm2 delete "$app_name" >/dev/null 2>&1 || true
+pm2 start ecosystem.config.cjs --only "$app_name" --update-env
 for attempt in {1..12}; do
   served_revision=$(curl --fail --silent --show-error --max-time 10 "http://127.0.0.1:$port/api/deployment?expected=$revision" || true)
   if [[ "$served_revision" == "$revision" ]] && curl --fail --silent --output /dev/null --max-time 10 "http://127.0.0.1:$port/"; then
@@ -79,4 +85,6 @@ for attempt in {1..12}; do
   sleep 5
 done
 echo "Web health check failed. Inspect: pm2 logs $app_name --lines 80 --nostream" >&2
+pm2 describe "$app_name" >&2 || true
+pm2 logs "$app_name" --lines 80 --nostream >&2 || true
 exit 1
