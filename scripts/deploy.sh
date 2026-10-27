@@ -50,19 +50,26 @@ for env_file in .env .env.local .env.production .env.production.local; do
 done
 cd "$stage"
 export NEXT_TELEMETRY_DISABLED=1
+export NEXT_PUBLIC_DEPLOY_REVISION="$revision"
 # Install build-time tooling even when the SSH environment sets NODE_ENV=production.
 npm ci --include=dev
 NODE_ENV=production npm run build
 # Only change the running app after the production build succeeds.
 # Retain destination-only assets and runtime files, including production .env files.
-rsync -a \
+rsync -ac \
   --exclude='.git/' --exclude='.env' --exclude='.env.*' \
-  --exclude='.deploy.lock' --exclude='uploads/' \
+  --exclude='.deploy.lock' --exclude='uploads/' --exclude='.next/' \
   "$stage/" "$app_dir/"
+# Remove obsolete compiled routes/manifests while preserving immutable static assets
+# that browsers from the previous release may still request.
+rsync -ac --delete --exclude='static/' "$stage/.next/" "$app_dir/.next/"
+rsync -ac "$stage/.next/static/" "$app_dir/.next/static/"
 cd "$app_dir"
-pm2 restart "$app_name" --update-env
+export PM2_APP_NAME="$app_name" WEB_PORT="$port"
+pm2 startOrRestart ecosystem.config.cjs --only "$app_name" --update-env
 for attempt in {1..12}; do
-  if curl --fail --silent --show-error --output /dev/null --max-time 10 "http://127.0.0.1:$port/"; then
+  served_revision=$(curl --fail --silent --show-error --max-time 10 "http://127.0.0.1:$port/api/deployment?expected=$revision" || true)
+  if [[ "$served_revision" == "$revision" ]] && curl --fail --silent --output /dev/null --max-time 10 "http://127.0.0.1:$port/"; then
     printf '%s\n' "$revision" > .deployed-revision
     sync_git_checkout
     pm2 save

@@ -35,15 +35,16 @@ Add these **environment variables**:
 | --- | --- |
 | PM2_APP_NAME | Default `barwaqt-customer`; override only if the process name changes |
 | WEB_PORT | Existing web listening port, default 3000 |
+| WEB_PUBLIC_URL | Public storefront origin; defaults to `https://stagging.barwaqt.com` |
 | DEPLOY_PORT | SSH port, default 22 |
 
 Restrict production deployment branches to main. Required environment reviewers or wait timers pause deployment; leave them disabled if unattended deployment is intended. Configure branch protection to require the test job before merging.
 
 ## Verify and recover
 
-Push these files to main and check **Actions → Web CI and deployment**. Both test and deploy must pass. The pipeline installs dependencies and builds before copying files, restarts the selected PM2 process, checks the local website, then checks `https://barwaqt.com/`. It records the successful local deployment commit in `/var/www/barwaqt.com/.deployed-revision` and then moves the server's Git checkout to that revision, so `git log` and `git status` on the VPS report what is running and no server-side `git pull` is needed. The sync is best effort: a directory that is not a Git checkout is left alone, and a failed fetch only warns.
+Push these files to main and check **Actions → Web CI and deployment**. Both test and deploy must pass. The pipeline installs dependencies and builds before copying files, starts/restarts the selected PM2 process using ecosystem.config.cjs with the application directory and port explicitly configured, then verifies the built commit at `/api/deployment` both locally and through WEB_PUBLIC_URL. A stale build or wrong upstream fails deployment. It records the successful local deployment commit in `/var/www/barwaqt.com/.deployed-revision` and then moves the server's Git checkout to that revision, so `git log` and `git status` on the VPS report what is running and no server-side `git pull` is needed. The sync is best effort: a directory that is not a Git checkout is left alone, and a failed fetch only warns.
 
-This is an in-place deployment with brief restart downtime and no automatic rollback. `rsync` deletes nothing, and the checkout sync afterwards removes only tracked files that the new revision no longer contains; production env files, the uploads directory and other untracked runtime data are never deleted, so keep custom runtime data outside tracked source paths. Removed dependencies under `node_modules` can remain; review that separately. Existing files with matching source paths are updated. On failure inspect the Actions job and `pm2 logs PROCESS_NAME --lines 80 --nostream`. Revert the faulty commit on main and push to deploy a corrected revision. The backend and database are not modified by this workflow.
+This is an in-place deployment with brief restart downtime and no automatic rollback. `rsync` removes obsolete generated `.next` files, preserves previous immutable `.next/static` assets, and the checkout sync afterwards removes only tracked files that the new revision no longer contains; production env files, the uploads directory and other untracked runtime data are never deleted, so keep custom runtime data outside tracked source paths. Removed dependencies under `node_modules` can remain; review that separately. Existing files with matching source paths are updated. On failure inspect the Actions job and `pm2 logs PROCESS_NAME --lines 80 --nostream`. Revert the faulty commit on main and push to deploy a corrected revision. The backend and database are not modified by this workflow.
 
 ## Public request origin
 
