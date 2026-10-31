@@ -40,3 +40,20 @@ test('signup preserves verification response without creating login cookies',asy
 test('unknown auth actions remain blocked',async()=>{
  const h=harness({});assert.equal((await h.post('unknown',{})).status,404);assert.equal(h.calls.length,0);
 });
+test('phone signup and resend keep session cookies unset until SMS verification',async()=>{
+ for(const action of ['phone-signup','phone-resend']){
+  const h=harness({challengeId:'challenge',phone:'+923001234567'});const result=await h.post(action,{phone:'+923001234567'});
+  assert.equal(result.status,200);assert.equal(h.cookies.length,0);
+ }
+});
+test('phone login forces the customer portal and phone verification saves HttpOnly session cookies',async()=>{
+ const login=harness({challengeId:'challenge'});await login.post('phone-login',{phone:'+923001234567',portal:'vendor'});
+ assert.equal(JSON.parse(login.calls[0].body).portal,'customer');
+ const h=harness({user:{id:'phone-user',email:null,phone:'+923001234567',role:'CUSTOMER'},accessToken:'access',refreshToken:'refresh',expiresIn:900});
+ const result=await h.post('phone-verify',{challengeId:'challenge',code:'123456'});assert.equal(result.status,200);assert.equal(result.body.data.user.email,null);
+ assert.equal(h.cookies.length,2);assert.ok(h.cookies.every(c=>c[2].httpOnly));assert.equal(result.body.data.accessToken,undefined);
+});
+test('SMS verification cannot sign a vendor into the customer storefront',async()=>{
+ const h=harness({user:{id:'vendor',role:'VENDOR'},accessToken:'access',refreshToken:'refresh',expiresIn:900});
+ const result=await h.post('phone-verify',{challengeId:'challenge',code:'123456'});assert.equal(result.status,403);assert.equal(h.cookies.length,0);
+});

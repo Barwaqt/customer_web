@@ -42,3 +42,7 @@ Pushes to `main` run checks and automatically deploy the customer website to `/v
 ## Session and support updates
 
 Customer session restoration waits before showing account-dependent screens and coordinates refresh-token rotation across auth and commerce routes. Product search submissions feed aggregate popular searches; admin homepage settings control pinned terms and tag count.
+
+### Phone signup and SMS login
+
+Customers can sign up using only a phone number, name and password. SMS verification creates the account and signs them in. Phone login uses SMS OTP; email login continues to use a password. The six-digit verification input supports pasting. Deploy the API's `20261029120000_phone_otp_marketing` migration before this frontend and configure Veevo keys only on the API server. No frontend credentials are needed. Dummy keys return an SMS configuration error and never bypass verification.
