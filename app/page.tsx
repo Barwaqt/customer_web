@@ -18,7 +18,8 @@ import s from "./page.module.css";
 type Product = CatalogProduct;
 const money = (n: number) => n.toLocaleString("en-AE");
 function Art({ src, alt, className, eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
-  return <Image src={src} alt={alt} width={600} height={400} className={className} loading={eager ? "eager" : "lazy"} unoptimized />;
+  if (!src?.trim()) return null;
+  return <Image src={src.trim()} alt={alt} width={600} height={400} className={className} loading={eager ? "eager" : "lazy"} unoptimized />;
 }
 function Icon({ name }: { name: "search" | "cart" | "heart" | "user" | "pin" }) {
   const paths = { search: <><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></>, cart: <><path d="M2 3h3l3 13h11l3-9H6"/><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/></>, heart: <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>, user: <><circle cx="12" cy="12" r="10"/><circle cx="12" cy="9" r="3"/><path d="M5 19c1-6 13-6 14 0"/></>, pin: <><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></> };
