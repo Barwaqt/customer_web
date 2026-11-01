@@ -36,6 +36,30 @@ function NavIcon({ name }: { name: string }) {
 }
 export default function CustomerProfile() {
  const account = useAccount();
+ if (!account.signedIn) {
+  return (
+   <>
+    <ShopHeader/>
+    <main className={s.layout} style={{display:'flex',justifyContent:'center',alignItems:'center',minHeight:'60vh',padding:'48px 16px'}}>
+     <section className={s.card} style={{maxWidth:480,textAlign:'center',padding:'48px 32px',borderRadius:16,boxShadow:'0 4px 20px #0000000a'}}>
+      <div style={{display:'inline-flex',padding:18,background:'#eaf9e7',borderRadius:'50%',color:'#16733c',marginBottom:20}}>
+       <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0"/></svg>
+      </div>
+      <h1 style={{fontSize:24,marginBottom:12}}>Sign In Required</h1>
+      <p style={{color:'#64748b',fontSize:14,lineHeight:1.6,marginBottom:28}}>
+       Please sign in to view your profile, manage saved delivery addresses, track orders, and view returns.
+      </p>
+      <button className={s.save} style={{width:'100%',marginBottom:16}} onClick={account.open}>
+       SIGN IN / CREATE ACCOUNT
+      </button>
+      <Link href="/" style={{color:'#16733c',fontSize:13,fontWeight:600,textDecoration:'none'}}>
+       ← Continue shopping
+      </Link>
+     </section>
+    </main>
+   </>
+  );
+ }
  return <ProfileForm key={account.identity || "guest"}/>;
 }
 function ProfileForm() {

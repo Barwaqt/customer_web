@@ -8,6 +8,7 @@ import {BrandLoader} from './brand-loader';
 import {ErrorState} from './error-state';
 import {useHomepage} from './homepage-content';
 import type {HomeCategories,HomeProductRow} from './homepage-types';
+import {useAccount} from './auth-provider';
 import s from './home-sections.module.css';
 import {HeroCarousel} from './hero-carousel';
 import {heroSlides} from './homepage-types';
@@ -30,4 +31,4 @@ export function HomeSections({card}:{card:(p:CatalogProduct)=>ReactNode}){const 
  {benefits.enabled&&<section className={s.benefits}>{benefits.items.map((item,i)=><div key={i}><span>{item.icon}</span><div><b>{item.title}</b><p>{item.description}</p></div></div>)}</section>}
  {searches.enabled&&<section className={s.searches}><h2>{searches.title}</h2><div>{searches.terms.slice(0,searches.limit??10).map((name,i)=><Link key={i} href={`/?q=${encodeURIComponent(name)}`}>{name}</Link>)}</div></section>}</div>;
 }
-export function HomeFooter(){const value=useHomepage().document?.content.footer;if(!value)return null;return <footer className={s.footer}><div className={s.footerGrid}><Link href="/" aria-label="Barwaqt home"><BrandLogo/></Link>{value.columns.map((column,i)=><div key={i}><h3>{column.title}</h3>{column.links.map((link,j)=><Link key={j} href={link.href}>{link.label}</Link>)}</div>)}<div><h3>{value.title}</h3><p>{value.description}</p><Link className={s.footerCta} href={value.href}>{value.linkLabel}</Link></div></div><div className={s.copyright}><span>{value.copyright}</span><span>{value.paymentLabel}</span></div></footer>;}
+export function HomeFooter(){const value=useHomepage().document?.content.footer;const account=useAccount();if(!value)return null;return <footer className={s.footer}><div className={s.footerGrid}><Link href="/" aria-label="Barwaqt home"><BrandLogo/></Link>{value.columns.map((column,i)=><div key={i}><h3>{column.title}</h3>{column.links.map((link,j)=>{const isAccount=link.href==='/profile'||link.href.startsWith('/profile');return <Link key={j} href={link.href} onClick={e=>{if(isAccount&&!account.signedIn){e.preventDefault();account.open();}}}>{link.label}</Link>;})}</div>)}<div><h3>{value.title}</h3><p>{value.description}</p><Link className={s.footerCta} href={value.href}>{value.linkLabel}</Link></div></div><div className={s.copyright}><span>{value.copyright}</span><span>{value.paymentLabel}</span></div></footer>;}
