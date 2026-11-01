@@ -13,6 +13,7 @@ import {useHomepage} from "./components/homepage-content";
 import { BrandLoader } from "./components/brand-loader";
 import { ErrorState } from "./components/error-state";
 import { AuthButton } from "./components/auth-provider";
+import DeliveryLocation from "./components/delivery-location";
 import s from "./page.module.css";
 
 type Product = CatalogProduct;
@@ -73,7 +74,7 @@ function Storefront({ initialQuery }: { initialQuery: string }) {
   const homeLoading = (data.loading || !homepage.document) && !blockingError;
   return <>
     <a className={s.skip} href="#main">Skip to content</a>
-    <header className={s.header}><Link className={s.logo} href="/" aria-label="Barwaqt home" onClick={()=>{setQuery("");setInput("");window.scrollTo({top:0,behavior:"auto"});}}><BrandLogo/></Link><div className={s.location}><Icon name="pin"/><span><small>Deliver to</small><b>Pakistan</b></span></div><form className={s.search} onSubmit={e => { e.preventDefault(); search(input); }}><button aria-label="Search"><Icon name="search"/></button><input type="search" aria-label="Search products" placeholder="What are you looking for?" value={input} onChange={e => setInput(e.target.value)}/></form><AuthButton/><Link className={s.headerAction} href="/wishlist"><Icon name="heart"/><span>Wishlist</span>{saved.length > 0 && <b>{saved.length}</b>}</Link><button className={s.headerAction} onClick={() => openPanel("cart")}><Icon name="cart"/><span>Cart</span>{count > 0 && <b>{count}</b>}</button></header>
+    <header className={s.header}><Link className={s.logo} href="/" aria-label="Barwaqt home" onClick={()=>{setQuery("");setInput("");window.scrollTo({top:0,behavior:"auto"});}}><BrandLogo/></Link><DeliveryLocation/><form className={s.search} onSubmit={e => { e.preventDefault(); search(input); }}><button aria-label="Search"><Icon name="search"/></button><input type="search" aria-label="Search products" placeholder="What are you looking for?" value={input} onChange={e => setInput(e.target.value)}/></form><AuthButton/><Link className={s.headerAction} href="/wishlist"><Icon name="heart"/><span>Wishlist</span>{saved.length > 0 && <b>{saved.length}</b>}</Link><button className={s.headerAction} onClick={() => openPanel("cart")}><Icon name="cart"/><span>Cart</span>{count > 0 && <b>{count}</b>}</button></header>
     <CategoryNavigation/>
     <main id="main" className={s.main}>
 {query?<section className={s.section} id="products"><div className={s.sectionHeading}><h1>Results for “{query}” <small>({matching.length})</small></h1><button type="button" onClick={returnHome}>← Back to homepage</button></div>{matching.length?<div className={s.results}>{matching.map(card)}</div>:<div className={s.empty}><h2>No products found</h2><p>Try another product or category.</p></div>}</section>:<>{homeLoading?<BrandLoader label="Loading your storefront…"/>:blockingError?<ErrorState message={blockingError} onRetry={()=>{data.reload();homepage.reload();}}/>:<HomeSections card={card}/>}</>}
