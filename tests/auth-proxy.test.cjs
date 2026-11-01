@@ -46,9 +46,13 @@ test('phone signup and resend keep session cookies unset until SMS verification'
   assert.equal(result.status,200);assert.equal(h.cookies.length,0);
  }
 });
-test('phone login forces the customer portal and phone verification saves HttpOnly session cookies',async()=>{
- const login=harness({challengeId:'challenge'});await login.post('phone-login',{phone:'+923001234567',portal:'vendor'});
+test('phone login forces the customer portal and saves HttpOnly session cookies',async()=>{
+ const login=harness({user:{id:'phone-user',email:null,phone:'+923001234567',role:'CUSTOMER'},accessToken:'access',refreshToken:'refresh',expiresIn:900});
+ const res=await login.post('phone-login',{phone:'+923001234567',password:'CustomerPass123',portal:'vendor'});
+ assert.equal(res.status,200);
  assert.equal(JSON.parse(login.calls[0].body).portal,'customer');
+ assert.equal(login.cookies.length,2);
+ assert.ok(login.cookies.every(c=>c[2].httpOnly));
  const h=harness({user:{id:'phone-user',email:null,phone:'+923001234567',role:'CUSTOMER'},accessToken:'access',refreshToken:'refresh',expiresIn:900});
  const result=await h.post('phone-verify',{challengeId:'challenge',code:'123456'});assert.equal(result.status,200);assert.equal(result.body.data.user.email,null);
  assert.equal(h.cookies.length,2);assert.ok(h.cookies.every(c=>c[2].httpOnly));assert.equal(result.body.data.accessToken,undefined);
