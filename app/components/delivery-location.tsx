@@ -1,13 +1,14 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState, useSyncExternalStore } from 'react';
 import s from './delivery-location.module.css';
 
 const storageKey = 'barwaqt-delivery-location';
+const changeEvent = 'barwaqt-delivery-location-change';
 type Location = { city: string; area: string; formatted?: string; lat?: number; lng?: number };
 
-function readLocation(): Location | null {
+function parseLocation(raw: string | null): Location | null {
   try {
-    const value = JSON.parse(localStorage.getItem(storageKey) || 'null');
+    const value = JSON.parse(raw || 'null');
     if (value && typeof value.city === 'string' && value.city.trim()) {
       return value;
     }
@@ -15,31 +16,51 @@ function readLocation(): Location | null {
   return null;
 }
 
+let cachedRaw: string | null = null;
+let cachedLocation: Location | null = null;
+
+// Parsing is cached by raw value so the snapshot stays referentially stable.
+function getSnapshot(): Location | null {
+  let raw: string | null = null;
+  try {
+    raw = localStorage.getItem(storageKey);
+  } catch {}
+  if (raw !== cachedRaw) {
+    cachedRaw = raw;
+    cachedLocation = parseLocation(raw);
+  }
+  return cachedLocation;
+}
+
+function getServerSnapshot(): Location | null {
+  return null;
+}
+
+function subscribe(onChange: () => void) {
+  window.addEventListener('storage', onChange);
+  window.addEventListener(changeEvent, onChange);
+  return () => {
+    window.removeEventListener('storage', onChange);
+    window.removeEventListener(changeEvent, onChange);
+  };
+}
+
 const POPULAR_CITIES = ['Islamabad', 'Rawalpindi', 'Lahore', 'Karachi', 'Peshawar', 'Multan', 'Faisalabad'];
 
 export default function DeliveryLocation() {
   const dialog = useRef<HTMLDialogElement>(null);
-  const [location, setLocation] = useState<Location | null>(null);
+  const location = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [search, setSearch] = useState('');
   const [results, setResults] = useState<{ name: string; label: string; city: string; zone: string; lat: number; lng: number }[]>([]);
   const [locating, setLocating] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    setLocation(readLocation());
-    function sync() {
-      setLocation(readLocation());
-    }
-    window.addEventListener('storage', sync);
-    return () => window.removeEventListener('storage', sync);
-  }, []);
-
   function saveAndClose(next: Location) {
-    setLocation(next);
     try {
       localStorage.setItem(storageKey, JSON.stringify(next));
     } catch {}
+    window.dispatchEvent(new Event(changeEvent));
     dialog.current?.close();
   }
 
