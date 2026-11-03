@@ -55,6 +55,8 @@ export default function DeliveryLocation() {
   const [locating, setLocating] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
+  const [manualCity, setManualCity] = useState('');
+  const [manualArea, setManualArea] = useState('');
 
   function saveAndClose(next: Location) {
     try {
@@ -68,6 +70,8 @@ export default function DeliveryLocation() {
     setMessage('');
     setSearch('');
     setResults([]);
+    setManualCity(location?.city || '');
+    setManualArea(location?.area || '');
     dialog.current?.showModal();
   }
 
@@ -276,6 +280,47 @@ export default function DeliveryLocation() {
             ))}
           </div>
         </div>
+
+        {/* Manual entry: type the city and area without using Google Maps */}
+        <form
+          className={s.manual}
+          onSubmit={(event) => {
+            event.preventDefault();
+            const next = { city: manualCity.trim(), area: manualArea.trim() };
+            if (!next.city || !next.area) {
+              setMessage('Enter both a city and an area to set your location.');
+              return;
+            }
+            saveAndClose(next);
+          }}
+        >
+          <small className={s.manualTitle}>OR ENTER YOUR ADDRESS MANUALLY</small>
+          <label>
+            City
+            <input
+              aria-label="City"
+              autoComplete="address-level2"
+              maxLength={80}
+              placeholder="e.g. Lahore"
+              value={manualCity}
+              onChange={(event) => setManualCity(event.target.value)}
+            />
+          </label>
+          <label>
+            Area / neighbourhood
+            <input
+              aria-label="Area or neighbourhood"
+              autoComplete="address-level3"
+              maxLength={100}
+              placeholder="e.g. Gulberg"
+              value={manualArea}
+              onChange={(event) => setManualArea(event.target.value)}
+            />
+          </label>
+          <button className={s.save} type="submit" disabled={!manualCity.trim() || !manualArea.trim()}>
+            Use this location
+          </button>
+        </form>
 
         {message && (
           <p role="status" style={{ fontSize: 12, color: '#dc2626', marginTop: 14 }}>
