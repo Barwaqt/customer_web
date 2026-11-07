@@ -7,3 +7,288 @@
 .modeSwitch{display:flex;gap:8px;padding:12px 10px 0;background:#f6f6f7}
 .modeSwitch button{flex:1;border:1px solid #dce0e6;background:white;color:#475569;border-radius:7px;padding:11px 10px;font-size:11px;font-weight:600;min-height:40px}
 .modeSwitch button[aria-pressed=true]{border-color:#16733c;background:#f0fae9;color:#16733c;box-shadow:inset 0 0 0 1px #16733c}
+
+/* Order confirmation center popup */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+.modalCard {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 540px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  border: 1px solid #e2e8f0;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modalTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.modalBrandPill {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #16733c;
+  background: #eaf7ed;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.modalCloseIcon {
+  border: 0;
+  background: #f1f5f9;
+  color: #64748b;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.modalCloseIcon:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+.modalHeader {
+  text-align: center;
+  padding: 6px 0 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.modalCheckmark {
+  width: 68px;
+  height: 68px;
+  background: #dcfce7;
+  border: 3px solid #86efac;
+  color: #16a34a;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.22);
+}
+.modalTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+.modalSubtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+.modalHighlightRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin: 16px 0 14px;
+}
+.modalHighlightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.modalHighlightLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #64748b;
+  font-weight: 700;
+}
+.modalOrderId {
+  color: #16733c;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 800;
+}
+.modalTotal {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+.modalDetailsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 13px 15px;
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+.modalDetailRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  line-height: 1.5;
+}
+.modalDetailRow span {
+  color: #64748b;
+  flex-shrink: 0;
+}
+.modalDetailRow strong {
+  color: #1e293b;
+  text-align: right;
+  word-break: break-word;
+}
+.modalItemsWrap {
+  margin-bottom: 14px;
+  border: 1px solid #eef2f6;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fafbfc;
+}
+.modalItemsHeading {
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  margin: 0 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalItemsHeading small {
+  color: #64748b;
+  font-weight: 500;
+}
+.modalItemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.modalItemRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #edf2f7;
+  font-size: 12px;
+}
+.modalItemThumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #f1f5f9;
+  flex-shrink: 0;
+}
+.modalItemMeta {
+  flex: 1;
+  min-width: 0;
+}
+.modalItemName {
+  display: block;
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.modalItemQty {
+  font-size: 11px;
+  color: #64748b;
+}
+.modalItemPrice {
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+}
+.modalPaymentInfo {
+  margin-bottom: 14px;
+}
+.modalActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+.modalCloseCheckBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #16733c;
+  color: #ffffff;
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(22, 115, 60, 0.28);
+  transition: background 0.15s, transform 0.1s;
+}
+.modalCloseCheckBtn:hover {
+  background: #125c30;
+  transform: translateY(-1px);
+}
+.modalCloseCheckBtn:active {
+  transform: translateY(0);
+}
+.modalCheckmarkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 900;
+}
+.modalTrackLink {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #16733c;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.modalTrackLink:hover {
+  background: #f0fae9;
+  text-decoration: underline;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
