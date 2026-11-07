@@ -25,16 +25,30 @@ export async function GET(request: Request) {
       street?: string;
     }[];
 
-    const results = items.map((p) => ({
-      lat: p.latitude ?? 33.7215,
-      lng: p.longitude ?? 73.0567,
-      name: p.mainText || p.description.split(",")[0],
-      label: p.description,
-      city: p.city || "Islamabad",
-      zone: p.zone || "Central",
-      street: p.street || "",
-      placeId: p.placeId,
-    }));
+    const results = items.map((p) => {
+      let city = p.city;
+      let zone = p.zone;
+      if (!city) {
+        const parts = (p.secondaryText || p.description || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+        city = parts.length > 0 ? parts[0] : (p.mainText || "Pakistan");
+      }
+      if (!zone) {
+        zone = p.mainText || city;
+      }
+      return {
+        lat: p.latitude ?? 33.7215,
+        lng: p.longitude ?? 73.0567,
+        name: p.mainText || p.description.split(",")[0],
+        label: p.description,
+        city,
+        zone,
+        street: p.street || "",
+        placeId: p.placeId,
+      };
+    });
 
     return Response.json({ results });
   } catch {

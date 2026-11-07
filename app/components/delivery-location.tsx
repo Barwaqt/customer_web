@@ -45,7 +45,7 @@ function subscribe(onChange: () => void) {
   };
 }
 
-const POPULAR_CITIES = ['Islamabad', 'Rawalpindi', 'Lahore', 'Karachi', 'Peshawar', 'Multan', 'Faisalabad'];
+const POPULAR_CITIES = ['Islamabad', 'Rawalpindi', 'Lahore', 'Karachi', 'Peshawar', 'Chitral', 'Multan', 'Faisalabad'];
 
 export default function DeliveryLocation() {
   const dialog = useRef<HTMLDialogElement>(null);
