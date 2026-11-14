@@ -11,7 +11,7 @@ export function useApi<T>(path:string|null){
  return {data:result?.key===key?result.data:undefined,error:result?.key===key?result.error:'',loading:!!path&&result?.key!==key,reload};
 }
 export type Category={id:string;name:string;slug:string;image?:string|null;parentSlug?:string|null};
-export type Product={id:string;name:string;slug:string;description:string;priceMinor:number;stock:number;active:boolean;images:string[];attributes:Record<string,string>;categoryId:string;vendorId:string;category?:Category;vendor?:{id:string;name:string;logo?:string|null;city:string;zone:string;expressDelivery?:boolean;expressEtaMinutes?:number|null;standardDeliveryDays?:number};reviews?:{rating:number;comment:string;createdAt:string}[]};
+export type Product={id:string;name:string;slug:string;description:string;priceMinor:number;stock:number;active:boolean;images:string[];attributes:Record<string,string>;expressDelivery?:boolean;expressEtaMinutes?:number|null;standardDeliveryDays?:number;categoryId:string;vendorId:string;category?:Category;vendor?:{id:string;name:string;logo?:string|null;city:string;zone:string};reviews?:{rating:number;comment:string;createdAt:string}[]};
 export type Address={id:string;kind:string;firstName:string;lastName:string;phone:string;city:string;zone:string;street:string;building:string;apartment:string;directions:string};
 export type Item={productId:string;name:string;quantity:number;unitPriceMinor:number;image?:string};
 export type VendorOrder={id:string;status:string;vendorId:string;totalMinor:number;items:Item[];createdAt:string;deliveryOption?:string;deliveryEtaMinutes?:number|null;events:{status:string;createdAt:string;note?:string}[];order?:{address:Address};latitude?:number;longitude?:number};
