@@ -15,14 +15,27 @@ export const formatMoney = (n: number) => n.toLocaleString("en-AE", { minimumFra
 export function ProductArt({src,alt,className,eager=false}:{src:string;alt:string;className?:string;eager?:boolean}){return <Image src={src||"/brand/logo.svg"} alt={alt} width={500} height={600} unoptimized loading={eager?"eager":"lazy"} className={className}/>}
 export function Recommendations({products}:{products:Product[]}) {return <div className={c.recommendations}>{products.map(p=><Link href={`/product/${p.id}`} key={p.id} className={c.recommendation}><ProductArt src={p.image} alt={p.name}/><p>{p.name}</p><small className={c.green}>★ {p.rating}</small><strong>PKR {formatMoney(p.price)}</strong><span className={c.express}>express</span></Link>)}</div>}
 
+function canonicalOptionKey(key: string): string {
+  const trimmed = key.trim();
+  if (trimmed.toLowerCase() === 'color' || trimmed.toLowerCase() === 'colour') return 'Color';
+  if (trimmed.toLowerCase() === 'size') return 'Size';
+  return trimmed;
+}
 function extractVariantOptions(v: CatalogVariant): Record<string, string> {
-  if (v.options && Object.keys(v.options).length > 0) return v.options;
+  if (v.options && Object.keys(v.options).length > 0) {
+    const saved: Record<string, string> = {};
+    for (const [key, val] of Object.entries(v.options)) {
+      if (val === undefined || val === null || String(val).trim() === '') continue;
+      saved[canonicalOptionKey(key)] = String(val).trim();
+    }
+    if (Object.keys(saved).length > 0) return saved;
+  }
   const res: Record<string, string> = {};
-  const parts = v.name.split(/[\/;]/).map((s: string) => s.trim()).filter(Boolean);
+  const parts = v.name.split(/[\/;,]/).map((s: string) => s.trim()).filter(Boolean);
   for (const part of parts) {
     const colonIdx = part.indexOf(':');
     if (colonIdx > 0) {
-      const k = part.slice(0, colonIdx).trim();
+      const k = canonicalOptionKey(part.slice(0, colonIdx));
       const val = part.slice(colonIdx + 1).trim();
       if (k && val) res[k] = val;
     }
@@ -76,7 +89,17 @@ export default function ProductDetails({product}:{product:Product}) {
      const opts=extractVariantOptions(v);
      return Object.entries(selectedOptions).every(([k,val])=>opts[k]===val);
    });
-   return match||variants[0];
+   if(match)return match;
+   // Products can list only some option combinations. Fall back to the variant
+   // sharing the most selected values so price and stock still come from a row
+   // the vendor actually created instead of always the first one.
+   let best=variants[0],bestScore=-1;
+   for(const v of variants){
+     const opts=extractVariantOptions(v);
+     const score=Object.entries(selectedOptions).reduce((n,[k,val])=>n+(opts[k]===val?1:0),0);
+     if(score>bestScore||(score===bestScore&&best.stock<1&&v.stock>0)){best=v;bestScore=score;}
+   }
+   return best;
  },[variants,selectedOptions]);
 
  const [activeImageOverride,setActiveImageOverride]=useState<string|null>(null);
@@ -90,12 +113,23 @@ export default function ProductDetails({product}:{product:Product}) {
  }
 
  function isOptionAvailable(dimName:string,val:string){
-   const test={...selectedOptions,[dimName]:val};
-   const match=variants.find(v=>{
+   // Only grey out a value when no variant carrying it has stock. Requiring the
+   // exact current combination hid valid sizes and colours on products that
+   // list only some combinations.
+   return variants.some(v=>extractVariantOptions(v)[dimName]===val&&v.stock>0);
+ }
+
+ function variantForOption(dimName:string,val:string){
+   const candidates=variants.filter(v=>extractVariantOptions(v)[dimName]===val);
+   const inStock=candidates.filter(v=>v.stock>0);
+   const pool=inStock.length?inStock:candidates;
+   let best=pool[0],bestScore=-1;
+   for(const v of pool){
      const opts=extractVariantOptions(v);
-     return Object.entries(test).every(([k,vVal])=>opts[k]===vVal);
-   });
-   return match?match.stock>0:false;
+     const score=Object.entries(selectedOptions).reduce((n,[k,other])=>n+(opts[k]===other?1:0),0);
+     if(score>bestScore){best=v;bestScore=score;}
+   }
+   return best;
  }
 
  const unitPrice=variant?variant.priceMinor/100:product.price;
@@ -148,9 +182,11 @@ export default function ProductDetails({product}:{product:Product}) {
                  className={isSelected?c.selectedSize:""}
                  style={{display:'inline-flex',alignItems:'center',gap:6,cursor:inStock?'pointer':'not-allowed',opacity:inStock?1:0.55}}
                  onClick={()=>{
-                   setSelectedOptions(prev=>({...prev,[dim.name]:val}));
+                   const next=variantForOption(dim.name,val);
+                   if(next)setSelectedOptions(extractVariantOptions(next));
+                   else setSelectedOptions(prev=>({...prev,[dim.name]:val}));
                    setQuantity(1);
-                   setActiveImageOverride(colThumb||null);
+                   setActiveImageOverride(colThumb||next?.image||null);
                  }}
                >
                  {colThumb&&<img src={colThumb} alt="" style={{width:24,height:24,borderRadius:4,objectFit:'cover'}}/>}
