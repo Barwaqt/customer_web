@@ -146,7 +146,10 @@ export default function ProductDetails({product}:{product:Product}) {
   const zoomElement=zoom.current;
   return () => {element?.close();zoomElement?.close();};
  }, []);
- const gallery=product.images.length>1?product.images:coffee?[product.image,"/product/coffee-label.webp","/product/coffee-jar.webp"]:[product.image];
+ const productGallery=product.images.length>1?product.images:coffee?[product.image,"/product/coffee-label.webp","/product/coffee-jar.webp"]:[product.image];
+ // Vendor-attached variant photos belong in the gallery too, after the product
+ // images and without duplicates.
+ const gallery=Array.from(new Set([...productGallery,...variants.map(item=>item.image).filter((src):src is string=>!!src)]));
  const activeMainImage=activeImageOverride||variant?.image||gallery[imageIndex];
  const related=data.products.filter(p=>p.id!==product.id&&(coffee?p.group===6:p.group===product.group)).slice(0,6);
  const bundleProducts=[product,...related.slice(0,2)];
