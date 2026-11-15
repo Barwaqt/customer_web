@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { categoryHref } from "../categories";
-import { useEffect, useRef, useState } from "react";
-import {useCatalog,type CatalogProduct} from "./catalog-context";
+import { useEffect, useRef, useState, useMemo } from "react";
+import {useCatalog,type CatalogProduct,type CatalogVariant} from "./catalog-context";
 import { useShop } from "./shop-store";
 import { ShopHeader, ShopFooter } from "./shop-shell";
 import { useHomepage } from "./homepage-content";
@@ -14,6 +14,23 @@ type Product = CatalogProduct;
 export const formatMoney = (n: number) => n.toLocaleString("en-AE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 export function ProductArt({src,alt,className,eager=false}:{src:string;alt:string;className?:string;eager?:boolean}){return <Image src={src||"/brand/logo.svg"} alt={alt} width={500} height={600} unoptimized loading={eager?"eager":"lazy"} className={className}/>}
 export function Recommendations({products}:{products:Product[]}) {return <div className={c.recommendations}>{products.map(p=><Link href={`/product/${p.id}`} key={p.id} className={c.recommendation}><ProductArt src={p.image} alt={p.name}/><p>{p.name}</p><small className={c.green}>★ {p.rating}</small><strong>PKR {formatMoney(p.price)}</strong><span className={c.express}>express</span></Link>)}</div>}
+
+function extractVariantOptions(v: CatalogVariant): Record<string, string> {
+  if (v.options && Object.keys(v.options).length > 0) return v.options;
+  const res: Record<string, string> = {};
+  const parts = v.name.split(/[\/;]/).map((s: string) => s.trim()).filter(Boolean);
+  for (const part of parts) {
+    const colonIdx = part.indexOf(':');
+    if (colonIdx > 0) {
+      const k = part.slice(0, colonIdx).trim();
+      const val = part.slice(colonIdx + 1).trim();
+      if (k && val) res[k] = val;
+    }
+  }
+  if (Object.keys(res).length > 0) return res;
+  return { 'Option': v.name };
+}
+
 export default function ProductDetails({product}:{product:Product}) {
  const data=useCatalog();
  const homepage=useHomepage();
@@ -23,8 +40,60 @@ export default function ProductDetails({product}:{product:Product}) {
  const zoom=useRef<HTMLDialogElement>(null);
  const coffee=(product.sourceId||product.id).startsWith("nescafe");
  const variants=product.variants||[];
- const [selectedVariantId,setVariantId]=useState(variants[0]?.id||"");
- const variant=variants.find(item=>item.id===selectedVariantId)||variants[0];
+
+ const optionDimensions=useMemo(()=>{
+   const map=new Map<string,Set<string>>();
+   for(const v of variants){
+     const opts=extractVariantOptions(v);
+     for(const [k,val] of Object.entries(opts)){
+       if(!map.has(k)) map.set(k,new Set());
+       map.get(k)!.add(val);
+     }
+   }
+   const keys=Array.from(map.keys()).sort((a,b)=>{
+     if(a.toLowerCase()==='color') return -1;
+     if(b.toLowerCase()==='color') return 1;
+     if(a.toLowerCase()==='size') return -1;
+     if(b.toLowerCase()==='size') return 1;
+     return a.localeCompare(b);
+   });
+   return keys.map(k=>({name:k,values:Array.from(map.get(k)!)}));
+ },[variants]);
+
+ const [selectedOptions,setSelectedOptions]=useState<Record<string,string>>(()=>variants[0]?extractVariantOptions(variants[0]):{});
+ useEffect(()=>{if(variants[0])setSelectedOptions(extractVariantOptions(variants[0]));},[variants]);
+
+ const variant=useMemo(()=>{
+   if(!variants.length)return null;
+   const match=variants.find(v=>{
+     const opts=extractVariantOptions(v);
+     return Object.entries(selectedOptions).every(([k,val])=>opts[k]===val);
+   });
+   return match||variants[0];
+ },[variants,selectedOptions]);
+
+ const [activeImageOverride,setActiveImageOverride]=useState<string|null>(null);
+ useEffect(()=>{
+   if(variant?.image)setActiveImageOverride(variant.image);
+ },[variant]);
+
+ function findColorImage(col:string){
+   const found=variants.find(v=>{
+     const opts=extractVariantOptions(v);
+     return opts.Color===col&&v.image;
+   });
+   return found?.image;
+ }
+
+ function isOptionAvailable(dimName:string,val:string){
+   const test={...selectedOptions,[dimName]:val};
+   const match=variants.find(v=>{
+     const opts=extractVariantOptions(v);
+     return Object.entries(test).every(([k,vVal])=>opts[k]===vVal);
+   });
+   return match?match.stock>0:false;
+ }
+
  const unitPrice=variant?variant.priceMinor/100:product.price;
  const available=variant?variant.stock:product.stock;
  const [imageIndex,setImageIndex]=useState(0);
@@ -40,18 +109,58 @@ export default function ProductDetails({product}:{product:Product}) {
   return () => {element?.close();zoomElement?.close();};
  }, []);
  const gallery=product.images.length>1?product.images:coffee?[product.image,"/product/coffee-label.webp","/product/coffee-jar.webp"]:[product.image];
+ const activeMainImage=activeImageOverride||gallery[imageIndex];
  const related=data.products.filter(p=>p.id!==product.id&&(coffee?p.group===6:p.group===product.group)).slice(0,6);
  const bundleProducts=[product,...related.slice(0,2)];
  const promotion=data.products.find(p=>p.sourceId==="klassno-coffee-mix");
- const selectedQuantity=()=>{const inCart=rows.find(row=>row.productId===product.id);return Math.min(99,(variant&&inCart?.variant?.id===variant.id?inCart.quantity:0)+quantity);};
+ const selectedQuantity=()=>{const inCart=rows.find(row=>row.productId===product.id);return Math.min(99,(variant&&inCart&&inCart.variant?.id===variant.id?inCart.quantity:0)+quantity);};
  async function add(ids: string[] = [product.id]) {try{if(variant&&ids.includes(product.id)){await setCartItem(product.id,selectedQuantity(),variant.id);const others=ids.filter(id=>id!==product.id);if(others.length)await setCart(previous=>{const next={...previous};others.forEach(id=>next[id]=(next[id]||0)+1);return next;});}else await setCart(previous=>{const next={...previous};ids.forEach(id=>next[id]=(next[id]||0)+(id===product.id?quantity:1));return next;});drawer.current?.showModal();}catch(e){setMessage((e as Error).message);}}
  async function buyNow(){try{if(variant)await setCartItem(product.id,selectedQuantity(),variant.id);else await setCart(previous=>({...previous,[product.id]:Math.min(99,(previous[product.id]||0)+quantity)}));router.push("/checkout");}catch(e){setMessage((e as Error).message);}}
  function copyCoupon(){router.push('/checkout');}
 
  const count=Object.values(cart).reduce((a,b)=>a+b,0);
  return <><ShopHeader/><main className={c.productPage}><nav className={c.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span>›</span><Link href={categoryHref(coffee?"Grocery":"All products")}>{coffee?"Grocery":"Shop"}</Link><span>›</span><span>{coffee?"Beverages　›　Coffee　›　Instant Coffee":product.section}</span></nav>
- <div className={c.productGrid}><section className={c.gallery} aria-label="Product images"><div className={c.thumbnails}>{gallery.map((src,i)=><button key={src+i} className={imageIndex===i?c.activeThumb:""} onClick={()=>setImageIndex(i)} aria-label={`View image ${i+1}`} aria-pressed={imageIndex===i}><ProductArt src={src} alt=""/></button>)}</div><div className={c.mainImage}><button className={c.heart} aria-label={saved.includes(product.id)?"Remove from wishlist":"Save to wishlist"} aria-pressed={saved.includes(product.id)} onClick={()=>setSaved(previous=>previous.includes(product.id)?previous.filter(id=>id!==product.id):[...previous,product.id])}>{saved.includes(product.id)?"♥":"♡"}</button><ProductArt src={gallery[imageIndex]} alt={product.name} eager/><button className={c.zoomButton} onClick={()=>zoom.current?.showModal()}>⌕ View larger</button><span className={c.galleryBadge}>BARWAQT COLLECTION</span></div></section>
- <section className={c.productInfo}><Link className={c.brand} href={categoryHref(coffee?"Grocery":"All products")}>{coffee?"Nescafe":product.name.split(" ")[0]} ›</Link><h1>{coffee?"Gold Instant Coffee "+((product.sourceId||product.id).endsWith("190g")?"190grams":"47.5grams"):product.name}</h1><p className={c.vendorByline}>Sold by <Link className={c.vendorLink} href={`/vendors/${product.vendorId}`}>{product.vendorName}</Link></p><button className={c.ratingLink} onClick={()=>{document.getElementById("product-reviews")?.scrollIntoView({behavior:"smooth"});}}>{product.rating} <span>★★★★★</span> <u>Ratings & reviews</u></button>{variants.length>0&&<div className={c.infoBlock}><p className={c.eyebrow}>CHOOSE A VARIANT</p><div className={c.sizes}>{variants.map(item=><button type="button" key={item.id} aria-pressed={item.id===variant?.id} disabled={item.stock<1} className={item.id===variant?.id?c.selectedSize:""} onClick={()=>{setVariantId(item.id);setQuantity(1);}}>{item.name}{item.stock<1?" · out of stock":""}</button>)}</div></div>}
+ <div className={c.productGrid}><section className={c.gallery} aria-label="Product images"><div className={c.thumbnails}>{gallery.map((src,i)=><button key={src+i} className={!activeImageOverride&&imageIndex===i?c.activeThumb:""} onClick={()=>{setActiveImageOverride(null);setImageIndex(i);}} aria-label={`View image ${i+1}`} aria-pressed={!activeImageOverride&&imageIndex===i}><ProductArt src={src} alt=""/></button>)}</div><div className={c.mainImage}><button className={c.heart} aria-label={saved.includes(product.id)?"Remove from wishlist":"Save to wishlist"} aria-pressed={saved.includes(product.id)} onClick={()=>setSaved(previous=>previous.includes(product.id)?previous.filter(id=>id!==product.id):[...previous,product.id])}>{saved.includes(product.id)?"♥":"♡"}</button><ProductArt src={activeMainImage} alt={product.name} eager/><button className={c.zoomButton} onClick={()=>zoom.current?.showModal()}>⌕ View larger</button><span className={c.galleryBadge}>BARWAQT COLLECTION</span></div></section>
+ <section className={c.productInfo}><Link className={c.brand} href={categoryHref(coffee?"Grocery":"All products")}>{coffee?"Nescafe":product.name.split(" ")[0]} ›</Link><h1>{coffee?"Gold Instant Coffee "+((product.sourceId||product.id).endsWith("190g")?"190grams":"47.5grams"):product.name}</h1><p className={c.vendorByline}>Sold by <Link className={c.vendorLink} href={`/vendors/${product.vendorId}`}>{product.vendorName}</Link></p><button className={c.ratingLink} onClick={()=>{document.getElementById("product-reviews")?.scrollIntoView({behavior:"smooth"});}}>{product.rating} <span>★★★★★</span> <u>Ratings & reviews</u></button>
+ {variants.length>0&&(optionDimensions.length===1&&optionDimensions[0].name==='Option'?(
+   <div className={c.infoBlock}><p className={c.eyebrow}>CHOOSE A VARIANT</p><div className={c.sizes} style={{flexWrap:'wrap'}}>{variants.map(item=><button type="button" key={item.id} aria-pressed={item.id===variant?.id} disabled={item.stock<1} className={item.id===variant?.id?c.selectedSize:""} onClick={()=>{setSelectedOptions(extractVariantOptions(item));setQuantity(1);if(item.image)setActiveImageOverride(item.image);}}>{item.image&&<img src={item.image} alt="" style={{width:22,height:22,borderRadius:4,objectFit:'cover',marginRight:6,verticalAlign:'middle'}}/>}{item.name}{item.stock<1?" · out of stock":""}</button>)}</div></div>
+ ):(
+   optionDimensions.map((dim: { name: string; values: string[] })=>{
+     const isColor=dim.name.toLowerCase()==='color';
+     return (
+       <div key={dim.name} className={c.infoBlock}>
+         <p className={c.eyebrow}>{dim.name.toUpperCase()}: <strong style={{color:'#111',textTransform:'none'}}>{selectedOptions[dim.name]||'Select'}</strong></p>
+         <div className={c.sizes} style={{flexWrap:'wrap'}}>
+           {dim.values.map((val: string)=>{
+             const isSelected=selectedOptions[dim.name]===val;
+             const inStock=isOptionAvailable(dim.name,val);
+             const colThumb=isColor?findColorImage(val):null;
+             return (
+               <button
+                 type="button"
+                 key={val}
+                 aria-pressed={isSelected}
+                 disabled={!inStock}
+                 className={isSelected?c.selectedSize:""}
+                 style={{display:'inline-flex',alignItems:'center',gap:6,cursor:inStock?'pointer':'not-allowed',opacity:inStock?1:0.55}}
+                 onClick={()=>{
+                   setSelectedOptions(prev=>({...prev,[dim.name]:val}));
+                   setQuantity(1);
+                   if(colThumb)setActiveImageOverride(colThumb);
+                 }}
+               >
+                 {colThumb&&<img src={colThumb} alt="" style={{width:24,height:24,borderRadius:4,objectFit:'cover'}}/>}
+                 <span>{val}</span>
+                 {!inStock&&<small style={{fontSize:10,marginLeft:2}}>· out of stock</small>}
+               </button>
+             );
+           })}
+         </div>
+       </div>
+     );
+   })
+ ))}
+
  <div className={c.pricePanel}><div className={c.priceRow}><p className={c.productPrice}>PKR {formatMoney(unitPrice)}</p>{product.old>unitPrice&&<><del>PKR {formatMoney(product.old)}</del><span>{Math.round((1-unitPrice/product.old)*100)}% OFF</span></>}</div><p className={c.small}>Delivery availability and basket total are confirmed at checkout.</p><div className={c.couponCard}><span>◇</span><div><b>Coupon: <strong>Apply at checkout</strong></b><p>Available offers are checked with your address</p></div><button onClick={copyCoupon}>VIEW CART</button></div><p role="status" className={c.small}>{message}</p></div>{coffee&&<p className={c.muted}>{(product.sourceId||product.id).endsWith("190g")?"190 g":"47.5 g"} · Rich aroma & smooth taste</p>}<details className={c.offer}><summary>✿ Best price with available offers</summary><p>Enter your promotion code at checkout to check available offers.</p></details><Link className={c.bestLink} href={categoryHref(coffee?"Grocery":"All products")}>✦ Explore other bestsellers in {coffee?"Instant Coffee":"this category"} ›</Link>
  <div className={c.infoBlock}><p className={c.eyebrow}>DELIVERY INFORMATION</p><label className={c.deliveryOption}><input type="radio" name="delivery" value="express" checked={delivery==="express"} onChange={()=>setDelivery("express")}/><span className={c.supermall}>supermall</span><span>Delivery <b>at checkout</b></span></label><span className={c.or}>or</span><label className={c.deliveryOption}><input type="radio" name="delivery" value="tomorrow" checked={delivery==="tomorrow"} onChange={()=>setDelivery("tomorrow")}/><span className={c.express}>express</span><span>Timing <b>confirmed by seller</b></span></label><p className={c.small}>Delivery availability is confirmed with your address at checkout.</p></div>
  {coffee&&<div className={c.infoBlock}><p className={c.eyebrow}>SIZE</p><div className={c.sizes}>{[["nescafe-gold-190g","190 grams"],["nescafe-gold-47g","47.5 grams"]].map(([id,label])=><Link key={id} href={`/product/${data.products.find(p=>p.sourceId===id)?.id||product.id}`} className={product.sourceId===id?c.selectedSize:""}>{label}</Link>)}</div></div>}
@@ -60,5 +169,5 @@ export default function ProductDetails({product}:{product:Product}) {
  </section><aside className={c.sellerColumn}><div className={c.sellerBox}><div className={c.purchasePrice}><small>{variant?variant.name:"Product price"}</small><strong>PKR {formatMoney(unitPrice)}</strong></div><div className={c.deliveryCard}><b>⌖ DELIVERY OPTIONS</b>{product.vendorExpressMinutes?<p>Express · within {product.vendorExpressMinutes%60===0?`${product.vendorExpressMinutes/60} hour${product.vendorExpressMinutes===60?'':'s'}`:`${product.vendorExpressMinutes} minutes`}</p>:null}<p>Standard · within {product.vendorStandardDays} day{product.vendorStandardDays===1?'':'s'}</p><span>Choose your option at checkout</span></div><div className={c.sellerTitle}>{product.vendorLogo?<Image src={product.vendorLogo} alt={`${product.vendorName} logo`} width={32} height={32} unoptimized style={{width:32,height:32,borderRadius:7,objectFit:'contain',background:'#fff',flex:'0 0 auto'}}/>:<span>ن</span>}<div>Sold by <Link className={c.vendorLink} href={`/vendors/${product.vendorId}`}>{product.vendorName}</Link><p className={c.green}>Approved marketplace vendor</p></div></div><div className={c.sellerStat}>Availability <b>{available>0?"In stock":"Out of stock"}</b></div><div className={c.sellerStat}>Fulfilled by <b>Vendor</b></div><div className={c.trust}><p>◷ {coffee?"This item is not eligible for return":"Returns subject to seller policy"}</p><p>♧ Secure shopping</p></div><div className={c.quantityLabel}><b>Quantity</b><div className={c.quantityStepper}><button aria-label="Decrease quantity" disabled={quantity<=1} onClick={()=>setQuantity(q=>Math.max(1,q-1))}>−</button><output aria-label="Selected quantity">{quantity}</output><button aria-label="Increase quantity" disabled={quantity>=99} onClick={()=>setQuantity(q=>Math.min(99,q+1))}>+</button></div></div><button className={c.blueButton} disabled={available<quantity} onClick={()=>add()}>ADD TO CART</button><button className={c.buyNow} disabled={available<quantity} onClick={buyNow}>ϟ BUY NOW</button><Link className={c.viewCartLink} href="/checkout">View cart ({count}) →</Link></div><div className={c.sellerAd}><p>Your everyday choice!</p><Link href={`/product/${promotion?.id||product.id}`}><ProductArt src="/product/coffee-mix.webp" alt="Klassno instant coffee"/><div>Klassno Coffee Mix 3 in 1{promotion&&<strong>PKR {formatMoney(promotion.price)}</strong>}<span className={c.express}>express</span></div></Link></div></aside></div>
  <section className={c.bundleSection}><p className={c.eyebrow}>FREQUENTLY BOUGHT TOGETHER</p><div className={c.bundle}>{bundleProducts.map(p=><label key={p.id}><input type="checkbox" checked={bundle.includes(p.id)} onChange={e=>setBundle(previous=>e.target.checked?[...previous,p.id]:previous.filter(id=>id!==p.id))}/><ProductArt src={p.image} alt={p.name}/><b>PKR {formatMoney(p.price*(p.id===product.id?quantity:1))}</b><p>{p.name}</p></label>)}</div><button className={c.outlineButton} disabled={!bundle.length} onClick={()=>add(bundle)}>BUY {bundle.length} TOGETHER FOR PKR {formatMoney(bundleProducts.reduce((sum,p)=>sum+(bundle.includes(p.id)?p.price*(p.id===product.id?quantity:1):0),0))}</button></section><ProductSections key={product.id} product={product}/><section className={c.related}><h2>You may also like</h2><Recommendations products={related}/></section></main><ShopFooter/>
  <dialog ref={zoom} className={c.imageZoom} aria-label="Product image preview"><button aria-label="Close image preview" onClick={()=>zoom.current?.close()}>×</button><ProductArt src={gallery[imageIndex]} alt={product.name}/></dialog>
- <dialog aria-label="Added to cart" ref={drawer} className={c.drawer} onClick={e=>{if(e.target===e.currentTarget)drawer.current?.close();}}><div className={c.dialogHeader}><h2>✓ Added to cart</h2><button aria-label="Close cart drawer" onClick={()=>drawer.current?.close()}>×</button></div><div className={c.addedProduct}><ProductArt src={product.image} alt={product.name}/><div><h3>{product.name}</h3>{variant&&<p>{variant.name}</p>}<p>PKR {formatMoney(unitPrice)}</p></div></div><h3>Complete your basket</h3><Recommendations products={related.slice(0,3)}/><div className={c.drawerActions}><Link href="/checkout" onNavigate={() => drawer.current?.close()} className={c.blueButton}>VIEW CART ({count})</Link><button className={c.outlineButton} onClick={()=>drawer.current?.close()}>CONTINUE SHOPPING</button></div></dialog></>;
+ <dialog aria-label="Added to cart" ref={drawer} className={c.drawer} onClick={e=>{if(e.target===e.currentTarget)drawer.current?.close();}}><div className={c.dialogHeader}><h2>✓ Added to cart</h2><button aria-label="Close cart drawer" onClick={()=>drawer.current?.close()}>×</button></div><div className={c.addedProduct}><ProductArt src={variant?.image||product.image} alt={product.name}/><div><h3>{product.name}</h3>{variant&&<p>{variant.name}</p>}<p>PKR {formatMoney(unitPrice)}</p></div></div><h3>Complete your basket</h3><Recommendations products={related.slice(0,3)}/><div className={c.drawerActions}><Link href="/checkout" onNavigate={() => drawer.current?.close()} className={c.blueButton}>VIEW CART ({count})</Link><button className={c.outlineButton} onClick={()=>drawer.current?.close()}>CONTINUE SHOPPING</button></div></dialog></>;
 }

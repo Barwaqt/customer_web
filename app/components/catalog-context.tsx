@@ -3,7 +3,7 @@ import {createContext,useContext,useEffect,useState} from 'react';
 import reference from '../shop-data.json';
 import {api,type Product as ApiProduct,type Category as ApiCategory} from './commerce-client';
 import {useShop} from './shop-store';
-export type CatalogVariant={id:string;name:string;priceMinor:number;stock:number};
+export type CatalogVariant={id:string;name:string;priceMinor:number;stock:number;image?:string|null;options?:Record<string,string>};
 export type CatalogProduct=(typeof reference.products)[number]&{stock:number;description:string;vendorId:string;vendorName:string;vendorLogo?:string;vendorExpressMinutes?:number;vendorStandardDays:number;categoryId:string;images:string[];attributes:Record<string,string>;variants?:CatalogVariant[];sourceId?:string};
 export type CatalogCategory={id:string;slug:string;title:string;parent:string;image:string;productIds:string[]};
 const groups:Record<string,number>={'electronics':1,'grocery':6,'beauty':12,'beauty-and-fragrance':12,'home-and-kitchen':13,'womens-fashion':10,'mens-fashion':11,'baby':23,'sports-and-outdoors':27,'automotive':28};

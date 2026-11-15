@@ -3,7 +3,7 @@ import {createContext,useContext,useEffect,useCallback,useRef,useState} from 're
 import {api,type Product} from './commerce-client';
 import {useAccount} from './auth-provider';
 type Cart=Record<string,number>;type Update<T>=T|((v:T)=>T);
-type Row={productId:string;quantity:number;product:Product;variant?:{id:string;name:string;priceMinor:number;stock:number}|null};
+type Row={productId:string;quantity:number;product:Product;variant?:{id:string;name:string;priceMinor:number;stock:number;image?:string|null;options?:Record<string,string>}|null};
 const Context=createContext({cart:{} as Cart,saved:[] as string[],rows:[] as Row[],wishlist:[] as Product[],busy:false,error:'',setCart:async(...args:[Update<Cart>])=>{void args;},setCartItem:async(...args:[string,number,string?])=>{void args;},setSaved:async(...args:[Update<string[]>])=>{void args;},reload:async()=>{}});
 export function ShopProvider({children}:{children:React.ReactNode}){const account=useAccount();return <ShopSession key={account.identity||'guest'}>{children}</ShopSession>;}
 function ShopSession({children}:{children?:React.ReactNode}){
