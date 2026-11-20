@@ -1,35 +1,349 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useId, useRef, useState } from "react";
-import {useCatalog} from "./catalog-context";
-import { categoryHref, categorySlug } from "../categories";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useCatalog, type NavCategory, type CatalogCategory, type CategoryTreeNode } from "./catalog-context";
 import s from "./category-navigation.module.css";
-const departments=["Electronics","Beauty & Fragrance","Home & Kitchen","Grocery","Men’s Fashion","Women’s Fashion","Mom & Baby","Toys","Sports & Outdoors"];
-const kitchen=[
- ["Kitchen & dining","Cookware","Storage & organisation","Dinnerware & serveware","Accessories","Cutlery","Coffee & tea","Bakeware","Drinkware"],
- ["Furniture","Sofas & couches","Coffee tables","Gaming chairs","Bean bags","Desks & desk chairs","TV & media units","Storage & cabinets","Chairs"],
- ["Tools & home improvement","Power tools","Hand tools","Cleaning supplies","Home organisation","Laundry care","Safety & security","Electrical & lighting","Paints & wall supplies"],
- ["Home decor","Lighting","Home fragrance","Mats & carpets","Furniture covers","Mirrors","Window treatments","Decorative pillows","Decor accents"],
- ["Bath & bedding","Sheets & Pillowcases","Shower heads","Comforter sets","Duvet covers","Towels","Pillows","Bath robes","Bath organizers"],
- ["Home appliances","Air fryers","Coffee makers","Ovens & toasters","Irons & steamers","Blenders","Vacuums","Electric kettles","Mixers"],
- ["Large appliances","Refrigerators","Washing machines","Air conditioners","Cooking ranges","Dishwashers","Water dispensers","Dryers","Freezers"]
+
+const defaultDepartments = [
+  "Electronics",
+  "Beauty & Fragrance",
+  "Home & Kitchen",
+  "Grocery",
+  "Men’s Fashion",
+  "Women’s Fashion",
+  "Mom & Baby",
+  "Toys",
+  "Sports & Outdoors"
 ];
-const brands=["Prestige","Royal Ford","Tefal","Pan","Home Box","Black Decker","Danube Home","Bath & Body Works","Apex"];
-export default function CategoryNavigation(){
- const data=useCatalog();
- const resolve=(label:string,parent?:string)=>{const slug=parent?`${categorySlug(parent)}-${categorySlug(label)}`:categorySlug(label);const c=data.catalogCategories.find(c=>c.slug===slug)||data.catalogCategories.find(c=>categorySlug(c.title)===slug);return c?`/category/${c.slug}`:categoryHref(label,parent);};
- const [active,setActive]=useState<string|null>(null);
- const root=useRef<HTMLDivElement>(null);
- const trigger=useRef<HTMLButtonElement|null>(null);
- const id=useId();
- useEffect(()=>{if(!active)return;function key(e:KeyboardEvent){if(e.key==="Escape"){setActive(null);trigger.current?.focus();}}function outside(e:PointerEvent){if(!root.current?.contains(e.target as Node))setActive(null);}document.addEventListener("keydown",key);document.addEventListener("pointerdown",outside);return()=>{document.removeEventListener("keydown",key);document.removeEventListener("pointerdown",outside);};},[active]);
- const home=active==="Home & Kitchen";
- const matched=data.categories.find(c=>resolve(c.title)===resolve(active||""));
- const groups=home?kitchen:active==="All Categories"?data.categories.map(c=>[c.title,...c.labels]):[[active||"Categories",...(matched?.labels||["Shop all","Latest arrivals","Everyday essentials"])]];
- function href(group:string,label?:string){if(!label)return resolve(group);if(home){const parent=group==="Furniture"?"Furniture":group.includes("appliances")?"Home appliances":"Home & kitchen";return categoryHref(label,parent)==="/category/all-products"?categoryHref(parent):categoryHref(label,parent);}return resolve(label,group);}
- return <div className={s.root} ref={root}>
- <nav className={s.nav} aria-label="Shop departments"><button className={s.all} aria-expanded={active==="All Categories"} aria-controls={id} onClick={e=>{trigger.current=e.currentTarget;setActive(active==="All Categories"?null:"All Categories");}}>All Categories <span>⌄</span></button>{departments.map(label=><div className={s.department} key={label}><Link onMouseEnter={()=>setActive(label)} href={categoryHref(label)} onNavigate={()=>setActive(null)}>{label}</Link><button aria-label={`Browse ${label}`} aria-controls={id} aria-expanded={active===label} onClick={e=>{trigger.current=e.currentTarget;setActive(active===label?null:label);}}>⌄</button></div>)}</nav>
- {active&&<><button className={s.backdrop} aria-label="Close categories" onClick={()=>setActive(null)}/><section id={id} className={s.panel} aria-label={`${active} categories`} onMouseLeave={()=>setActive(null)}><div className={s.heading}><Link href={categoryHref(active)} onNavigate={()=>setActive(null)}>{active} <span>View all →</span></Link><button aria-label="Close category menu" onClick={()=>{setActive(null);trigger.current?.focus();}}>×</button></div><div className={s.content}><div className={`${s.columns} ${!home?s.general:""}`}>{groups.map(([title,...labels])=><div key={title}><Link className={s.title} href={href(title)} onNavigate={()=>setActive(null)}>{title}</Link>{labels.map(label=><Link key={label} href={href(title,label)} onNavigate={()=>setActive(null)}>{label}</Link>)}</div>)}</div>{home&&<Link href={categoryHref("Home & kitchen")} className={s.promo} onNavigate={()=>setActive(null)}><Image src="/shop/category-3-0.webp" alt="Explore home and kitchen essentials" fill sizes="300px" unoptimized/><div><span>BEST SELLER COLLECTION</span><h3>Make more of your kitchen</h3><p>Explore cookware and everyday essentials</p><strong>TRANSFORM YOUR KITCHEN →</strong></div></Link>}</div>{home&&<div className={s.brands}><h3>TOP BRANDS</h3><div>{brands.map(brand=><Link key={brand} href={`/?q=${encodeURIComponent(brand)}`} onNavigate={()=>setActive(null)}><strong>{brand}</strong><span>{brand}</span></Link>)}</div></div>}</section></>}
- </div>;
+
+const brands = ["Prestige", "Royal Ford", "Tefal", "Pan", "Home Box", "Black Decker", "Danube Home", "Bath & Body Works", "Apex"];
+
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
+
+export default function CategoryNavigation() {
+  const data = useCatalog();
+  const [active, setActive] = useState<string | null>(null);
+  const root = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement | null>(null);
+  const id = useId();
+
+  useEffect(() => {
+    if (!active) return;
+    function key(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setActive(null);
+        trigger.current?.focus();
+      }
+    }
+    function outside(e: PointerEvent) {
+      if (!root.current?.contains(e.target as Node)) setActive(null);
+    }
+    document.addEventListener("keydown", key);
+    document.addEventListener("pointerdown", outside);
+    return () => {
+      document.removeEventListener("keydown", key);
+      document.removeEventListener("pointerdown", outside);
+    };
+  }, [active]);
+
+  // Use dynamic categories from DB; fall back to static list while loading
+  const parentCategories: { title: string; slug: string; nav?: NavCategory }[] = useMemo(() => {
+    if (data.categories && data.categories.length > 0) {
+      return data.categories.map(c => ({
+        title: c.title,
+        slug: c.slug,
+        nav: c
+      }));
+    }
+    return defaultDepartments.map(name => ({
+      title: name,
+      slug: name.toLowerCase().replace(/[’']/g, "").replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+    }));
+  }, [data.categories]);
+
+  const activeCategory = useMemo(() => {
+    if (!active || active === "all") return null;
+    return data.categories.find(c => c.slug === active) || null;
+  }, [active, data.categories]);
+
+  const isAll = active === "all";
+
+  // Build mega-menu groups for the active category
+  const groups = useMemo(() => {
+    if (!activeCategory) return [];
+
+    const treeChildren: CategoryTreeNode[] = activeCategory.children || [];
+    const hasBranchingChildren = treeChildren.some(c => c.children && c.children.length > 0);
+
+    if (hasBranchingChildren) {
+      // Level 2 categories with Level 3 children
+      const result: { title: string; slug: string; items: { title: string; slug: string; count?: number }[] }[] = [];
+      const standalones: { title: string; slug: string; count?: number }[] = [];
+
+      for (const branch of treeChildren) {
+        if (branch.children && branch.children.length > 0) {
+          result.push({
+            title: branch.title,
+            slug: branch.slug,
+            items: branch.children.map(sub => ({
+              title: sub.title,
+              slug: sub.slug,
+              count: sub.productIds.length
+            }))
+          });
+        } else {
+          standalones.push({
+            title: branch.title,
+            slug: branch.slug,
+            count: branch.productIds.length
+          });
+        }
+      }
+
+      if (standalones.length > 0) {
+        result.push({
+          title: `More ${activeCategory.title}`,
+          slug: activeCategory.slug,
+          items: standalones
+        });
+      }
+      return result;
+    }
+
+    // Direct flat subcategories: chunk into balanced columns of up to 6 items each
+    const subcats = activeCategory.subcategories || [];
+    if (subcats.length === 0) {
+      return [
+        {
+          title: activeCategory.title,
+          slug: activeCategory.slug,
+          items: [{ title: `All ${activeCategory.title}`, slug: activeCategory.slug }]
+        }
+      ];
+    }
+
+    const itemsPerColumn = Math.max(4, Math.ceil(subcats.length / 5));
+    const chunks = chunkArray(subcats, itemsPerColumn);
+
+    return chunks.map((chunk, idx) => ({
+      title: idx === 0 ? "Popular Subcategories" : "More Categories",
+      slug: activeCategory.slug,
+      items: chunk.map(c => ({
+        title: c.title,
+        slug: c.slug,
+        count: c.productIds?.length
+      }))
+    }));
+  }, [activeCategory]);
+
+  return (
+    <div className={s.root} ref={root}>
+      <nav className={s.nav} aria-label="Shop departments">
+        <button
+          className={s.all}
+          aria-expanded={isAll}
+          aria-controls={id}
+          onClick={e => {
+            trigger.current = e.currentTarget;
+            setActive(isAll ? null : "all");
+          }}
+        >
+          All Categories <span>⌄</span>
+        </button>
+
+        {parentCategories.map(cat => {
+          const isSelected = active === cat.slug;
+          return (
+            <div className={s.department} key={cat.slug}>
+              <Link
+                onMouseEnter={() => setActive(cat.slug)}
+                href={`/category/${cat.slug}`}
+                onClick={() => setActive(null)}
+              >
+                {cat.title}
+              </Link>
+              <button
+                aria-label={`Browse ${cat.title}`}
+                aria-controls={id}
+                aria-expanded={isSelected}
+                onClick={e => {
+                  trigger.current = e.currentTarget;
+                  setActive(isSelected ? null : cat.slug);
+                }}
+              >
+                ⌄
+              </button>
+            </div>
+          );
+        })}
+      </nav>
+
+      {active && (
+        <>
+          <button
+            className={s.backdrop}
+            aria-label="Close categories"
+            onClick={() => setActive(null)}
+          />
+          <section
+            id={id}
+            className={s.panel}
+            aria-label={`${activeCategory?.title || "All"} categories`}
+            onMouseLeave={() => setActive(null)}
+          >
+            {isAll ? (
+              <>
+                <div className={s.heading}>
+                  <Link href="/category/all-products" onClick={() => setActive(null)}>
+                    All Categories <span>Browse all products →</span>
+                  </Link>
+                  <button
+                    aria-label="Close category menu"
+                    onClick={() => {
+                      setActive(null);
+                      trigger.current?.focus();
+                    }}
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className={s.content}>
+                  <div className={`${s.columns} ${s.general}`}>
+                    {data.categories.map(rootCat => (
+                      <div key={rootCat.slug}>
+                        <Link
+                          className={s.title}
+                          href={`/category/${rootCat.slug}`}
+                          onClick={() => setActive(null)}
+                        >
+                          {rootCat.title}
+                        </Link>
+                        {rootCat.subcategories.slice(0, 8).map(sub => (
+                          <Link
+                            key={sub.slug}
+                            href={`/category/${sub.slug}`}
+                            onClick={() => setActive(null)}
+                          >
+                            {sub.title}
+                          </Link>
+                        ))}
+                        {rootCat.subcategories.length > 8 && (
+                          <Link
+                            href={`/category/${rootCat.slug}`}
+                            style={{ fontWeight: 600, color: "#16733c" }}
+                            onClick={() => setActive(null)}
+                          >
+                            View all ({rootCat.subcategories.length}) →
+                          </Link>
+                        )}
+                        {rootCat.subcategories.length === 0 && (
+                          <Link
+                            href={`/category/${rootCat.slug}`}
+                            onClick={() => setActive(null)}
+                          >
+                            Shop collection
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : activeCategory ? (
+              <>
+                <div className={s.heading}>
+                  <Link
+                    href={`/category/${activeCategory.slug}`}
+                    onClick={() => setActive(null)}
+                  >
+                    {activeCategory.title} <span>View all →</span>
+                  </Link>
+                  <button
+                    aria-label="Close category menu"
+                    onClick={() => {
+                      setActive(null);
+                      trigger.current?.focus();
+                    }}
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className={s.content}>
+                  <div className={`${s.columns} ${s.general}`}>
+                    {groups.map((group, idx) => (
+                      <div key={group.title + idx}>
+                        <Link
+                          className={s.title}
+                          href={`/category/${group.slug}`}
+                          onClick={() => setActive(null)}
+                        >
+                          {group.title}
+                        </Link>
+                        {group.items.map(item => (
+                          <Link
+                            key={item.slug}
+                            href={`/category/${item.slug}`}
+                            onClick={() => setActive(null)}
+                          >
+                            {item.title}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+
+                  {activeCategory.images[0] && (
+                    <Link
+                      href={`/category/${activeCategory.slug}`}
+                      className={s.promo}
+                      onClick={() => setActive(null)}
+                    >
+                      <Image
+                        src={activeCategory.images[0]}
+                        alt={activeCategory.title}
+                        fill
+                        sizes="300px"
+                        unoptimized
+                      />
+                      <div>
+                        <span>BARWAQT COLLECTION</span>
+                        <h3>{activeCategory.title}</h3>
+                        <p>Explore everyday essentials & top picks</p>
+                        <strong>SHOP THE COLLECTION →</strong>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+
+                {activeCategory.slug === "home-and-kitchen" && (
+                  <div className={s.brands}>
+                    <h3>TOP BRANDS</h3>
+                    <div>
+                      {brands.map(brand => (
+                        <Link
+                          key={brand}
+                          href={`/?q=${encodeURIComponent(brand)}`}
+                          onClick={() => setActive(null)}
+                        >
+                          <strong>{brand}</strong>
+                          <span>{brand}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : null}
+          </section>
+        </>
+      )}
+    </div>
+  );
 }
