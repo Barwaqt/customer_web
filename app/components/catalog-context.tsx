@@ -18,6 +18,7 @@ export type NavCategory = {
   title: string;
   labels: string[];
   images: string[];
+  productIds: string[];
   subcategories: CatalogCategory[];
   children?: CategoryTreeNode[];
 };
@@ -126,6 +127,7 @@ export function CatalogProvider({children}:{children:React.ReactNode}){
             title: c.title,
             labels: directChildren.map(child => child.title),
             images: [c.image].filter(Boolean),
+            productIds: c.productIds,
             subcategories: directChildren,
             children: treeNode?.children || []
           };

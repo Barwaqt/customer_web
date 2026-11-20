@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { useCatalog, type NavCategory, type CatalogCategory, type CategoryTreeNode } from "./catalog-context";
+import { useCatalog, type NavCategory, type CategoryTreeNode } from "./catalog-context";
 import s from "./category-navigation.module.css";
 
 const defaultDepartments = [
@@ -12,12 +12,12 @@ const defaultDepartments = [
   "Grocery",
   "Men’s Fashion",
   "Women’s Fashion",
-  "Mom & Baby",
-  "Toys",
+  "Mobiles & Accessories",
   "Sports & Outdoors"
 ];
 
 const brands = ["Prestige", "Royal Ford", "Tefal", "Pan", "Home Box", "Black Decker", "Danube Home", "Bath & Body Works", "Apex"];
+const MAX_BAR_CATEGORIES = 8;
 
 function chunkArray<T>(arr: T[], size: number): T[][] {
   const result: T[][] = [];
@@ -53,20 +53,28 @@ export default function CategoryNavigation() {
     };
   }, [active]);
 
-  // Use dynamic categories from DB; fall back to static list while loading
-  const parentCategories: { title: string; slug: string; nav?: NavCategory }[] = useMemo(() => {
+  // Sort parent categories by product count so the richest/primary categories show first
+  const parentCategories: { title: string; slug: string; nav?: NavCategory; count: number }[] = useMemo(() => {
     if (data.categories && data.categories.length > 0) {
-      return data.categories.map(c => ({
+      const sorted = [...data.categories].sort((a, b) => (b.productIds?.length || 0) - (a.productIds?.length || 0));
+      return sorted.map(c => ({
         title: c.title,
         slug: c.slug,
-        nav: c
+        nav: c,
+        count: c.productIds?.length || 0
       }));
     }
     return defaultDepartments.map(name => ({
       title: name,
-      slug: name.toLowerCase().replace(/[’']/g, "").replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+      slug: name.toLowerCase().replace(/[’']/g, "").replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+      count: 0
     }));
   }, [data.categories]);
+
+  // Display top categories on the single-page bar, followed by the "All Categories" button
+  const visibleCategories = useMemo(() => {
+    return parentCategories.slice(0, MAX_BAR_CATEGORIES);
+  }, [parentCategories]);
 
   const activeCategory = useMemo(() => {
     if (!active || active === "all") return null;
@@ -83,7 +91,6 @@ export default function CategoryNavigation() {
     const hasBranchingChildren = treeChildren.some(c => c.children && c.children.length > 0);
 
     if (hasBranchingChildren) {
-      // Level 2 categories with Level 3 children
       const result: { title: string; slug: string; items: { title: string; slug: string; count?: number }[] }[] = [];
       const standalones: { title: string; slug: string; count?: number }[] = [];
 
@@ -146,19 +153,8 @@ export default function CategoryNavigation() {
   return (
     <div className={s.root} ref={root}>
       <nav className={s.nav} aria-label="Shop departments">
-        <button
-          className={s.all}
-          aria-expanded={isAll}
-          aria-controls={id}
-          onClick={e => {
-            trigger.current = e.currentTarget;
-            setActive(isAll ? null : "all");
-          }}
-        >
-          All Categories <span>⌄</span>
-        </button>
-
-        {parentCategories.map(cat => {
+        {/* Visible primary categories on one page without scroll */}
+        {visibleCategories.map(cat => {
           const isSelected = active === cat.slug;
           return (
             <div className={s.department} key={cat.slug}>
@@ -183,6 +179,19 @@ export default function CategoryNavigation() {
             </div>
           );
         })}
+
+        {/* All Categories button placed right after visible categories */}
+        <button
+          className={s.all}
+          aria-expanded={isAll}
+          aria-controls={id}
+          onClick={e => {
+            trigger.current = e.currentTarget;
+            setActive(isAll ? null : "all");
+          }}
+        >
+          All Categories <span>⌄</span>
+        </button>
       </nav>
 
       {active && (
@@ -202,7 +211,7 @@ export default function CategoryNavigation() {
               <>
                 <div className={s.heading}>
                   <Link href="/category/all-products" onClick={() => setActive(null)}>
-                    All Categories <span>Browse all products →</span>
+                    All Categories <span>Browse all products ({data.products.length}) →</span>
                   </Link>
                   <button
                     aria-label="Close category menu"
