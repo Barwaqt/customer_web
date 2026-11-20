@@ -5,7 +5,7 @@ import {api,type Product as ApiProduct,type Category as ApiCategory} from './com
 import {useShop} from './shop-store';
 
 export type CatalogVariant={id:string;name:string;priceMinor:number;stock:number;image?:string|null;options?:Record<string,string>};
-export type CatalogProduct=(typeof reference.products)[number]&{stock:number;description:string;vendorId:string;vendorName:string;vendorLogo?:string;vendorExpressMinutes?:number;vendorStandardDays:number;categoryId:string;images:string[];attributes:Record<string,string>;variants?:CatalogVariant[];sourceId?:string};
+export type CatalogProduct=(typeof reference.products)[number]&{stock:number;description:string;vendorId:string;vendorName:string;vendorSlug?:string;slug?:string;vendorLogo?:string;vendorExpressMinutes?:number;vendorStandardDays:number;categoryId:string;images:string[];attributes:Record<string,string>;variants?:CatalogVariant[];sourceId?:string};
 export type CatalogCategory={id:string;slug:string;title:string;parent:string;image:string;productIds:string[]};
 
 export type CategoryTreeNode = CatalogCategory & {
@@ -30,6 +30,7 @@ export function adapt(p:ApiProduct):CatalogProduct{
   const images=p.images.map(image=>image.trim()).filter(Boolean);
   return {
     id:p.id,
+    slug:p.slug,
     name:p.name,
     price:p.priceMinor/100,
     old:p.priceMinor/100,
@@ -41,6 +42,7 @@ export function adapt(p:ApiProduct):CatalogProduct{
     description:p.description,
     vendorId:p.vendorId,
     vendorName:p.vendor?.name||'Marketplace vendor',
+    vendorSlug:p.vendor?.slug,
     vendorLogo:p.vendor?.logo||undefined,
     vendorExpressMinutes:p.expressDelivery&&p.expressEtaMinutes?p.expressEtaMinutes:undefined,
     vendorStandardDays:p.standardDeliveryDays||7,
