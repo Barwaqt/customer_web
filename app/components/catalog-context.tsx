@@ -4,7 +4,7 @@ import reference from '../shop-data.json';
 import {api,type Product as ApiProduct,type Category as ApiCategory} from './commerce-client';
 import {useShop} from './shop-store';
 
-export type CatalogVariant={id:string;name:string;priceMinor:number;stock:number;image?:string|null;options?:Record<string,string>};
+export type CatalogVariant={id:string;name:string;priceMinor:number;compareAtPriceMinor?:number|null;stock:number;image?:string|null;options?:Record<string,string>};
 export type CatalogProduct=(typeof reference.products)[number]&{stock:number;description:string;vendorId:string;vendorName:string;vendorSlug?:string;slug?:string;vendorLogo?:string;vendorExpressMinutes?:number;vendorStandardDays:number;categoryId:string;images:string[];attributes:Record<string,string>;variants?:CatalogVariant[];sourceId?:string};
 export type CatalogCategory={id:string;slug:string;title:string;parent:string;image:string;productIds:string[]};
 
@@ -33,7 +33,7 @@ export function adapt(p:ApiProduct):CatalogProduct{
     slug:p.slug,
     name:p.name,
     price:p.priceMinor/100,
-    old:p.priceMinor/100,
+    old:(p.compareAtPriceMinor && p.compareAtPriceMinor > p.priceMinor ? p.compareAtPriceMinor : p.priceMinor)/100,
     image:images[0]||'/product-placeholder.svg',
     section:p.category?.name||source?.section||'Products',
     group:source?.group??groups[p.category?.slug||'']??1,
