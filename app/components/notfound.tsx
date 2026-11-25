@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { ShopHeader, ShopFooter } from './shop-shell';
 import s from './notfound.module.css';
 
 export interface NotFoundProps {
@@ -37,7 +38,9 @@ export function Notfound({
   };
 
   return (
-    <div className={s.page}>
+    <>
+      <ShopHeader />
+      <div className={s.page}>
       {/* 3D Map & Delivery Route Illustration */}
       <div className={s.illustrationWrap} aria-hidden="true">
         <picture>
@@ -187,7 +190,9 @@ export function Notfound({
           Help Center
         </Link>
       </div>
-    </div>
+      </div>
+      <ShopFooter />
+    </>
   );
 }
 
