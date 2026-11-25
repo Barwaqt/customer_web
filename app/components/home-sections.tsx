@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type {ReactNode} from 'react';
-import {useCatalog,type CatalogProduct} from './catalog-context';
+import {useCatalog,type CatalogProduct,type CatalogBrand} from './catalog-context';
 import {BrandLogo} from './brand';
 import {BrandLoader} from './brand-loader';
 import {ErrorState} from './error-state';
@@ -13,6 +13,7 @@ import s from './home-sections.module.css';
 import {HeroCarousel} from './hero-carousel';
 import {heroSlides} from './homepage-types';
 function Art({src,alt,eager=false}:{src:string;alt:string;eager?:boolean}){if(!src?.trim())return null;return <Image src={src.trim()} alt={alt} width={800} height={500} loading={eager?'eager':'lazy'} unoptimized/>;}
+function BrandSection({brands}:{brands:CatalogBrand[]}){if(!brands.length)return null;return <section className={s.brands}><header><div><h2>Shop by brand</h2><p>Products from the names you know.</p></div></header><div className={s.brandGrid}>{brands.map(brand=><Link key={brand.id} href={`/?brand=${encodeURIComponent(brand.slug)}`} aria-label={`Shop ${brand.name}`}><span className={s.brandLogo}>{brand.image?<Image src={brand.image} alt={brand.name} width={120} height={60} unoptimized/>:<b>{brand.name}</b>}</span><small>{brand.name}</small></Link>)}</div></section>;}
 function CategorySection({value,variant}:{value:HomeCategories;variant:'top'|'popular'|'more'}){if(!value.enabled)return null;return <section className={variant==='top'?s.section:variant==='popular'?s.popular:s.more}><header><h2>{value.title}</h2><Link href={value.href}>{value.linkLabel}</Link></header><div className={variant==='top'?s.categories:undefined}>{value.items.map((item,i)=><Link key={i} href={'/category/'+item.categorySlug}><span style={variant==='top'?{background:['#fff2e8','#edf9ec','#eef3ff','#fff0f6'][i%4],color:['#d57c20','#098a42','#4f68d9','#b84482'][i%4]}:undefined}>{item.icon}</span>{item.label}</Link>)}</div></section>;}
 export function HomeSections({card}:{card:(p:CatalogProduct)=>ReactNode}){const data=useCatalog(),homepage=useHomepage();const content=homepage.document?.content;if(!content)return homepage.error?<ErrorState title={homepage.error} onRetry={homepage.reload}/>:<BrandLoader label="Loading homepage…"/>;
  const pick=(row:HomeProductRow)=>{const products=data.catalogProducts;if(row.productIds.length)return row.productIds.flatMap(id=>{const p=products.find(p=>p.id===id);return p?[p]:[];}).slice(0,6);if(row.categorySlug==='all-products')return products.slice(0,6);const category=data.catalogCategories.find(c=>c.slug===row.categorySlug);return products.filter(p=>category?.productIds.includes(p.id)).slice(0,6);};
@@ -29,6 +30,7 @@ export function HomeSections({card}:{card:(p:CatalogProduct)=>ReactNode}){const 
  <CategorySection value={content.moreCategories} variant="more"/>
  {upgrade.enabled&&<section className={s.upgrade}><Art src={upgrade.image} alt={upgrade.alt}/><div><span>{upgrade.eyebrow}</span><h2>{upgrade.title}{upgrade.highlight&&<><br/>{upgrade.highlight}</>}</h2><p>{upgrade.description}</p><Link href={upgrade.href}>{upgrade.linkLabel}</Link></div></section>}
  {benefits.enabled&&<section className={s.benefits}>{benefits.items.map((item,i)=><div key={i}><span>{item.icon}</span><div><b>{item.title}</b><p>{item.description}</p></div></div>)}</section>}
+ <BrandSection brands={data.brands}/>
  {searches.enabled&&<section className={s.searches}><h2>{searches.title}</h2><div>{searches.terms.slice(0,searches.limit??10).map((name,i)=><Link key={i} href={`/?q=${encodeURIComponent(name)}`}>{name}</Link>)}</div></section>}</div>;
 }
 export function HomeFooter(){const value=useHomepage().document?.content.footer;const account=useAccount();if(!value)return null;return <footer className={s.footer}><div className={s.footerGrid}><Link href="/" aria-label="Barwaqt home"><BrandLogo/></Link>{value.columns.map((column,i)=><div key={i}><h3>{column.title}</h3>{column.links.map((link,j)=>{const isAccount=link.href==='/profile'||link.href.startsWith('/profile');return <Link key={j} href={link.href} onClick={e=>{if(isAccount&&!account.signedIn){e.preventDefault();account.open();}}}>{link.label}</Link>;})}</div>)}<div><h3>{value.title}</h3><p>{value.description}</p><Link className={s.footerCta} href={value.href}>{value.linkLabel}</Link></div></div><div className={s.copyright}><span>{value.copyright}</span><span>{value.paymentLabel}</span></div></footer>;}

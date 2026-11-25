@@ -27,18 +27,19 @@ function Icon({ name }: { name: "search" | "cart" | "heart" | "user" | "pin" }) 
   return <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
 const subscribeToLocation = (listener: () => void) => { window.addEventListener("popstate", listener); return () => window.removeEventListener("popstate", listener); };
-const getSearch = () => new URLSearchParams(window.location.search).get("q") || "";
+const getLocation = () => { const params = new URLSearchParams(window.location.search); return JSON.stringify([params.get("q") || "", params.get("brand") || ""]); };
 export default function Home() {
-  const query = useSyncExternalStore(subscribeToLocation, getSearch, () => "");
-  return <Storefront key={query} initialQuery={query}/>;
+  const [query, brand] = JSON.parse(useSyncExternalStore(subscribeToLocation, getLocation, () => '["",""]')) as [string, string];
+  return <Storefront key={query + "|" + brand} initialQuery={query} initialBrand={brand}/>;
 }
-function Storefront({ initialQuery }: { initialQuery: string }) {
+function Storefront({ initialQuery, initialBrand }: { initialQuery: string; initialBrand: string }) {
  const data=useCatalog();
  // The storefront needs both the catalog and the homepage document; gate on them together so
  // the page shows a single loader instead of one per data source.
  const homepage=useHomepage();
   const [input, setInput] = useState(initialQuery);
   const [query, setQuery] = useState(initialQuery);
+  const [brand, setBrand] = useState(initialBrand);
   const { cart, setCart, saved, setSaved } = useShop();
   const router = useRouter();
   const [panel, setPanel] = useState<"cart" | "wishlist">("cart");
@@ -58,26 +59,30 @@ function Storefront({ initialQuery }: { initialQuery: string }) {
   function returnHome() {
     setQuery("");
     setInput("");
+    setBrand("");
     router.replace("/", { scroll: false });
     window.scrollTo({ top: 0, behavior: "auto" });
   }
   function card(p: Product) {
     return <article className={s.product} key={p.id}>
       <div className={s.productArt}>{p.old>p.price&&<span className={s.best}>{Math.round((1-p.price/p.old)*100)}% OFF</span>}<button className={`${s.save} ${saved.includes(p.id) ? s.saved : ""}`} aria-label={`${saved.includes(p.id) ? "Remove" : "Save"} ${p.name}`} aria-pressed={saved.includes(p.id)} onClick={() => toggleSave(p)}><Icon name="heart"/></button><button className={s.imageButton} onClick={() => router.push(`/product/${p.slug||p.id}`)} aria-label={`View ${p.name}`}><Art src={p.image} alt={p.name}/></button></div>
-      <div className={s.productBody}><button className={s.productName} onClick={() => router.push(`/product/${p.slug||p.id}`)}>{p.name}</button><p className={s.rating}>★ <b>{p.rating}</b></p><p className={s.price}><small>PKR</small> {money(p.price)} {p.old>p.price&&<><del>{money(p.old)}</del> <span>{Math.round((1-p.price/p.old)*100)}%</span></>}</p><button className={s.cartCta} disabled={p.stock<1||(cart[p.id]||0)>=Math.min(99,p.stock)} onClick={()=>add(p)} aria-label={`Add ${p.name} to cart`}>ϟ Add to cart</button></div>
+      <div className={s.productBody}>{p.brandName&&<span className={s.cardBrand}>{p.brandName}</span>}<button className={s.productName} onClick={() => router.push(`/product/${p.slug||p.id}`)}>{p.name}</button><p className={s.rating}>★ <b>{p.rating}</b></p><p className={s.price}><small>PKR</small> {money(p.price)} {p.old>p.price&&<><del>{money(p.old)}</del> <span>{Math.round((1-p.price/p.old)*100)}%</span></>}</p><button className={s.cartCta} disabled={p.stock<1||(cart[p.id]||0)>=Math.min(99,p.stock)} onClick={()=>add(p)} aria-label={`Add ${p.name} to cart`}>ϟ Add to cart</button></div>
     </article>;
   }
-  const matching = data.products.filter(p => `${p.name} ${p.section}`.toLowerCase().includes(query.toLowerCase()));
+  const matching = data.products.filter(p => `${p.name} ${p.section} ${p.brandName || ""}`.toLowerCase().includes(query.toLowerCase()));
+  const brandProducts = brand ? data.products.filter(p => p.brandSlug === brand) : [];
+  const brandName = data.brands.find(b => b.slug === brand)?.name || brandProducts[0]?.brandName || brand;
+  const shown = query ? matching : brandProducts;
   // Only a missing homepage document blocks the page. A failed background refresh keeps the
   // published content on screen and surfaces the inline notice inside HomeSections.
   const blockingError = (data.error || (!homepage.document && homepage.error)) ? (data.error || homepage.error) : "";
   const homeLoading = (data.loading || !homepage.document) && !blockingError;
   return <>
     <a className={s.skip} href="#main">Skip to content</a>
-    <header className={s.header}><Link className={s.logo} href="/" aria-label="Barwaqt home" onClick={()=>{setQuery("");setInput("");window.scrollTo({top:0,behavior:"auto"});}}><BrandLogo/></Link><DeliveryLocation/><form className={s.search} onSubmit={e => { e.preventDefault(); search(input); }}><button aria-label="Search"><Icon name="search"/></button><input type="search" aria-label="Search products" placeholder="What are you looking for?" value={input} onChange={e => setInput(e.target.value)}/></form><AuthButton/><Link className={s.headerAction} href="/wishlist"><Icon name="heart"/><span>Wishlist</span>{saved.length > 0 && <b>{saved.length}</b>}</Link><button className={s.headerAction} onClick={() => openPanel("cart")}><Icon name="cart"/><span>Cart</span>{count > 0 && <b>{count}</b>}</button></header>
+    <header className={s.header}><Link className={s.logo} href="/" aria-label="Barwaqt home" onClick={()=>{setQuery("");setInput("");setBrand("");window.scrollTo({top:0,behavior:"auto"});}}><BrandLogo/></Link><DeliveryLocation/><form className={s.search} onSubmit={e => { e.preventDefault(); search(input); }}><button aria-label="Search"><Icon name="search"/></button><input type="search" aria-label="Search products" placeholder="What are you looking for?" value={input} onChange={e => setInput(e.target.value)}/></form><AuthButton/><Link className={s.headerAction} href="/wishlist"><Icon name="heart"/><span>Wishlist</span>{saved.length > 0 && <b>{saved.length}</b>}</Link><button className={s.headerAction} onClick={() => openPanel("cart")}><Icon name="cart"/><span>Cart</span>{count > 0 && <b>{count}</b>}</button></header>
     <CategoryNavigation/>
     <main id="main" className={s.main}>
-{query?<section className={s.section} id="products"><div className={s.sectionHeading}><h1>Results for “{query}” <small>({matching.length})</small></h1><button type="button" onClick={returnHome}>← Back to homepage</button></div>{matching.length?<div className={s.results}>{matching.map(card)}</div>:<div className={s.empty}><h2>No products found</h2><p>Try another product or category.</p></div>}</section>:<>{homeLoading?<BrandLoader label="Loading your storefront…"/>:blockingError?<ErrorState message={blockingError} onRetry={()=>{data.reload();homepage.reload();}}/>:<HomeSections card={card}/>}</>}
+{query||brand?<section className={s.section} id="products"><div className={s.sectionHeading}><h1>{query?<>Results for “{query}”</>:<>{brandName} products</>} <small>({shown.length})</small></h1><button type="button" onClick={returnHome}>← Back to homepage</button></div>{shown.length?<div className={s.results}>{shown.map(card)}</div>:<div className={s.empty}><h2>No products found</h2><p>Try another product, brand or category.</p></div>}</section>:<>{homeLoading?<BrandLoader label="Loading your storefront…"/>:blockingError?<ErrorState message={blockingError} onRetry={()=>{data.reload();homepage.reload();}}/>:<HomeSections card={card}/>}</>}
     </main><HomeFooter/>
     <div className={s.notice} role="status">{notice && <><span>{notice}</span><button onClick={() => setNotice("")} aria-label="Dismiss notification">×</button></>}</div>
     <dialog ref={dialog} className={s.dialog} onClick={e => { if (e.target === e.currentTarget) dialog.current?.close(); }}><div className={s.dialogHeading}><h2>{panel === "cart" ? `Your cart (${count})` : panel === "wishlist" ? "Your wishlist" : "Product details"}</h2><button onClick={() => dialog.current?.close()} aria-label="Close dialog">×</button></div>

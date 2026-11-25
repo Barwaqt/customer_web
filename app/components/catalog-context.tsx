@@ -5,8 +5,9 @@ import {api,type Product as ApiProduct,type Category as ApiCategory} from './com
 import {useShop} from './shop-store';
 
 export type CatalogVariant={id:string;name:string;priceMinor:number;compareAtPriceMinor?:number|null;stock:number;image?:string|null;options?:Record<string,string>};
-export type CatalogProduct=(typeof reference.products)[number]&{stock:number;description:string;vendorId:string;vendorName:string;vendorSlug?:string;slug?:string;vendorLogo?:string;vendorExpressMinutes?:number;vendorStandardDays:number;categoryId:string;images:string[];attributes:Record<string,string>;variants?:CatalogVariant[];sourceId?:string};
+export type CatalogProduct=(typeof reference.products)[number]&{stock:number;description:string;vendorId:string;vendorName:string;vendorSlug?:string;slug?:string;vendorLogo?:string;vendorExpressMinutes?:number;vendorStandardDays:number;categoryId:string;brandId?:string;brandName?:string;brandSlug?:string;images:string[];attributes:Record<string,string>;variants?:CatalogVariant[];sourceId?:string};
 export type CatalogCategory={id:string;slug:string;title:string;parent:string;image:string;productIds:string[]};
+export type CatalogBrand={id:string;name:string;slug:string;image?:string|null};
 
 export type CategoryTreeNode = CatalogCategory & {
   children: CategoryTreeNode[];
@@ -47,6 +48,9 @@ export function adapt(p:ApiProduct):CatalogProduct{
     vendorExpressMinutes:p.expressDelivery&&p.expressEtaMinutes?p.expressEtaMinutes:undefined,
     vendorStandardDays:p.standardDeliveryDays||7,
     categoryId:p.categoryId,
+    brandId:p.brandId||undefined,
+    brandName:p.brand?.name,
+    brandSlug:p.brand?.slug,
     images,
     attributes:p.attributes,
     variants:p.variants||[],
@@ -73,17 +77,18 @@ export function buildCategoryTree(categories: CatalogCategory[]): CategoryTreeNo
   return roots;
 }
 
-type State={products:CatalogProduct[];catalogCategories:CatalogCategory[];categories:NavCategory[];loading:boolean;error:string;reload:()=>void};
-const Context=createContext<State>({products:[],catalogCategories:[],categories:[],loading:true,error:'',reload:()=>{}});
+type State={products:CatalogProduct[];catalogCategories:CatalogCategory[];categories:NavCategory[];brands:CatalogBrand[];loading:boolean;error:string;reload:()=>void};
+const Context=createContext<State>({products:[],catalogCategories:[],categories:[],brands:[],loading:true,error:'',reload:()=>{}});
 
 export function CatalogProvider({children}:{children:React.ReactNode}){
-  const [data,setData]=useState<Omit<State,'reload'>>({products:[],catalogCategories:[],categories:[],loading:true,error:''});
+  const [data,setData]=useState<Omit<State,'reload'>>({products:[],catalogCategories:[],categories:[],brands:[],loading:true,error:''});
   const [version,setVersion]=useState(0);
 
   useEffect(()=>{
     let live=true;
     (async()=>{
       const categories=await api<(ApiCategory&{productIds?:string[]})[]>('/catalog/categories');
+      const brands=await api<CatalogBrand[]>('/catalog/brands?limit=100');
       const products:ApiProduct[]=[];
       for(let page=1;;page++){
         const result=await api<{items:ApiProduct[];total:number}>(`/catalog/products?limit=100&page=${page}`);
@@ -139,11 +144,12 @@ export function CatalogProvider({children}:{children:React.ReactNode}){
         products:mapped,
         catalogCategories:cats,
         categories:rootCategories,
+        brands,
         loading:false,
         error:''
       });
     })().catch(e=>{
-      if(live)setData({products:[],catalogCategories:[],categories:[],loading:false,error:e.message});
+      if(live)setData({products:[],catalogCategories:[],categories:[],brands:[],loading:false,error:e.message});
     });
     return()=>{live=false;};
   },[version]);

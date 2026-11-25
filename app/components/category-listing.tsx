@@ -21,7 +21,7 @@ export default function CategoryListing({category}:{category:Category}) {
  const [brandQuery,setBrandQuery]=useState("");const [limit,setLimit]=useState(25);
  const [view,setView]=useState<"grid"|"list">("grid");
  const [filtersOpen,setFiltersOpen]=useState(false);const [notice,setNotice]=useState("");
- const products=category.productIds.map(id=>data.products.find(p=>p.id===id)).filter((p):p is typeof data.products[number]=>!!p).map(p=>({...p,brand:p.attributes.brand||p.vendorName,fulfillment:p.vendorName}));
+ const products=category.productIds.map(id=>data.products.find(p=>p.id===id)).filter((p):p is typeof data.products[number]=>!!p).map(p=>({...p,brand:p.brandName||p.attributes.brand||p.vendorName,fulfillment:p.vendorName}));
  const brandOptions=Array.from(new Set(products.map(p=>p.brand))).sort();
  const children=categories.filter(c=>c.parent===category.slug);
  const parent=categories.find(c=>c.slug===category.parent);
