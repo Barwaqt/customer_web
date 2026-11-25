@@ -15,3 +15,12 @@
 .vendorLink{color:#16733c;font-weight:700;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .vendorLink:hover{color:#098a42}
 .vendorLink:focus-visible{outline:2px solid #098a42;outline-offset:3px;border-radius:2px}
+
+/* Footer copy: bold black on the light help/legal bands. */
+.help h2,
+.help p,
+.legal,
+.legal span {
+  color: #000;
+  font-weight: 700;
+}
